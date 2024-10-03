@@ -12,6 +12,7 @@ import "../src/assets/css/style.css";
 
 import Dashbord from "./Components/Admin/DashBord/Dashbord.jsx";
 import Header from "./Components/Header/Header.jsx";
+import Home from "./Page/Home/Home.jsx";
 
 function App() {
   useEffect(() => {
@@ -19,7 +20,8 @@ function App() {
   }, []);
   return (
     <div className=" text-white">
-      <Header />
+      {/* <Header /> */}
+      <Home />
       <Dashbord />
     </div>
   );
