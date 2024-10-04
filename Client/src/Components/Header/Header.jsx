@@ -7,7 +7,7 @@ function Header() {
         <div class="container 3xl:container-secondary-lg 4xl:container mx-auto text-whiteColor text-size-12 xl:text-sm py-5px xl:py-9px">
           <div class="flex justify-between items-center">
             <div>
-              <p>Call Us: +1 800 123 456 789 - Mail Us: Itcroc@mail.com</p>
+              <p>Call Us: +1 310-844-4780 - Mail Us: elshaddaiapostlicmission@gmail.com</p>
             </div>
             <div class="flex gap-37px items-center">
               <div>
@@ -65,7 +65,7 @@ function Header() {
                       href="#"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
-                      Demos
+                      Home
                       <i class="icofont-rounded-down"></i>
                     </a>
                     <div
@@ -574,7 +574,7 @@ function Header() {
                       href="#"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
-                      Pages
+                      About us
                       <i class="icofont-rounded-down"></i>
                     </a>
                     <div
@@ -829,7 +829,7 @@ function Header() {
                       href="#"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
-                      Courses
+                      Bible School
                       <i class="icofont-rounded-down"></i>
                     </a>
                     <div
@@ -1028,7 +1028,7 @@ function Header() {
                       href="instructor-dashboard.html"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
-                      Dashboard
+                      Partner
                       <i class="icofont-rounded-down"></i>
                     </a>
                     <div
@@ -1324,7 +1324,7 @@ function Header() {
                       href="../ecommerce/shop.html"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
-                      eCommerce
+                      Dashboard
                       <i class="icofont-rounded-down"></i>
                     </a>
 
@@ -1515,7 +1515,7 @@ function Header() {
                       href="#"
                       class="text-size-12 2xl:text-size-15 text-whiteColor bg-primaryColor block border-primaryColor border hover:text-primaryColor hover:bg-white px-15px py-2 rounded-standard dark:hover:bg-whiteColor-dark dark: dark:hover:text-whiteColor"
                     >
-                      Get Start
+                      LOGIN
                     </a>
                   </li>
                   <li class="block lg:hidden">

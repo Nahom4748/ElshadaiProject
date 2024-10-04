@@ -47,9 +47,11 @@ function Footer() {
                   About us
                 </h4>
                 <p class="text-base lg:text-sm 2xl:text-base text-darkgray mb-30px leading-1.8 2xl:leading-1.8">
-                  orporate clients and leisure travelers has been relying on
-                  Groundlink for dependable safe, and professional chauffeured
-                  car end service in major cities across World.
+                  Our website has become an essential tool in this mission,
+                  serving as a global platform to disseminate the message of the
+                  Gospel. It allows us to reach people in different nations and
+                  cultures, breaking barriers and uniting believers in their
+                  pursuit of spiritual growth.
                 </p>
                 <div class="flex items-center">
                   <div>
