@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function AdminMenu() {
   return (
     <div class="lg:col-start-1 lg:col-span-3 border border-whitegrey">
@@ -55,8 +55,8 @@ function AdminMenu() {
             </a>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark flex justify-between items-center">
-            <a
-              href="admin-message.html"
+            <Link
+              to="/admin-employee"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -74,8 +74,8 @@ function AdminMenu() {
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
               </svg>
-              Message
-            </a>
+              Add Employee
+            </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <a
