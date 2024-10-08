@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -19,24 +20,24 @@ function Header() {
               <div>
                 <ul class="flex gap-13px text-size-15">
                   <li>
-                    <a class="hover:text-primaryColor" href="#">
+                    <Link  class="hover:text-primaryColor" to ="#">
                       <i class="icofont-facebook"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a class="hover:text-primaryColor" href="#">
+                    <Link  class="hover:text-primaryColor" to ="#">
                       <i class="icofont-twitter"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a class="hover:text-primaryColor" href="#">
+                    <Link  class="hover:text-primaryColor" to ="#">
                       <i class="icofont-instagram"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a class="hover:text-primaryColor" href="#">
+                    <Link  class="hover:text-primaryColor" to ="#">
                       <i class="icofont-youtube-play"></i>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -50,24 +51,24 @@ function Header() {
           <div class="py-15px lg:py-0 px-15px lg:container 3xl:container-secondary-lg 4xl:container mx-auto relative">
             <div class="grid grid-cols-2 lg:grid-cols-12 items-center gap-15px">
               <div class="lg:col-start-1 lg:col-span-2">
-                <a href="../../index.html" class="block">
+                <Link  to ="../../index.html" class="block">
                   <img
                     src="../../assets/images/logo/logo_1.png"
                     alt="log"
                     class="w-logo-sm lg:w-auto py-2"
                   />
-                </a>
+                </Link>
               </div>
               <div class="hidden lg:block lg:col-start-3 lg:col-span-7">
                 <ul class="nav-list flex justify-center">
                   <li class="nav-item group">
-                    <a
-                      href="#"
+                    <Link 
+                      to ="/"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
                       Home
                       <i class="icofont-rounded-down"></i>
-                    </a>
+                    </Link>
                     <div
                       class="dropdown absolute left-0 translate-y-10 z-medium hidden opacity-0"
                       style={{ transition: "0.3s" }}
@@ -94,8 +95,8 @@ function Header() {
                               class="grid grid-cols-5 gap-30px pt-30px pb-15px"
                             >
                               <li>
-                                <a
-                                  href="../../index.html"
+                                <Link 
+                                  to ="../../index.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -106,11 +107,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Default)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-2.html"
+                                <Link 
+                                  to ="../../home-2.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -120,11 +121,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Elegant)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-3.html"
+                                <Link 
+                                  to ="../../home-3.html"
                                   class="overflow-hidden group/light relative block box-border shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard"
                                 >
                                   <img
@@ -135,11 +136,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Classic)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-4.html"
+                                <Link 
+                                  to ="../../home-4.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -149,11 +150,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Classic LMS)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-5.html"
+                                <Link 
+                                  to ="../../home-5.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -163,11 +164,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Online Course)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-6.html"
+                                <Link 
+                                  to ="../../home-6.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-5px"
                                 >
                                   <img
@@ -180,11 +181,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Marketplace)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-7.html"
+                                <Link 
+                                  to ="../../home-7.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -197,11 +198,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (University)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-8.html"
+                                <Link 
+                                  to ="../../home-8.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -214,11 +215,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (eCommerce)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-9.html"
+                                <Link 
+                                  to ="../../home-9.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -231,11 +232,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Kindergarten)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-10.html"
+                                <Link 
+                                  to ="../../home-10.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -248,11 +249,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Machine Learning)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-11.html"
+                                <Link 
+                                  to ="../../home-11.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -265,11 +266,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Single Course)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -279,11 +280,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 1
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -293,11 +294,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 2
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -307,11 +308,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 3
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -321,7 +322,7 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 4
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -335,8 +336,8 @@ function Header() {
                               class="grid grid-cols-5 gap-30px pt-30px pb-15px"
                             >
                               <li>
-                                <a
-                                  href="../../index-dark.html"
+                                <Link 
+                                  to ="../../index-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -347,11 +348,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Default)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-2-dark.html"
+                                <Link 
+                                  to ="../../home-2-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -361,11 +362,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Elegant)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-3-dark.html"
+                                <Link 
+                                  to ="../../home-3-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -375,11 +376,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Classic)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-4-dark.html"
+                                <Link 
+                                  to ="../../home-4-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -389,11 +390,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Classic LMS)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-5-dark.html"
+                                <Link 
+                                  to ="../../home-5-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -403,11 +404,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Online Course)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-6-dark.html"
+                                <Link 
+                                  to ="../../home-6-dark.html"
                                   class="overflow-hidden group relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-5px"
                                 >
                                   <img
@@ -420,11 +421,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Marketplace)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-7-dark.html"
+                                <Link 
+                                  to ="../../home-7-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -437,11 +438,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (University)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-8-dark.html"
+                                <Link 
+                                  to ="../../home-8-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -454,11 +455,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (eCommerce)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-9-dark.html"
+                                <Link 
+                                  to ="../../home-9-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -471,11 +472,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Kindergarten)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-10-dark.html"
+                                <Link 
+                                  to ="../../home-10-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -488,11 +489,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Machine Learning)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-11-dark.html"
+                                <Link 
+                                  to ="../../home-11-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -505,11 +506,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Home (Single Course)
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-11-dark.html"
+                                <Link 
+                                  to ="../../home-11-dark.html"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -519,11 +520,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 1
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -533,11 +534,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 2
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -547,11 +548,11 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 3
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="overflow-hidden group/light relative block shadow-dropdown-card hover:shadow-dropdown-card-hover hover:-translate-y-[5px] rounded-standard dark:shadow-dropdown-card-dark"
                                 >
                                   <img
@@ -561,7 +562,7 @@ function Header() {
                                   <span class="absolute left-0 w-full top-full group-hover/light:-translate-y-full bg-primaryColor text-sm leading-[1] p-10px text-center font-semibold text-whiteColor">
                                     Layout Coming Soon 4
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -570,13 +571,13 @@ function Header() {
                     </div>
                   </li>
                   <li class="nav-item group">
-                    <a
-                      href="#"
+                    <Link 
+                      to ="/aboutus"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
                       About us
                       <i class="icofont-rounded-down"></i>
-                    </a>
+                    </Link>
                     <div
                       class="dropdown absolute left-0 translate-y-10 z-medium hidden opacity-0"
                       style={{ transition: "0.3s" }}
@@ -589,58 +590,58 @@ function Header() {
                             </h3>
                             <ul>
                               <li>
-                                <a
-                                  href="../../about.html"
+                                <Link 
+                                  to ="../../about.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   About
                                   <span class="text-size-12 font-semibold text-primaryColor bg-whitegrey3 px-15px py-5px ml-5px rounded">
                                     Sale Everything
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../about-dark.html"
+                                <Link 
+                                  to ="../../about-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   About (Dark)
                                   <span class="text-size-12 font-semibold text-secondaryColor bg-whitegrey3 px-15px py-5px ml-5px rounded">
                                     New
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog.html"
+                                <Link 
+                                  to ="../../blog.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Blog
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog-dark.html"
+                                <Link 
+                                  to ="../../blog-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Blog (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog-details.html"
+                                <Link 
+                                  to ="../../blog-details.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Blog Details
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog-details-dark.html"
+                                <Link 
+                                  to ="../../blog-details-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Blog Details (Dark)
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -650,55 +651,55 @@ function Header() {
                             </h3>
                             <ul>
                               <li>
-                                <a
-                                  href="../../error.html"
+                                <Link 
+                                  to ="../../error.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Error
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../error-dark.html"
+                                <Link 
+                                  to ="../../error-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Error (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../event-details.html"
+                                <Link 
+                                  to ="../../event-details.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Event Details
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meetings.html"
+                                <Link 
+                                  to ="../zoom/zoom-meetings.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Zoom
                                   <span class="text-size-12 font-semibold text-primaryColor bg-whitegrey3 px-15px py-5px ml-5px rounded">
                                     Online Call
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meetings-dark.html"
+                                <Link 
+                                  to ="../zoom/zoom-meetings-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Zoom Meeting (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meeting-details.html"
+                                <Link 
+                                  to ="../zoom/zoom-meeting-details.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Zoom Meeting Details
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -708,52 +709,52 @@ function Header() {
                             </h3>
                             <ul>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meeting-details-dark.html"
+                                <Link 
+                                  to ="../zoom/zoom-meeting-details-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Meeting Details (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../login.html"
+                                <Link 
+                                  to ="../../login.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Login
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../login-dark.html"
+                                <Link 
+                                  to ="../../login-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Login (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../maintenance.html"
+                                <Link 
+                                  to ="../../maintenance.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Maintenance
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../maintenance-dark.html"
+                                <Link 
+                                  to ="../../maintenance-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Maintenance (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Terms & Condition
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -763,52 +764,52 @@ function Header() {
                             </h3>
                             <ul>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Terms & Condition (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../contact.html"
+                                <Link 
+                                  to ="../../contact.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Contact
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../contact-dark.html"
+                                <Link 
+                                  to ="../../contact-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Contact (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Success Stories
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Success Stories (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Work Policy
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -825,13 +826,13 @@ function Header() {
                     </div>
                   </li>
                   <li class="nav-item group">
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
                       Bible School
                       <i class="icofont-rounded-down"></i>
-                    </a>
+                    </Link>
                     <div
                       class="dropdown absolute left-0 translate-y-10 z-medium hidden opacity-0"
                       style={{ transition: "0.3s" }}
@@ -844,55 +845,55 @@ function Header() {
                             </h3>
                             <ul>
                               <li>
-                                <a
-                                  href="../../course.html"
+                                <Link 
+                                  to ="../../course.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Grid
                                   <span class="text-size-12 font-semibold text-primaryColor bg-whitegrey3 px-15px py-5px ml-5px rounded">
                                     All Courses
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-dark.html"
+                                <Link 
+                                  to ="../../course-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course Grid (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-dark.html"
+                                <Link 
+                                  to ="../../course-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course Grid
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-grid-dark.html"
+                                <Link 
+                                  to ="../../course-grid-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course Grid (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-list.html"
+                                <Link 
+                                  to ="../../course-list.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course List
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-list-dark.html"
+                                <Link 
+                                  to ="../../course-list-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course List (Dark)
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -902,52 +903,52 @@ function Header() {
                             </h3>
                             <ul>
                               <li>
-                                <a
-                                  href="../../course-details.html"
+                                <Link 
+                                  to ="../../course-details.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course Details
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-dark.html"
+                                <Link 
+                                  to ="../../course-details-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course Details (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-2.html"
+                                <Link 
+                                  to ="../../course-details-2.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course Details 2
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-2-dark.html"
+                                <Link 
+                                  to ="../../course-details-2-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Details 2 (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-3.html"
+                                <Link 
+                                  to ="../../course-details-3.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Coures Details 3
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-3-dark.html"
+                                <Link 
+                                  to ="../../course-details-3-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Details 3 (Dark)
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -957,58 +958,58 @@ function Header() {
                             </h3>
                             <ul>
                               <li>
-                                <a
-                                  href="../dashboards/become-an-instructor.html"
+                                <Link 
+                                  to ="../dashboards/become-an-instructor.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Become An Instructor
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/create-course.html"
+                                <Link 
+                                  to ="../dashboards/create-course.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Careate Course
                                   <span class="text-size-12 font-semibold text-primaryColor bg-whitegrey3 px-15px py-5px rounded">
                                     Career
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../instructor.html"
+                                <Link 
+                                  to ="../../instructor.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Instructor
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../instructor-dark.html"
+                                <Link 
+                                  to ="../../instructor-dark.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Instructor (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../instructor-details.html"
+                                <Link 
+                                  to ="../../instructor-details.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Instructor Details
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../lesson.html"
+                                <Link 
+                                  to ="../../lesson.html"
                                   class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor p-10px block hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-whiteColor dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                                 >
                                   Course Lesson
                                   <span class="text-size-12 font-semibold text-secondaryColor bg-whitegrey3 px-15px py-5px ml-5px rounded">
                                     New
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -1024,13 +1025,13 @@ function Header() {
                     </div>
                   </li>
                   <li class="nav-item group relative">
-                    <a
-                      href="instructor-dashboard.html"
+                    <Link 
+                      to ="instructor-dashboard.html"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
                       Partner
                       <i class="icofont-rounded-down"></i>
-                    </a>
+                    </Link>
                     <div
                       class="dropdown absolute left-0 translate-y-10 z-medium hidden opacity-0"
                       style={{ transition: "0.3s" }}
@@ -1038,12 +1039,12 @@ function Header() {
                       <div class="shadow-dropdown max-w-dropdown2 w-2000 py-14px rounded-standard bg-white dark:bg-whiteColor-dark">
                         <ul>
                           <li class="relative group/nested">
-                            <a
-                              href="../dashboards/admin-dashboard.html"
+                            <Link 
+                              to ="../dashboards/admin-dashboard.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg flex justify-between items-center dark:bg-whiteColor-dark dark:text-contentColor-dark dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                             >
                               Admin <i class="icofont-rounded-right"></i>
-                            </a>
+                            </Link>
 
                             <div
                               class="nested-dropdown absolute left-full top-0 z-50 hidden opacity-0 group-hover/nested:block group-hover/nested:opacity-100"
@@ -1052,72 +1053,72 @@ function Header() {
                               <div class="shadow-dropdown max-w-dropdown2 w-2000 py-14px rounded-standard bg-white dark:bg-whiteColor-dark">
                                 <ul>
                                   <li>
-                                    <a
-                                      href="../dashboards/admin-dashboard.html"
+                                    <Link 
+                                      to ="../dashboards/admin-dashboard.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Admin Dashboard
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/admin-profile.html"
+                                    <Link 
+                                      to ="../dashboards/admin-profile.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Admin Profile
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/admin-message.html"
+                                    <Link 
+                                      to ="../dashboards/admin-message.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Message
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/admin-course.html"
+                                    <Link 
+                                      to ="../dashboards/admin-course.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Courses
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/admin-reviews.html"
+                                    <Link 
+                                      to ="../dashboards/admin-reviews.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Review
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/admin-quiz-attempts.html"
+                                    <Link 
+                                      to ="../dashboards/admin-quiz-attempts.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Admin Quiz
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/admin-settings.html"
+                                    <Link 
+                                      to ="../dashboards/admin-settings.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Setting
-                                    </a>
+                                    </Link>
                                   </li>
                                 </ul>
                               </div>
                             </div>
                           </li>
                           <li class="relative group/nested">
-                            <a
-                              href="instructor-dashboard.html"
+                            <Link 
+                              to ="instructor-dashboard.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg flex justify-between items-center dark:bg-whiteColor-dark dark:text-contentColor-dark dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                             >
                               Instructor <i class="icofont-rounded-right"></i>
-                            </a>
+                            </Link>
 
                             <div
                               class="nested-dropdown absolute left-full top-0 z-50 hidden opacity-0 group-hover/nested:block group-hover/nested:opacity-100"
@@ -1126,112 +1127,112 @@ function Header() {
                               <div class="shadow-dropdown max-w-dropdown2 w-2000 py-14px rounded-standard bg-white dark:bg-whiteColor-dark">
                                 <ul>
                                   <li>
-                                    <a
-                                      href="instructor-dashboard.html"
+                                    <Link 
+                                      to ="instructor-dashboard.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Ins. Dashboard
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-profile.html"
+                                    <Link 
+                                      to ="instructor-profile.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Ins. Profile
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-message.html"
+                                    <Link 
+                                      to ="instructor-message.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Message
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-wishlist.html"
+                                    <Link 
+                                      to ="instructor-wishlist.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Wishlist
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-reviews.html"
+                                    <Link 
+                                      to ="instructor-reviews.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Review
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-my-quiz-attempts.html"
+                                    <Link 
+                                      to ="instructor-my-quiz-attempts.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       My Quiz
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-order-history.html"
+                                    <Link 
+                                      to ="instructor-order-history.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Order History
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-course.html"
+                                    <Link 
+                                      to ="instructor-course.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       My Courses
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-announcments.html"
+                                    <Link 
+                                      to ="instructor-announcments.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Announcements
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-quiz-attempts.html"
+                                    <Link 
+                                      to ="instructor-quiz-attempts.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Quiz Attempts
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-assignments.html"
+                                    <Link 
+                                      to ="instructor-assignments.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Assignment
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="instructor-settings.html"
+                                    <Link 
+                                      to ="instructor-settings.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Settings
-                                    </a>
+                                    </Link>
                                   </li>
                                 </ul>
                               </div>
                             </div>
                           </li>
                           <li class="relative group/nested">
-                            <a
-                              href="../dashboards/student-dashboard.html"
+                            <Link 
+                              to ="../dashboards/student-dashboard.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg flex justify-between items-center dark:bg-whiteColor-dark dark:text-contentColor-dark dark:hover:bg-whitegrey1-dark dark:hover:text-primaryColor"
                             >
                               Student <i class="icofont-rounded-right"></i>
-                            </a>
+                            </Link>
 
                             <div
                               class="nested-dropdown absolute left-full top-0 z-50 hidden opacity-0 group-hover/nested:block group-hover/nested:opacity-100"
@@ -1240,76 +1241,76 @@ function Header() {
                               <div class="shadow-dropdown max-w-dropdown2 w-2000 py-14px rounded-standard bg-white dark:bg-whiteColor-dark">
                                 <ul>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-dashboard.html"
+                                    <Link 
+                                      to ="../dashboards/student-dashboard.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Dashboard
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-profile.html"
+                                    <Link 
+                                      to ="../dashboards/student-profile.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Profile
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-message.html"
+                                    <Link 
+                                      to ="../dashboards/student-message.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Message
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-enrolled-courses.html"
+                                    <Link 
+                                      to ="../dashboards/student-enrolled-courses.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Enrolled Courses
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-wishlist.html"
+                                    <Link 
+                                      to ="../dashboards/student-wishlist.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Wishlist
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-reviews.html"
+                                    <Link 
+                                      to ="../dashboards/student-reviews.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Review
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-my-quiz-attempts.html"
+                                    <Link 
+                                      to ="../dashboards/student-my-quiz-attempts.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       My Quiz
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-assignments.html"
+                                    <Link 
+                                      to ="../dashboards/student-assignments.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Assignment
-                                    </a>
+                                    </Link>
                                   </li>
                                   <li>
-                                    <a
-                                      href="../dashboards/student-settings.html"
+                                    <Link 
+                                      to ="../dashboards/student-settings.html"
                                       class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                                     >
                                       Setting
-                                    </a>
+                                    </Link>
                                   </li>
                                 </ul>
                               </div>
@@ -1320,13 +1321,13 @@ function Header() {
                     </div>
                   </li>
                   <li class="nav-item group relative">
-                    <a
-                      href="../ecommerce/shop.html"
+                    <Link 
+                      to ="../ecommerce/shop.html"
                       class="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
                       Dashboard
                       <i class="icofont-rounded-down"></i>
-                    </a>
+                    </Link>
 
                     <div
                       class="dropdown absolute left-0 translate-y-10 z-medium hidden opacity-0"
@@ -1335,47 +1336,47 @@ function Header() {
                       <div class="shadow-dropdown max-w-dropdown2 w-2000 py-14px rounded-standard bg-white dark:bg-whiteColor-dark">
                         <ul>
                           <li>
-                            <a
-                              href="../ecommerce/shop.html"
+                            <Link 
+                              to ="../ecommerce/shop.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                             >
                               Shop
                               <span class="text-size-12 font-semibold text-primaryColor bg-whitegrey3 px-15px py-5px rounded">
                                 Online Store
                               </span>
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
-                              href="../ecommerce/product-details.html"
+                            <Link 
+                              to ="../ecommerce/product-details.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                             >
                               Product Details
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
-                              href="../ecommerce/cart.html"
+                            <Link 
+                              to ="../ecommerce/cart.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                             >
                               Cart
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
-                              href="../ecommerce/checkout.html"
+                            <Link 
+                              to ="../ecommerce/checkout.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                             >
                               Checkout
-                            </a>
+                            </Link>
                           </li>
                           <li>
-                            <a
-                              href="../ecommerce/wishlist.html"
+                            <Link 
+                              to ="../ecommerce/wishlist.html"
                               class="text-sm 2xl:text-base font-semibold text-contentColor border-l-2 border-transparent transition duration-300 hover:border-primaryColor px-25px py-10px hover:bg-whitegrey1 block hover:text-primaryColor leading-sm lg:leading-lg 2xl:leading-lg dark:text-contentColor-dark dark:hover:text-primaryColor dark:hover:bg-whitegrey1-dark"
                             >
                               Wishlist
-                            </a>
+                            </Link>
                           </li>
                         </ul>
                       </div>
@@ -1387,34 +1388,34 @@ function Header() {
               <div class="lg:col-start-10 lg:col-span-3">
                 <ul class="relative nav-list flex justify-end items-center">
                   <li class="px-5 lg:px-10px 2xl:px-5 lg:py-4 2xl:py-26px 3xl:py-9 group">
-                    <a href="../ecommerce/cart.html" class="relative block">
+                    <Link  to ="../ecommerce/cart.html" class="relative block">
                       <i class="icofont-cart-alt text-2xl text-blackColor group-hover:text-secondaryColor transition-all duration-300 dark:text-blackColor-dark"></i>
                       <span class="absolute -top-1 2xl:-top-[5px] -right-[10px] lg:right-3/4 2xl:-right-[10px] text-[10px] font-medium text-white dark:text-whiteColor-dark bg-secondaryColor px-1 py-[2px] leading-1 rounded-full z-50 block">
                         3
                       </span>
-                    </a>
+                    </Link>
 
                     <div
                       class="dropdown absolute top-full right-0 lg:right-8 z-medium hidden opacity-0"
                       style={{ transition: "0.3s" }}
                     >
                       <div class="shadow-dropdown-secodary max-w-dropdown3 w-2000 rounded-standard p-5 bg-white dark:bg-whiteColor-dark">
-                        <ul class="flex flex-col gap-y-5 pb-5 mb-30px border-b border-borderColor dark:border-borderColor-dark">
+                        {/* <ul class="flex flex-col gap-y-5 pb-5 mb-30px border-b border-borderColor dark:border-borderColor-dark">
                           <li class="relative flex gap-x-15px items-center">
-                            <a href="../../course-details.html">
+                            <Link  to ="../../course-details.html">
                               <img
                                 src="../../assets/images/grid/cart1.jpg"
                                 alt="photo"
                                 class="w-card-img py-[3px]"
                               />
-                            </a>
+                            </Link>
                             <div>
-                              <a
-                                href="../../course-details.html"
+                              <Link 
+                                to ="../../course-details.html"
                                 class="text-sm text-darkblack hover:text-secondaryColor leading-5 block pb-2 capitalize dark:text-darkblack-dark dark:hover:text-secondaryColor"
                               >
                                 web dictionary
-                              </a>
+                              </Link>
                               <p class="text-sm text-darkblack leading-5 block pb-5px dark:text-darkblack-dark">
                                 1 x
                                 <span class="text-secondaryColor">$ 80.00</span>
@@ -1426,20 +1427,20 @@ function Header() {
                             </button>
                           </li>
                           <li class="relative flex gap-x-15px items-center">
-                            <a href="../../course-details.html">
+                            <Link  to ="../../course-details.html">
                               <img
                                 src="../../assets/images/grid/cart2.jpg"
                                 alt="photo"
                                 class="w-card-img py-[3px]"
                               />
-                            </a>
+                            </Link>
                             <div>
-                              <a
-                                href="../../course-details.html"
+                              <Link 
+                                to ="../../course-details.html"
                                 class="text-sm text-darkblack hover:text-secondaryColor leading-5 block pb-2 capitalize dark:text-darkblack-dark dark:hover:text-secondaryColor"
                               >
                                 Design Minois
-                              </a>
+                              </Link>
                               <p class="text-sm text-darkblack leading-5 block pb-5px dark:text-darkblack-dark">
                                 1 x
                                 <span class="text-secondaryColor">$ 60.00</span>
@@ -1451,20 +1452,20 @@ function Header() {
                             </button>
                           </li>
                           <li class="relative flex gap-x-15px items-center">
-                            <a href="../../course-details.html">
+                            <Link  to ="../../course-details.html">
                               <img
                                 src="../../assets/images/grid/cart3.jpg"
                                 alt="photo"
                                 class="w-card-img py-[3px]"
                               />
-                            </a>
+                            </Link>
                             <div>
-                              <a
-                                href="../../course-details.html"
+                              <Link 
+                                to ="../../course-details.html"
                                 class="text-sm text-darkblack hover:text-secondaryColor leading-5 block pb-2 capitalize dark:text-darkblack-dark dark:hover:text-secondaryColor"
                               >
                                 Crash Course
-                              </a>
+                              </Link>
                               <p class="text-sm text-darkblack leading-5 block pb-5px dark:text-darkblack-dark">
                                 1 x
                                 <span class="text-secondaryColor">$ 70.00</span>
@@ -1475,48 +1476,49 @@ function Header() {
                               <i class="icofont-close-line"></i>
                             </button>
                           </li>
-                        </ul>
-                        <div>
+                        </ul> */}
+                        {/* <div>
                           <p class="text-size-17 text-contentColor dark:text-contentColor-dark pb-5 flex justify-between">
                             Total Price:
                             <span class="font-bold text-secondaryColor">
                               $ 210.00
                             </span>
                           </p>
-                        </div>
+                        </div> */}
 
-                        <div class="flex flex-col gap-y-5">
-                          <a
-                            href="../ecommerce/cart.html"
+                        {/* <div class="flex flex-col gap-y-5">
+                          <Link 
+                            to ="../ecommerce/cart.html"
                             class="text-sm font-bold text-contentColor dark:text-contentColor-dark hover:text-whiteColor hover:bg-secondaryColor text-center py-10px border border-secondaryColor"
                           >
                             View Cart
-                          </a>
-                          <a
-                            href="../ecommerce/checkout.html"
+                          </Link>
+                          <Link 
+                            to ="../ecommerce/checkout.html"
                             class="text-sm font-bold bg-darkblack dark:bg-darkblack-dark text-whiteColor dark:text-whiteColor-dark hover:bg-secondaryColor dark:hover:bg-secondaryColor text-center py-10px"
                           >
                             Checkout
-                          </a>
-                        </div>
+                          </Link>
+                        </div> */}
                       </div>
                     </div>
                   </li>
                   <li class="hidden lg:block">
-                    <a
-                      href="../../login.html"
+                    <Link 
+                      to ="../../login.html"
                       class="text-size-12 2xl:text-size-15 px-15px py-2 text-blackColor hover:text-whiteColor bg-whiteColor block hover:bg-primaryColor border border-borderColor1 rounded-standard font-semibold mr-[7px] 2xl:mr-15px dark:text-blackColor-dark dark:bg-whiteColor-dark dark:hover:bg-primaryColor dark:hover:text-whiteColor dark:hover:border-primaryColor"
                     >
-                      <i class="icofont-user-alt-5"></i>
-                    </a>
+                      {/* <i class="icofont-user-alt-5"></i> */}
+                      Donation
+                    </Link>
                   </li>
                   <li class="hidden lg:block">
-                    <a
-                      href="#"
+                    <Link 
+                      to ="/login"
                       class="text-size-12 2xl:text-size-15 text-whiteColor bg-primaryColor block border-primaryColor border hover:text-primaryColor hover:bg-white px-15px py-2 rounded-standard dark:hover:bg-whiteColor-dark dark: dark:hover:text-whiteColor"
                     >
                       LOGIN
-                    </a>
+                    </Link>
                   </li>
                   <li class="block lg:hidden">
                     <button class="open-mobile-menu text-3xl text-darkdeep1 hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor">
@@ -1553,12 +1555,12 @@ function Header() {
             <ul class="accordion-container">
               <li class="accordion">
                 <div class="flex items-center justify-between">
-                  <a
+                  <Link 
                     class="leading-1 py-11px text-darkdeep1 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
-                    href="../../index.html"
+                    to ="../../index.html"
                   >
                     Home
-                  </a>
+                  </Link>
                   <button class="accordion-controller px-3 py-4">
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-500"></span>
@@ -1570,12 +1572,12 @@ function Header() {
                     <ul class="accordion-container">
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../../index.html"
+                          <Link 
+                            to ="../../index.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Home Light
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-500"></span>
@@ -1586,93 +1588,93 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../../index.html"
+                                <Link 
+                                  to ="../../index.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Home (Default)
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../../home-2.html"
+                                <Link 
+                                  to ="../../home-2.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Elegant
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-3.html"
+                                <Link 
+                                  to ="../../home-3.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Classic
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-4.html"
+                                <Link 
+                                  to ="../../home-4.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Classic LMS
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-5.html"
+                                <Link 
+                                  to ="../../home-5.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Online Course
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-6.html"
+                                <Link 
+                                  to ="../../home-6.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Marketplace
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-7.html"
+                                <Link 
+                                  to ="../../home-7.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   University
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-8.html"
+                                <Link 
+                                  to ="../../home-8.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   ECommerce
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-9.html"
+                                <Link 
+                                  to ="../../home-9.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Kindergarten
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-10.html"
+                                <Link 
+                                  to ="../../home-10.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Machine Learning
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-11.html"
+                                <Link 
+                                  to ="../../home-11.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Single Course
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -1681,12 +1683,12 @@ function Header() {
 
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../../index-dark.html"
+                          <Link 
+                            to ="../../index-dark.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Home Dark
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-500"></span>
@@ -1697,93 +1699,93 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../../index-dark.html"
+                                <Link 
+                                  to ="../../index-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Home Default (Dark)
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../../home-2-dark.html"
+                                <Link 
+                                  to ="../../home-2-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Elegant (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-3-dark.html"
+                                <Link 
+                                  to ="../../home-3-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Classic (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-4-dark.html"
+                                <Link 
+                                  to ="../../home-4-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Classic LMS (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-5-dark.html"
+                                <Link 
+                                  to ="../../home-5-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Online Course (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-6-dark.html"
+                                <Link 
+                                  to ="../../home-6-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Marketplace (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-7-dark.html"
+                                <Link 
+                                  to ="../../home-7-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   University (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-8-dark.html"
+                                <Link 
+                                  to ="../../home-8-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   ECommerce (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-9-dark.html"
+                                <Link 
+                                  to ="../../home-9-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Kindergarten (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-10-dark.html"
+                                <Link 
+                                  to ="../../home-10-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Machine Learning (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../home-11-dark.html"
+                                <Link 
+                                  to ="../../home-11-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Single Course (Dark)
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -1795,12 +1797,12 @@ function Header() {
               </li>
               <li class="accordion">
                 <div class="flex items-center justify-between">
-                  <a
+                  <Link 
                     class="leading-1 py-11px text-darkdeep1 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
-                    href="#"
+                    to ="#"
                   >
                     Pages
-                  </a>
+                  </Link>
                   <button class="accordion-controller px-3 py-4">
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-500"></span>
@@ -1811,12 +1813,12 @@ function Header() {
                     <ul class="accordion-container">
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="#"
+                          <Link 
+                            to ="#"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Get Started 1
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -1827,53 +1829,53 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../../about.html"
+                                <Link 
+                                  to ="../../about.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   About
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../../about-dark.html"
+                                <Link 
+                                  to ="../../about-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   About (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog.html"
+                                <Link 
+                                  to ="../../blog.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Block
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog-dark.html"
+                                <Link 
+                                  to ="../../blog-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Block (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog-details.html"
+                                <Link 
+                                  to ="../../blog-details.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Block Details
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../blog-details-dark.html"
+                                <Link 
+                                  to ="../../blog-details-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Block Details (Dark)
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -1881,12 +1883,12 @@ function Header() {
                       </li>
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="#"
+                          <Link 
+                            to ="#"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Get Started 2
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -1896,56 +1898,56 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../../error.html"
+                                <Link 
+                                  to ="../../error.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Error 404
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../../error-dark.html"
+                                <Link 
+                                  to ="../../error-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Error (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../event-details.html"
+                                <Link 
+                                  to ="../../event-details.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Event Details
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meetings.html"
+                                <Link 
+                                  to ="../zoom/zoom-meetings.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Zoom
                                   <span class="px-15px py-5px text-primaryColor bg-whitegrey3 text-xs rounded ml-5px">
                                     Online Call
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meetings-dark.html"
+                                <Link 
+                                  to ="../zoom/zoom-meetings-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Zoom Meeting (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meeting-details.html"
+                                <Link 
+                                  to ="../zoom/zoom-meeting-details.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Zoom Meeting Details
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -1953,12 +1955,12 @@ function Header() {
                       </li>
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="#"
+                          <Link 
+                            to ="#"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Get Started 3
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -1968,53 +1970,53 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../zoom/zoom-meeting-details-dark.html"
+                                <Link 
+                                  to ="../zoom/zoom-meeting-details-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Meeting Details (Dark)
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../../login.html"
+                                <Link 
+                                  to ="../../login.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Login
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../login-dark.html"
+                                <Link 
+                                  to ="../../login-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Login (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../maintenance.html"
+                                <Link 
+                                  to ="../../maintenance.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Maintenance
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../maintenance-dark.html"
+                                <Link 
+                                  to ="../../maintenance-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Maintenance (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Term & Condition
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -2022,12 +2024,12 @@ function Header() {
                       </li>
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="#"
+                          <Link 
+                            to ="#"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Get Started 4
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -2037,66 +2039,66 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Term & Condition (Dark)
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Privacy Policy
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Privacy Policy (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Success Stories
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Success Stories (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link 
+                                  to ="#"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Work Policy
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
                         </div>
                       </li>
                       <li>
-                        <a href="#" class="pl-15px pt-3 pb-7px">
+                        <Link  to ="#" class="pl-15px pt-3 pb-7px">
                           <img
                             class="w-full"
                             src="../../assets/images/mega/mega_menu_2.png"
                             alt=""
                           />
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -2104,12 +2106,12 @@ function Header() {
               </li>
               <li class="accordion">
                 <div class="flex items-center justify-between">
-                  <a
+                  <Link 
                     class="leading-1 py-11px text-darkdeep1 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
-                    href="../../course.html"
+                    to ="../../course.html"
                   >
                     Courses
-                  </a>
+                  </Link>
                   <button class="accordion-controller px-3 py-4">
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-500"></span>
@@ -2120,12 +2122,12 @@ function Header() {
                     <ul class="accordion-container">
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="#"
+                          <Link 
+                            to ="#"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Get Started 1
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -2135,53 +2137,53 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../../course.html"
+                                <Link 
+                                  to ="../../course.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Grid
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../../course-dark.html"
+                                <Link 
+                                  to ="../../course-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Grid (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-dark.html"
+                                <Link 
+                                  to ="../../course-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Grid
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-grid-dark.html"
+                                <Link 
+                                  to ="../../course-grid-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Grid (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-list.html"
+                                <Link 
+                                  to ="../../course-list.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course List
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-list-dark.html"
+                                <Link 
+                                  to ="../../course-list-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course List (Dark)
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -2189,12 +2191,12 @@ function Header() {
                       </li>
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="#"
+                          <Link 
+                            to ="#"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Get Started 2
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -2204,53 +2206,53 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../../course-details.html"
+                                <Link 
+                                  to ="../../course-details.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Details
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../../course-details-dark.html"
+                                <Link 
+                                  to ="../../course-details-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Details (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-2.html"
+                                <Link 
+                                  to ="../../course-details-2.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Details 2
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-2-dark.html"
+                                <Link 
+                                  to ="../../course-details-2-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Details 2 (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-3.html"
+                                <Link 
+                                  to ="../../course-details-3.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Details 3
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../course-details-3-dark.html"
+                                <Link 
+                                  to ="../../course-details-3-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Details 3 (Dark)
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -2258,12 +2260,12 @@ function Header() {
                       </li>
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="#"
+                          <Link 
+                            to ="#"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Get Started 3
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -2273,59 +2275,59 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../dashboards/become-an-instructor.html"
+                                <Link 
+                                  to ="../dashboards/become-an-instructor.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Become An Instructor
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../dashboards/create-course.html"
+                                <Link 
+                                  to ="../dashboards/create-course.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Create Course
                                   <span class="px-15px py-5px text-primaryColor bg-whitegrey3 text-xs rounded ml-5px">
                                     Career
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../instructor.html"
+                                <Link 
+                                  to ="../../instructor.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Instructor
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../instructor-dark.html"
+                                <Link 
+                                  to ="../../instructor-dark.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Instructor (Dark)
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../instructor-details.html"
+                                <Link 
+                                  to ="../../instructor-details.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Instructor Details
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../../lesson.html"
+                                <Link 
+                                  to ="../../lesson.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Course Lesson
                                   <span class="px-15px py-5px text-secondaryColor bg-whitegrey3 text-xs rounded ml-5px">
                                     New
                                   </span>
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -2333,13 +2335,13 @@ function Header() {
                       </li>
 
                       <li>
-                        <a href="#" class="pl-15px pt-3 pb-7px">
+                        <Link  to ="#" class="pl-15px pt-3 pb-7px">
                           <img
                             class="w-full"
                             src="../../assets/images/mega/mega_menu_1.png"
                             alt=""
                           />
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -2347,12 +2349,12 @@ function Header() {
               </li>
               <li class="accordion">
                 <div class="flex items-center justify-between">
-                  <a
+                  <Link 
                     class="leading-1 py-11px text-darkdeep1 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
-                    href="instructor-dashboard.html"
+                    to ="instructor-dashboard.html"
                   >
                     Dashboard
-                  </a>
+                  </Link>
                   <button class="accordion-controller px-3 py-4">
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-500"></span>
@@ -2363,12 +2365,12 @@ function Header() {
                     <ul class="accordion-container">
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../dashboards/admin-dashboard.html"
+                          <Link 
+                            to ="../dashboards/admin-dashboard.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Admin
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -2378,61 +2380,61 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../dashboards/admin-dashboard.html"
+                                <Link 
+                                  to ="../dashboards/admin-dashboard.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Admin Dashboard
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../dashboards/admin-profile.html"
+                                <Link 
+                                  to ="../dashboards/admin-profile.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Admin Profile
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/admin-message.html"
+                                <Link 
+                                  to ="../dashboards/admin-message.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Message
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/admin-course.html"
+                                <Link 
+                                  to ="../dashboards/admin-course.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Courses
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/admin-reviews.html"
+                                <Link 
+                                  to ="../dashboards/admin-reviews.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Review
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/admin-quiz-attempts.html"
+                                <Link 
+                                  to ="../dashboards/admin-quiz-attempts.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Admin Quiz
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/admin-settings.html"
+                                <Link 
+                                  to ="../dashboards/admin-settings.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Settings
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -2440,12 +2442,12 @@ function Header() {
                       </li>
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="instructor-dashboard.html"
+                          <Link 
+                            to ="instructor-dashboard.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Instructor
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -2455,101 +2457,101 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="instructor-dashboard.html"
+                                <Link 
+                                  to ="instructor-dashboard.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Inst. Dashboard
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="instructor-profile.html"
+                                <Link 
+                                  to ="instructor-profile.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Inst. Profile
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-message.html"
+                                <Link 
+                                  to ="instructor-message.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Message
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-wishlist.html"
+                                <Link 
+                                  to ="instructor-wishlist.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Wishlist
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-reviews.html"
+                                <Link 
+                                  to ="instructor-reviews.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Review
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-my-quiz-attempts.html"
+                                <Link 
+                                  to ="instructor-my-quiz-attempts.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   My Quiz
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-order-history.html"
+                                <Link 
+                                  to ="instructor-order-history.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Order History
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-course.html"
+                                <Link 
+                                  to ="instructor-course.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   My Courses
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-announcments.html"
+                                <Link 
+                                  to ="instructor-announcments.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Announcements
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-quiz-attempts.html"
+                                <Link 
+                                  to ="instructor-quiz-attempts.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Quiz Attempts
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-assignments.html"
+                                <Link 
+                                  to ="instructor-assignments.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Assignments
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="instructor-settings.html"
+                                <Link 
+                                  to ="instructor-settings.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Settings
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -2557,12 +2559,12 @@ function Header() {
                       </li>
                       <li class="accordion">
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../dashboards/student-dashboard.html"
+                          <Link 
+                            to ="../dashboards/student-dashboard.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Student
-                          </a>
+                          </Link>
                           <button class="accordion-controller px-3 py-4">
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                             <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-300"></span>
@@ -2572,77 +2574,77 @@ function Header() {
                           <div class="content-wrapper">
                             <ul>
                               <li>
-                                <a
-                                  href="../dashboards/student-dashboard.html"
+                                <Link 
+                                  to ="../dashboards/student-dashboard.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Dashboard
-                                </a>
+                                </Link>
                               </li>
 
                               <li>
-                                <a
-                                  href="../dashboards/student-profile.html"
+                                <Link 
+                                  to ="../dashboards/student-profile.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Profile
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/student-message.html"
+                                <Link 
+                                  to ="../dashboards/student-message.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Message
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/student-enrolled-courses.html"
+                                <Link 
+                                  to ="../dashboards/student-enrolled-courses.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Enrolled Courses
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/student-wishlist.html"
+                                <Link 
+                                  to ="../dashboards/student-wishlist.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Wishlist
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/student-reviews.html"
+                                <Link 
+                                  to ="../dashboards/student-reviews.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Review
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/student-my-quiz-attempts.html"
+                                <Link 
+                                  to ="../dashboards/student-my-quiz-attempts.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   My Quiz
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/student-assignments.html"
+                                <Link 
+                                  to ="../dashboards/student-assignments.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Assignment
-                                </a>
+                                </Link>
                               </li>
                               <li>
-                                <a
-                                  href="../dashboards/student-settings.html"
+                                <Link 
+                                  to ="../dashboards/student-settings.html"
                                   class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7px font-light hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                                 >
                                   Settings
-                                </a>
+                                </Link>
                               </li>
                             </ul>
                           </div>
@@ -2654,12 +2656,12 @@ function Header() {
               </li>
               <li class="accordion">
                 <div class="flex items-center justify-between">
-                  <a
+                  <Link 
                     class="leading-1 py-11px text-darkdeep1 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
-                    href="../ecommerce/shop.html"
+                    to ="../ecommerce/shop.html"
                   >
                     ECommerce
-                  </a>
+                  </Link>
                   <button class="accordion-controller px-3 py-4">
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor"></span>
                     <span class="w-[10px] h-[1px] bg-darkdeep1 block dark:bg-whiteColor rotate-90 -mt-[1px] transition-all duration-500"></span>
@@ -2670,55 +2672,55 @@ function Header() {
                     <ul>
                       <li>
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../ecommerce/shop.html"
+                          <Link 
+                            to ="../ecommerce/shop.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Shop
                             <span class="px-15px py-5px text-primaryColor bg-whitegrey3 text-xs rounded ml-5px">
                               Online Store
                             </span>
-                          </a>
+                          </Link>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../ecommerce/product-details.html"
+                          <Link 
+                            to ="../ecommerce/product-details.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Product Details
-                          </a>
+                          </Link>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../ecommerce/cart.html"
+                          <Link 
+                            to ="../ecommerce/cart.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Cart
-                          </a>
+                          </Link>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../ecommerce/checkout.html"
+                          <Link 
+                            to ="../ecommerce/checkout.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Checkout
-                          </a>
+                          </Link>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../ecommerce/wishlist.html"
+                          <Link 
+                            to ="../ecommerce/wishlist.html"
                             class="leading-1 text-darkdeep1 text-sm pl-15px pt-3 pb-7px font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Wishlist
-                          </a>
+                          </Link>
                         </div>
                       </li>
                     </ul>
@@ -2732,12 +2734,12 @@ function Header() {
             <ul class="accordion-container mt-9 mb-30px pb-9 border-b border-borderColor dark:border-borderColor-dark">
               <li class="accordion group">
                 <div class="accordion-controller flex items-center justify-between">
-                  <a
+                  <Link 
                     class="leading-1 text-darkdeep1 font-medium group-hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
-                    href="#"
+                    to ="#"
                   >
                     My Account
-                  </a>
+                  </Link>
                   <button class="px-3 py-1">
                     <i class="icofont-thin-down text-size-15 text-darkdeep1 group-hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"></i>
                   </button>
@@ -2747,29 +2749,29 @@ function Header() {
                     <ul>
                       <li>
                         <div class="flex items-center gap-1">
-                          <a
-                            href="../../login.html"
+                          <Link 
+                            to ="../../login.html"
                             class="leading-1 text-darkdeep1 text-sm pl-30px pt-7 pb-3 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             Login
-                          </a>
+                          </Link>
 
-                          <a
-                            href="../../login.html"
+                          <Link 
+                            to ="../../login.html"
                             class="leading-1 text-darkdeep1 text-sm pr-30px pt-7 pb-4 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             <span>/</span> Create Account
-                          </a>
+                          </Link>
                         </div>
                       </li>
                       <li>
                         <div class="flex items-center justify-between">
-                          <a
-                            href="../../login.html"
+                          <Link 
+                            to ="../../login.html"
                             class="leading-1 text-darkdeep1 text-sm pl-30px pt-3 pb-7 font-medium hover:text-secondaryColor dark:text-whiteColor dark:hover:text-secondaryColor"
                           >
                             My Account
-                          </a>
+                          </Link>
                         </div>
                       </li>
                     </ul>
@@ -2781,29 +2783,29 @@ function Header() {
           <div>
             <ul class="flex gap-6 items-center mb-5">
               <li>
-                <a class="facebook" href="#">
+                <Link  class="facebook" to ="#">
                   <i class="icofont icofont-facebook text-fb-color dark:text-whiteColor dark:hover:text-secondaryColor"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a class="twitter" href="#">
+                <Link  class="twitter" to ="#">
                   <i class="icofont icofont-twitter text-twiter-color dark:text-whiteColor dark:hover:text-secondaryColor"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a class="pinterest" href="#">
+                <Link  class="pinterest" to ="#">
                   <i class="icofont icofont-pinterest dark:text-whiteColor dark:hover:text-secondaryColor"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a class="instagram" href="#">
+                <Link  class="instagram" to ="#">
                   <i class="icofont icofont-instagram dark:text-whiteColor dark:hover:text-secondaryColor"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a class="google" href="#">
+                <Link  class="google" to ="#">
                   <i class="icofont icofont-youtube-play dark:text-whiteColor dark:hover:text-secondaryColor"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

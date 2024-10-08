@@ -26,6 +26,9 @@ import SecondYearQuarterOne from "./Page/Student/SecondYear/SecondYearQuarterOne
 import SecondYearQuarterTwo from "./Page/Student/SecondYear/SecondYearQuarterTwo.jsx";
 import SecondYearQuarterThree from "./Page/Student/SecondYear/SecondYearQuarterThree.jsx";
 import SecondYearQuarterFour from "./Page/Student/SecondYear/SecondYearQuarterFour.jsx";
+import LoginPage from "./Page/LoginPage/LoginPage.jsx";
+import CreateAccPage from "./Page/CreateAccoun/CreateAccPage.jsx";
+
 import AdminAddEmployee from "./Page/Admin/AdminAddEmployee.jsx";
 function App() {
   useEffect(() => {
@@ -40,6 +43,8 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/create-account" element={<CreateAccPage />} />
         <Route path="/student-dashboard" element={<StudentDashBoard />} />
         <Route path="/admin-dashboard" element={<AdminPage />} />
         <Route path="/admin-employee" element={<AdminAddEmployee />} />
