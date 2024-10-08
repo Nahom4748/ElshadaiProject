@@ -100,6 +100,24 @@ h6 {
   box-shadow: 0 0 50px 10px rgba(95, 45, 237, 0.15);
 }
 
+.sticky-header {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  margin-top: 15px;
+  z-index: 1;
+  background-color: transparent;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.sticky-header.scrolled {
+ margin-top: 0px;
+   background-color: #0c0e2b; /* Change background on scroll */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+
 /* tab */
 
 .dark .tab-links .inActive {
