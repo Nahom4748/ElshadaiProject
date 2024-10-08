@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 
 function SecondYearQuarterFour() {
   const [isOpenWeek01, setIsOpenWeek01] = useState(false);
@@ -11,11 +12,39 @@ function SecondYearQuarterFour() {
     "https://www.youtube.com/embed/kpfzbZkeJc0?si=yy3hnYCcoPU2g-y9"
   );
 
-  // Toggle functions for each week
-  const toggleAccordionWeek01 = () => setIsOpenWeek01(!isOpenWeek01);
-  const toggleAccordionWeek02 = () => setIsOpenWeek02(!isOpenWeek02);
-  const toggleAccordionWeek03 = () => setIsOpenWeek03(!isOpenWeek03);
-  const toggleAccordionWeek04 = () => setIsOpenWeek04(!isOpenWeek04);
+  // Auto-expand Week 1 when the component mounts
+  useEffect(() => {
+    setIsOpenWeek01(true); // Week 1 will be opened by default
+  }, []);
+
+  // Toggle functions that ensure only one week is expanded at a time
+  const toggleAccordionWeek01 = () => {
+    setIsOpenWeek01(!isOpenWeek01);
+    setIsOpenWeek02(false);
+    setIsOpenWeek03(false);
+    setIsOpenWeek04(false);
+  };
+
+  const toggleAccordionWeek02 = () => {
+    setIsOpenWeek01(false);
+    setIsOpenWeek02(!isOpenWeek02);
+    setIsOpenWeek03(false);
+    setIsOpenWeek04(false);
+  };
+
+  const toggleAccordionWeek03 = () => {
+    setIsOpenWeek01(false);
+    setIsOpenWeek02(false);
+    setIsOpenWeek03(!isOpenWeek03);
+    setIsOpenWeek04(false);
+  };
+
+  const toggleAccordionWeek04 = () => {
+    setIsOpenWeek01(false);
+    setIsOpenWeek02(false);
+    setIsOpenWeek03(false);
+    setIsOpenWeek04(!isOpenWeek04);
+  };
 
   // Function to select a video to display on the right side
   const handleVideoSelect = (videoUrl) => setSelectedVideo(videoUrl);
@@ -203,7 +232,7 @@ function SecondYearQuarterFour() {
                           className="py-4 flex items-center justify-between flex-wrap border-b border-borderColor dark:border-borderColor-dark"
                           onClick={() =>
                             handleVideoSelect(
-                              "https://www.youtube.com/embed/hReMQ0U25KA?si=GkhSth8z-6bGZchK"
+                              "https://www.youtube.com/embed/03bqccsHnQ8?si=ZULPtqgnNfqyWtVj"
                             )
                           }
                         >
@@ -262,7 +291,7 @@ function SecondYearQuarterFour() {
                           className="py-4 flex items-center justify-between flex-wrap border-b border-borderColor dark:border-borderColor-dark"
                           onClick={() =>
                             handleVideoSelect(
-                              "https://www.youtube.com/embed/ZU8xnRf2tTA?si=AYNLEUEB6IC2W6zP"
+                              "https://www.youtube.com/embed/MgwcFwaJCm4?si=YoKgMchbNPbNRhje"
                             )
                           }
                         >
@@ -283,21 +312,21 @@ function SecondYearQuarterFour() {
             </ul>
           </div>
 
-          {/* Lesson Right (Video Player) */}
-          <div className="xl:col-span-8" data-aos="fade-up">
-            <div className="bg-whiteColor  border-borderColor dark:bg-whiteColor-dark dark:border-borderColor-dark">
-              <div className="video-player-wrapper">
-                <iframe
-                  width="100%"
-                  height="400"
-                  src={selectedVideo}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  style={{ border: "none" }} // No border style
-                ></iframe>
-              </div>
+          {/* Lesson Right */}
+          <div
+            className="xl:col-end-13 xl:col-span-7"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div className="embed-responsive aspect-video">
+              <iframe
+                className="embed-responsive-item rounded-xl"
+                width="100%"
+                height="480"
+                src={selectedVideo}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>

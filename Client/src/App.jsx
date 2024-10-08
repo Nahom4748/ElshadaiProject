@@ -1,7 +1,7 @@
 import "./App.css";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "../src/assets/js/counterup.js";
 import "../src/assets/js/vanilla-tilt.js";
 import "../src/assets/css/icofont.min.css";
@@ -29,7 +29,7 @@ import SecondYearQuarterFour from "./Page/Student/SecondYear/SecondYearQuarterFo
 import LoginPage from "./Page/LoginPage/LoginPage.jsx";
 import CreateAccPage from "./Page/CreateAccoun/CreateAccPage.jsx";
 
-
+import AdminAddEmployee from "./Page/Admin/AdminAddEmployee.jsx";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -47,6 +47,7 @@ function App() {
         <Route path="/create-account" element={<CreateAccPage />} />
         <Route path="/student-dashboard" element={<StudentDashBoard />} />
         <Route path="/admin-dashboard" element={<AdminPage />} />
+        <Route path="/admin-employee" element={<AdminAddEmployee />} />
         <Route path="/1st-year/quarter-1" element={<FirstYearQuarterOne />} />
         <Route path="/1st-year/quarter-2" element={<FirstYearQuarterTwo />} />
         <Route path="/1st-year/quarter-3" element={<FirstYearQuarterThree />} />
@@ -62,6 +63,6 @@ function App() {
       <Footer />
     </Router>
   );
-  }
+}
 
 export default App;

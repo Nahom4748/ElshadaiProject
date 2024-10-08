@@ -13,10 +13,9 @@ function AdminPage() {
       <div class="container-fluid-2">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-30px pt-30px pb-100px">
           <AdminMenu />
-          {/* <AdminDashbord /> */}
+          <AdminDashbord />
           {/* <AddCourse /> */}
-          {/* <AddEmployee /> */}
-          <AdminSetting />
+          {/* <AdminSetting /> */}
         </div>
       </div>
     </>
