@@ -107,7 +107,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p class="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="27"> 687</span>
+                    <span data-countup-number="27"> 700</span>
                     <span>+</span>
                   </p>
                   <p class="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
@@ -126,7 +126,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p class="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="145">145</span>
+                    <span data-countup-number="145">342</span>
                     <span>+</span>
                   </p>
                   <p class="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
@@ -145,11 +145,11 @@ function AboutUs() {
                 </div>
                 <div>
                   <p class="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="10">10</span>
-                    <span>k</span>
+                    <span data-countup-number="10">103</span>
+                    <span>+</span>
                   </p>
                   <p class="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
-                    tOTAL INSTRUCTOR
+                    Total Partners
                   </p>
                 </div>
               </div>
