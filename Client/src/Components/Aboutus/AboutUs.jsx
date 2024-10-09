@@ -3,8 +3,8 @@ import img_count1 from '../../assets/images/counter/counter__1.png'
 import img_count2 from '../../assets/images/counter/counter__2.png'
 import img_count3 from '../../assets/images/counter/counter__3.png'
 import img_count4 from '../../assets/images/counter/counter__4.png'
-import img_about2 from '../../assets/images/about/pasTem.svg'
-import img_about3 from '../../assets/images/about/about_3.png'
+import img_about2 from '../../assets/images/about/about_pasT.png'
+import img_about3 from '../../assets/images/about/pas-Tlitt.png'
 import img_about4 from '../../assets/images/about/about_4.png'
 import img_about11 from '../../assets/images/about/about_11.png'
 import AboutCards from './AboutCards'
@@ -107,7 +107,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p class="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="27"> 687</span>
+                    <span data-countup-number="27"> 700</span>
                     <span>+</span>
                   </p>
                   <p class="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
@@ -126,7 +126,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p class="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="145">145</span>
+                    <span data-countup-number="145">342</span>
                     <span>+</span>
                   </p>
                   <p class="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
@@ -145,11 +145,11 @@ function AboutUs() {
                 </div>
                 <div>
                   <p class="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="10">10</span>
-                    <span>k</span>
+                    <span data-countup-number="10">103</span>
+                    <span>+</span>
                   </p>
                   <p class="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
-                    tOTAL INSTRUCTOR
+                    Total Partners
                   </p>
                 </div>
               </div>
