@@ -29,8 +29,8 @@ import SecondYearQuarterThree from "./Page/Student/SecondYear/SecondYearQuarterT
 import SecondYearQuarterFour from "./Page/Student/SecondYear/SecondYearQuarterFour.jsx";
 import LoginPage from "./Page/LoginPage/LoginPage.jsx";
 import CreateAccPage from "./Page/CreateAccoun/CreateAccPage.jsx";
-
 import AdminAddEmployee from "./Page/Admin/AdminAddEmployee.jsx";
+import AboutUsPage from "./Page/AboutUsPage/AboutUsPage.jsx";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -44,6 +44,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/create-account" element={<CreateAccPage />} />
         <Route path="/student-dashboard" element={<StudentDashBoard />} />
