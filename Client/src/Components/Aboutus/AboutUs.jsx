@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState , useEffect, useRef} from 'react'
 import img_count1 from '../../assets/images/counter/counter__1.png'
 import img_count2 from '../../assets/images/counter/counter__2.png'
 import img_count3 from '../../assets/images/counter/counter__3.png'
@@ -10,6 +10,99 @@ import img_about11 from '../../assets/images/about/about_11.png'
 import AboutCards from './AboutCards'
 
 function AboutUs() {
+  const [counter1, setCounter1] = useState(0); // Counter up to 35
+  const [counter2, setCounter2] = useState(0); // Counter up to 75
+  const [counter3, setCounter3] = useState(0); // Counter up to 300
+  const [counter4, setCounter4] = useState(0); // Counter up to 103
+  const [counter5, setCounter5] = useState(0); // Counter up to 100
+  
+
+  const sectionRef = useRef(null); // Only one section to observe
+
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // When the section becomes visible, increment the counters
+          if (counter1 === 0) {
+            incrementCounters();
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.4, // Trigger when 10% of the section is visible
+    });
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, [counter1]); // Trigger the observer when `counter1` is still 0 (prevents re-incrementing)
+
+  const incrementCounters = () => {
+    // Increment counter1 to 35
+    let currentCount1 = 0;
+    const interval1 = setInterval(() => {
+      setCounter1((prev) => {
+        currentCount1 = prev + 1;
+        return currentCount1;
+      });
+      if (currentCount1 >= 34) {
+        clearInterval(interval1);
+      }
+    }, 70);
+
+    // Increment counter2 to 75
+    let currentCount2 = 0;
+    const interval2 = setInterval(() => {
+      setCounter2((prev) => {
+        currentCount2 = prev + 1;
+        return currentCount2;
+      });
+      if (currentCount2 >= 699) {
+        clearInterval(interval2);
+      }
+    }, 30);
+
+    // Increment counter3 to 300
+    let currentCount3 = 0;
+    const interval3 = setInterval(() => {
+      setCounter3((prev) => {
+        currentCount3 = prev + 2;
+        return currentCount3;
+      });
+      if (currentCount3 >= 337) {
+        clearInterval(interval3);
+      }
+    }, 40);
+
+    // Increment counter4 to 103
+    let currentCount4 = 0;
+    const interval4 = setInterval(() => {
+      setCounter4((prev) => {
+        currentCount4 = prev + 1;
+        return currentCount4;
+      });
+      if (currentCount4 >= 102) {
+        clearInterval(interval4);
+      }
+    }, 50);
+
+    // Increment counter5 to 100
+    let currentCount5 = 0;
+    const interval5 = setInterval(() => {
+      setCounter5((prev) => {
+        currentCount5 = prev + 1;
+        return currentCount5;
+      });
+      if (currentCount5 >= 99) {
+        clearInterval(interval5);
+      }
+    }, 70);
+  };
   return (
     <>
       <section>
@@ -25,7 +118,7 @@ function AboutUs() {
                 <img className="md:ml-[70px]" src={img_about2} alt="" />
                 <img
                   className="absolute right-0 sm:right-[-17px] md:right-36 lg:right-4 bottom-[91px] md:bottom-0"
-                  src={img_about3}
+                  src="{img_about3}"
                   alt=""
                 />
                 <img
@@ -40,10 +133,13 @@ function AboutUs() {
                 />
               </div>
               {/*   experience   */}
-              <div className="px-10px py-3 md:py-25px border-l-4 border-primaryColor shadow-experience absolute bottom-0 left-0 bg-darkdeep1 dark:bg-whiteColor-dark animate-move-var w-[290px]">
+              <div
+                ref={sectionRef}
+                className="px-10px py-3 md:py-25px border-l-4 border-primaryColor shadow-experience bg-darkdeep1 dark:bg-whiteColor-dark animate-move-var w-[290px]"
+              >
                 <div className="counter flex items-center">
                   <p className="text-[40px] text-primaryColor font-bold uppercase pr-10px leading-1">
-                    <span data-countup-number="25">35</span>+
+                    <span>{counter1}</span>+
                   </p>
                   <p className="text-whiteColor dark:text-blackColor-dark font-bold leading-26px">
                     YEARS <br /> IN MINISTRY
@@ -108,7 +204,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p className="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="27"> 700</span>
+                    <span data-countup-number="27">{counter2}</span>
                     <span>+</span>
                   </p>
                   <p className="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
@@ -127,7 +223,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p className="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="145">342</span>
+                    <span data-countup-number="145">{counter3}</span>
                     <span>+</span>
                   </p>
                   <p className="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
@@ -146,7 +242,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p className="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="10">103</span>
+                    <span data-countup-number="10">{counter4}</span>
                     <span>+</span>
                   </p>
                   <p className="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
@@ -165,7 +261,7 @@ function AboutUs() {
                 </div>
                 <div>
                   <p className="text-size-34 leading-[1.1] text-whiteColor text-opacity-65 font-bold font-hind dark:text-blackColor-dark">
-                    <span data-countup-number="214">214</span>
+                    <span data-countup-number="214">{counter5}</span>
                     <span>+</span>
                   </p>
                   <p className="uppercase text-whiteColor text-opacity-65 font-medium leading-[18px] dark:text-blackColor-dark">
