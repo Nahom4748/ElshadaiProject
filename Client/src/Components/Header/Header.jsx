@@ -104,7 +104,7 @@ function Header() {
                   </li>
                   <li className="nav-item group">
                     <Link
-                      to="#"
+                      to="/bible-school"
                       className="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
                       Bible School
@@ -120,7 +120,7 @@ function Header() {
                   </li>
                   <li className="nav-item group relative">
                     <Link
-                      to="../ecommerce/shop.html"
+                      to="/contact-us"
                       className="px-5 lg:px-10px 2xl:px-15px 3xl:px-5 py-10 lg:py-5 2xl:py-30px 3xl:py-10 leading-sm 2xl:leading-lg text-base lg:text-sm 2xl:text-base font-semibold block group-hover:text-primaryColor dark:text-whiteColor"
                     >
                       Contact Us

@@ -31,6 +31,8 @@ import LoginPage from "./Page/LoginPage/LoginPage.jsx";
 import CreateAccPage from "./Page/CreateAccoun/CreateAccPage.jsx";
 import AdminAddEmployee from "./Page/Admin/AdminAddEmployee.jsx";
 import AboutUsPage from "./Page/AboutUsPage/AboutUsPage.jsx";
+import BibleSchoolPa from "./Page/BibleSchool/BibleSchoolPa.jsx";
+import ContactUsPag from "./Page/ContactUs/ContactUsPag.jsx";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -45,7 +47,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUsPage />} />
+        <Route path="/contact-us" element={<ContactUsPag />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/bible-school" element={<BibleSchoolPa />} />
         <Route path="/create-account" element={<CreateAccPage />} />
         <Route path="/student-dashboard" element={<StudentDashBoard />} />
         <Route path="/admin-dashboard" element={<AdminPage />} />
