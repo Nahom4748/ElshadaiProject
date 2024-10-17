@@ -1,4 +1,4 @@
-const employeeService = require("../services/employee.service");
+const employeeService = require("../services/user.service");
 
 // Import Multer configuration
 const multer = require("../config/multer.config");

@@ -6,7 +6,7 @@ const router = express.Router();
 //imort multe for image upload
 //import file path
 const path = require("path");
-const employeeController = require("../controllers/employee.controller");
+const employeeController = require("../controllers/users.controller");
 // Import middleware
 const authMiddleware = require("../middlewares/auth.middleware");
 // Create a route to handle the add employee request on post
