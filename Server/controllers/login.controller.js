@@ -33,7 +33,7 @@ async function logIn(req, res, next) {
     const token = jwt.sign(payload, jwtSecret, {
       expiresIn: "24h", // Token valid for 24 hours
     });
-
+    console.log(token);
     // Prepare the response data
     const sendBack = {
       user_token: token,

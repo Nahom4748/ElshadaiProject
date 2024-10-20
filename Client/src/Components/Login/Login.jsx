@@ -26,9 +26,6 @@ function Login() {
         }
       );
 
-      // Log the full response to check structure
-      console.log(response.data);
-
       // Extract the user_token from response.data.data
       const { user_token } = response.data.data;
 
@@ -39,10 +36,10 @@ function Login() {
       }
 
       // Save the token to local storage
-      localStorage.setItem("authToken", user_token);
+      // localStorage.setItem("authToken", user_token);
+      localStorage.setItem("authToken", JSON.stringify(response.data.data));
 
       // Redirect to the dashboard or homepage after successful login
-      navigate("/dashboard");
 
       // Optionally save the response for further use or debugging
       setRes(response.data);
@@ -51,7 +48,7 @@ function Login() {
       setError("Invalid email or password");
     }
   };
-
+  console.log(res);
   return (
     <>
       <section className="relative">
