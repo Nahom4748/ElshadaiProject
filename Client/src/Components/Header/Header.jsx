@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
 
 function Header() {
-   const [scrolled, setScrolled] = useState(false);
-
-   useEffect(() => {
-     const handleScroll = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const { user } = useAuth();
+  useEffect(() => {
+    const handleScroll = () => {
       const scrollTreshold = 100;
-       if (window.scrollY > scrollTreshold) {
-         setScrolled(true);
-       } else {
-         setScrolled(false);
-       }
-     };
+      if (window.scrollY > scrollTreshold) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
 
-     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-     return () => {
-       window.removeEventListener("scroll", handleScroll);
-     };
-   }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  console.log(user.user_role);
   return (
     <header>
       <div className="bg-blackColor2 dark:bg-lightGrey10-dark hidden lg:block">
