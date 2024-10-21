@@ -1,128 +1,127 @@
-const employeeService = require("../services/user.service");
 
-// Import Multer configuration
-const multer = require("../config/multer.config");
+// const userService = require("../services/user.service");
+// async function registerUser(req, res) {
+//   const userData = req.body;
 
-const createEmployee = async (req, res) => {
-  try {
-    const employeeExists = await employeeService.checkIfEmployeeExists(
-      req.body.employee_email
-    );
+//   // Validate input fields
+//   const requiredFields = [
+//     "email",
+//     "password",
+//     "first_name",
+//     "last_name",
+//     "phone_number",
+//     "city",
+//     "country"
+//   ];
 
-    if (employeeExists) {
+//   for (const field of requiredFields) {
+//     if (!userData[field]) {
+//       return res.status(400).json({
+//         status: "fail",
+//         message: `Please provide ${field}`,
+//       });
+//     }
+//   }
+
+//   try {
+//     // Check if user already exists
+//     const userExists = await userService.checkIfUserExists(userData.email);
+//     if (userExists) {
+//       return res.status(400).json({
+//         status: "fail",
+//         message: "User already exists",
+//       });
+//     }
+
+//     // Register the user
+//     const result = await userService.registerUser(userData);
+
+//     if (result.status === "fail") {
+//       return res.status(400).json({
+//         status: "fail",
+//         message: result.message,
+//       });
+//     }
+
+//     // If registration is successful
+//     return res.status(201).json({
+//       status: "success",
+//       message: "User registered successfully",
+//     });
+//   } catch (error) {
+//     console.error("Error registering user:", error);
+//     return res.status(500).json({
+//       status: "error",
+//       message: "An error occurred during registration",
+//     });
+//   }
+// }
+
+
+// module.exports = {
+//   registerUser,
+// };
+
+
+const userService = require("../services/user.service");
+
+async function registerUser(req, res) {
+  const userData = req.body;
+
+  // Validate input fields
+  const requiredFields = [
+    "email",
+    "password",
+    "first_name",
+    "last_name",
+    "phone_number",
+    "city",
+    "country"  ];
+
+  for (const field of requiredFields) {
+    if (!userData[field]) {
       return res.status(400).json({
-        error:
-          "This email address is already associated with another employee!",
+        status: "fail",
+        message: `Please provide ${field}`,
       });
     }
-
-    const employeeImage = req.file ? `/uploads/${req.file.filename}` : null;
-
-    const row1 = [
-      req.body.employee_email,
-      req.body.active_employee,
-      employeeImage, // Path to the uploaded image
-    ];
-    const row2 = [
-      req.body.employee_first_name,
-      req.body.employee_last_name,
-      req.body.employee_phone,
-    ];
-    const row3 = [req.body.company_role_id];
-    const employeePassword = req.body.employee_password;
-
-    const employee = await employeeService.createEmployee(
-      row1,
-      row2,
-      row3,
-      employeePassword
-    );
-
-    if (!employee) {
-      return res.status(400).json({
-        error: "Failed to add the employee!",
-      });
-    } else {
-      return res.status(200).json({
-        success: true,
-        message: "Employee added successfully",
-        data: employee,
-      });
-    }
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({
-      error: "Something went wrong!",
-    });
   }
-};
 
-// Update your employeeService.createEmployee function to handle the image URL.
+  try {
+    // Check if user already exists
+    const userExists = await userService.checkIfUserExists(userData.email);
+    if (userExists) {
+      return res.status(400).json({
+        status: "fail",
+        message: "User already exists",
+      });
+    }
 
-// Create the getAllEmployees controller
-async function getAllEmployees(req, res, next) {
-  // Call the getAllEmployees method from the employee service
-  const employees = await employeeService.getAllEmployees();
-  // console.log(employees);
-  if (!employees) {
-    res.status(400).json({
-      error: "Failed to get all employees!",
-    });
-  } else {
-    res.status(200).json({
+    // Register the user
+    const result = await userService.registerUser(userData);
+
+    if (result.status === "fail") {
+      return res.status(400).json({
+        status: "fail",
+        message: result.message,
+      });
+    }
+
+    // If registration is successful
+    return res.status(201).json({
       status: "success",
-      data: employees,
-    });
-  }
-}
-async function updateEmployee(req, res, next) {
-  const updatedEmployeeData = req.body;
-  console.log(updatedEmployeeData);
-  try {
-    const result = await employeeService.updateEmployee(updatedEmployeeData);
-    if (!result) {
-      return res.status(400).json({
-        error: "Failed to update employee!",
-      });
-    }
-    res.status(200).json({
-      success: "true",
-      message: "Employee updated successfully",
+      message: "User registered successfully",
     });
   } catch (error) {
-    console.log("Controller Error:", error.message);
-    res.status(500).json({
-      error: "Internal Server Error",
+    console.error("Error registering user:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred during registration",
     });
-    // console.log("controller error",error)
   }
 }
-//create the delete employee controller
-async function deleteEmployee(req, res, next) {
-  const employeeId = req.params.employeeId;
-  try {
-    const result = await employeeService.deleteEmployee(employeeId);
-    if (!result) {
-      return res.status(400).json({
-        error: "Failed to delete employee!",
-      });
-    }
-    res.status(200).json({
-      success: "true",
-      message: "Employee deleted successfully",
-    });
-  } catch (error) {
-    console.log("Controller Error:", error.message);
-    res.status(500).json({
-      error: "Internal Server Error",
-    });
-    // console.log("controller error",error)
-  }
-}
-// Export the createEmployee controller
+
 module.exports = {
-  createEmployee,
-  getAllEmployees,
-  updateEmployee,
-  deleteEmployee,
-};
+  registerUser,
+
+}
