@@ -1,32 +1,76 @@
-// Import the query function from the db.config.js file
-const conn = require("../config/db.config");
 
-// A function to get user by email
-async function getUserByEmail(email) {
-  const query = `
-    SELECT 
-      Users.user_id, 
-      Users.first_name, 
-      Users.last_name, 
-      Users.phone_number, 
-      Users.city, 
-      Users.country, 
-      Users.active_status, 
-      Users.added_date, 
-      Emails.email, 
-      User_Passwords.password_hashed, 
-      Company_Roles.company_role_name
-    FROM Users
-    INNER JOIN Emails ON Users.user_id = Emails.user_id
-    INNER JOIN User_Passwords ON Users.user_id = User_Passwords.user_id
-    INNER JOIN Company_Roles ON Users.company_role_id = Company_Roles.company_role_id
-    WHERE Emails.email = ?
-  `;
-  const rows = await conn.query(query, [email]);
-  return rows;
+
+const bcrypt = require("bcrypt");
+const db = require("../config/db.config"); // Ensure this path is correct
+
+const saltRounds = 10;
+
+async function checkIfUserExists(email) {
+  try {
+    console.log("Checking for email:", email);
+    const query = `SELECT * FROM Emails WHERE email = ?`;
+    const rows = await db.query(query, [email]); // Use db.query here
+
+    console.log("Query result:", rows);
+
+    return rows.length > 0; // Return true if user exists
+  } catch (error) {
+    console.error("Error checking if user exists:", error);
+    throw new Error("Database error during user existence check");
+  }
 }
 
-// Export the functions for use in the controller
+// Register user function that handles multiple inserts
+async function registerUser(userData) {
+  try {
+    // Step 1: Insert into `Users` table
+    const userQuery = `INSERT INTO Users (first_name, last_name, phone_number, city, country, company_role_id) VALUES (?, ?, ?, ?, ?, ?)`;
+    const userRows = await db.query(userQuery, [
+      userData.first_name,
+      userData.last_name,
+      userData.phone_number,
+      userData.city,
+      userData.country,
+      userData.company_role_id, // Make sure you provide company_role_id
+    ]);
+
+    // Check if rows are returned
+    if (!userRows || userRows.affectedRows !== 1) {
+      return { status: "fail", message: "Failed to insert user data" };
+    }
+
+    const user_id = userRows.insertId;
+
+    // Step 2: Insert into Emails table
+    const emailQuery = `INSERT INTO Emails (user_id, email) VALUES (?, ?)`;
+    const emailRows = await db.query(emailQuery, [user_id, userData.email]);
+
+    // Check if rows are returned
+    if (!emailRows || emailRows.affectedRows !== 1) {
+      return { status: "fail", message: "Failed to insert email data" };
+    }
+
+    // Step 3: Hash password and insert into User_Passwords table
+    const password_hashed = await bcrypt.hash(userData.password, saltRounds);
+    const passwordQuery = `INSERT INTO User_Passwords (user_id, password_hashed) VALUES (?, ?)`;
+    const passwordRows = await db.query(passwordQuery, [
+      user_id,
+      password_hashed,
+    ]);
+
+    // Check if rows are returned
+    if (!passwordRows || passwordRows.affectedRows !== 1) {
+      return { status: "fail", message: "Failed to insert password data" };
+    }
+
+    return { status: "success", message: "User registered successfully" };
+  } catch (error) {
+    console.error("Error during user registration:", error);
+    return { status: "fail", message: "User registration failed" };
+  }
+}
+
 module.exports = {
-  getUserByEmail,
+  checkIfUserExists,
+  registerUser,
 };
