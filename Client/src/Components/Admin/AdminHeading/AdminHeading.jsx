@@ -1,6 +1,8 @@
 import React from "react";
+import { useAuth } from "../../../Contexts/AuthContext";
 
 function AdminHeading() {
+  const { user } = useAuth();
   return (
     <section>
       <div class="container-fluid-2">
@@ -15,7 +17,9 @@ function AdminHeading() {
             </div>
             <div class="text-whiteColor font-bold text-center sm:text-start">
               <h5 class="text-xl leading-1.2 mb-5px">Hello</h5>
-              <h2 class="text-2xl leading-1.24">Michle Obema</h2>
+              <h2 class="text-2xl leading-1.24">
+                {user?.user_first_name} &nbsp; {user?.user_last_name}
+              </h2>
             </div>
           </div>
 

@@ -28,6 +28,7 @@ async function logIn(req, res, next) {
       user_email: user.data.email,
       user_role: user.data.company_role_name,
       user_first_name: user.data.first_name,
+      user_last_name: user.data.last_name,
     };
 
     const token = jwt.sign(payload, jwtSecret, {

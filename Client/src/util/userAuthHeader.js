@@ -9,6 +9,7 @@ const userAuthHeader = async () => {
     user.user_role = decodedToken.user_role;
     user.user_id = decodedToken.user_id;
     user.user_first_name = decodedToken.user_first_name;
+    user.user_last_name = decodedToken.user_last_name;
     return user;
   } else {
     return {};
