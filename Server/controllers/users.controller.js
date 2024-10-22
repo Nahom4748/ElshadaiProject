@@ -64,7 +64,6 @@
 
 
 const userService = require("../services/user.service");
-
 async function registerUser(req, res) {
   const userData = req.body;
 
@@ -121,7 +120,47 @@ async function registerUser(req, res) {
   }
 }
 
+// Update User Controller
+async function updateUser(req, res) {
+  const user_id = req.params.id;
+  const userData = req.body;
+
+  try {
+    // Step 1: Check if the user exists
+    const userExists = await userService.getUserById(user_id);
+    console.log('Fetched User:', userExists);  // Debugging
+    if (!userExists) {
+      return res.status(404).json({
+        status: "fail",
+        message: "User not found",
+      });
+    }
+
+    // Step 2: Update the user data
+    const result = await userService.updateUser(user_id, userData);
+
+    if (result.status === "fail") {
+      return res.status(400).json({
+        status: "fail",
+        message: result.message,
+      });
+    }
+
+    return res.status(200).json({
+      status: "success",
+      message: "User updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred while updating the user",
+    });
+  }
+}
+
+
 module.exports = {
   registerUser,
-
-}
+  updateUser,
+};
