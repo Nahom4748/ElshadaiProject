@@ -411,9 +411,28 @@ async function updateUser(user_id, userData) {
 }
 
 
+// Update user role
+const updateUserRole = async (userId, company_role_id) => {
+  const sql = 'UPDATE Users SET company_role_id = ? WHERE user_id = ?';
+  
+  try {
+    const result = await db.query(sql, [company_role_id, userId]);
+    
+    if (result.affectedRows === 0) {
+      throw new Error('User not found or role not updated');
+    }
+
+    return { userId, company_role_id };
+  } catch (error) {
+    console.error('Error updating user role:', error);
+    throw new Error('Error updating user role');
+  }
+};
+
 module.exports = {
   checkIfUserExists,
   getUserById,
   registerUser,
   updateUser,
+  updateUserRole,
 };

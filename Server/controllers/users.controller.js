@@ -160,7 +160,33 @@ async function updateUser(req, res) {
 }
 
 
+
+// Controller method to handle the update
+const updateUserRole = async (req, res) => {
+  const userId = req.params.userId;
+  const { company_role_id } = req.body;
+
+  try {
+    const updatedUser = await userService.updateUserRole(userId, company_role_id);
+    return res.status(200).json({
+      status: 'success',
+      message: 'User role updated successfully!',
+      data: updatedUser,
+    });
+  } catch (error) {
+    console.error('Error in controller:', error);
+    return res.status(500).json({
+      status: 'fail',
+      message: 'Error updating user role!',
+      error: error.message,
+    });
+  }
+};
+
+
+
 module.exports = {
   registerUser,
   updateUser,
+  updateUserRole,
 };
