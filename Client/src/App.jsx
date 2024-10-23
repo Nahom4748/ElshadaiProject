@@ -33,6 +33,7 @@ import AdminAddEmployee from "./Page/Admin/AdminAddEmployee.jsx";
 import AboutUsPage from "./Page/AboutUsPage/AboutUsPage.jsx";
 import BibleSchoolPa from "./Page/BibleSchool/BibleSchoolPa.jsx";
 import ContactUsPag from "./Page/ContactUs/ContactUsPag.jsx";
+import UsersList from "./Page/Admin/UsersList.jsx";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -53,6 +54,7 @@ function App() {
         <Route path="/create-account" element={<CreateAccPage />} />
         <Route path="/student-dashboard" element={<StudentDashBoard />} />
         <Route path="/admin-dashboard" element={<AdminPage />} />
+        <Route path="/all-users/role" element={<UsersList />} />
         <Route path="/admin-employee" element={<AdminAddEmployee />} />
         <Route path="/1st-year/quarter-1" element={<FirstYearQuarterOne />} />
         <Route path="/1st-year/quarter-2" element={<FirstYearQuarterTwo />} />
