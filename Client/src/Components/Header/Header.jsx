@@ -21,7 +21,7 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  console.log(user);
+  // console.log(user);
   return (
     <header>
       <div className="bg-blackColor2 dark:bg-lightGrey10-dark hidden lg:block">
