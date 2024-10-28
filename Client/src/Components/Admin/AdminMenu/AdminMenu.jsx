@@ -9,8 +9,8 @@ function AdminMenu() {
         </h5>
         <ul>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <a
-              href="admin-dashboard.html"
+            <Link
+              to="admin-dashboard.html"
               class="text-white hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -29,11 +29,11 @@ function AdminMenu() {
                 <polyline points="9 22 9 12 15 12 15 22"></polyline>
               </svg>
               Dashboard
-            </a>
+            </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <a
-              href="admin-profile.html"
+            <Link
+              to="admin-profile.html"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -52,7 +52,7 @@ function AdminMenu() {
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
               My Profile
-            </a>
+            </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark flex justify-between items-center">
             <Link
@@ -78,8 +78,8 @@ function AdminMenu() {
             </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <a
-              href="admin-course.html"
+            <Link
+              to="admin-course.html"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -97,11 +97,11 @@ function AdminMenu() {
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
               </svg>
               Courses
-            </a>
+            </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <a
-              href="admin-reviews.html"
+            <Link
+              to="/admin-usersList"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -118,12 +118,12 @@ function AdminMenu() {
               >
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
-              Reviews
-            </a>
+              Users List
+            </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <a
-              href="admin-quiz-attempts.html"
+            <Link
+              to="admin-quiz-attempts.html"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -143,7 +143,7 @@ function AdminMenu() {
                 <line x1="12" y1="17" x2="12.01" y2="17"></line>
               </svg>
               Quiz Attempts
-            </a>
+            </Link>
           </li>
         </ul>
         <h5 class="text-sm leading-1 font-semibold uppercase text-white dark:text-white-dark  dark:bg-whiteColor-dark p-10px pb-7px mt-5 mb-10px">
@@ -151,8 +151,8 @@ function AdminMenu() {
         </h5>
         <ul>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <a
-              href="admin-settings.html"
+            <Link
+              to="admin-settings.html"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -171,12 +171,12 @@ function AdminMenu() {
                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
               </svg>
               Settings
-            </a>
+            </Link>
           </li>
 
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <a
-              href="#"
+            <Link
+              to="#"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -195,7 +195,7 @@ function AdminMenu() {
                 <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
               </svg>
               Logout
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

@@ -56,6 +56,7 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminPage />} />
         <Route path="/all-users/role" element={<UsersList />} />
         <Route path="/admin-employee" element={<AdminAddEmployee />} />
+        <Route path="/admin-usersList" element={<UsersList />} />
         <Route path="/1st-year/quarter-1" element={<FirstYearQuarterOne />} />
         <Route path="/1st-year/quarter-2" element={<FirstYearQuarterTwo />} />
         <Route path="/1st-year/quarter-3" element={<FirstYearQuarterThree />} />
