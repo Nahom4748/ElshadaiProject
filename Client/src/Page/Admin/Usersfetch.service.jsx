@@ -2,19 +2,22 @@
 //import from the environment file
 const api_url = "http://localhost:5001";
 
-//get all users
-const getAllUsers = async (token) => {
-
-  const requestOptions =  {
-    method : "GET",
-    headers : {
-      "Content-Type" : "application/json",
-      "x-access-token": token,
+// Get all users
+const getAllUsers = async () => {
+  try {
+    const response = await fetch(`${api_url}/api/users`);
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
     }
-  };
-  const response = await fetch(`${api_url}/api/users`, requestOptions);
-  return response.json();
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    throw error;
+  }
 };
+
 
 //get user by id
 const getUserById = async (id, token) => {
@@ -50,7 +53,7 @@ const updateUser = async (id, userData, token) => {
     },
     body : JSON.stringify(userData),
   };
-  const response = await fetch(`${api_url}/api/user/${id}`, requestOptions);
+  const response = await fetch(`${api_url}/api/user/:id`, requestOptions);
   return response.json();
 };
 // function to delete user
