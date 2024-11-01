@@ -1,5 +1,3 @@
-
-
 // const bcrypt = require("bcrypt");
 // const db = require("../config/db.config"); // Ensure this path is correct
 
@@ -81,8 +79,6 @@
 //   registerUser,
 // };
 
-
-
 // // services/user.service.js
 // const bcrypt = require("bcrypt");
 // const db = require("../config/db.config");
@@ -163,7 +159,6 @@
 //   checkIfUserExists,
 //   registerUser,
 // };
-
 
 // // services/user.service.js
 // const bcrypt = require("bcrypt");
@@ -251,12 +246,32 @@
 //   registerUser,
 // };
 
-
-
-
 const bcrypt = require("bcrypt");
 const db = require("../config/db.config");
 const saltRounds = 10;
+async function getUserByEmail(email) {
+  const query = `
+    SELECT 
+      Users.user_id, 
+      Users.first_name, 
+      Users.last_name, 
+      Users.phone_number, 
+      Users.city, 
+      Users.country, 
+      Users.active_status, 
+      Users.added_date, 
+      Emails.email, 
+      User_Passwords.password_hashed, 
+      Company_Roles.company_role_name
+    FROM Users
+    INNER JOIN Emails ON Users.user_id = Emails.user_id
+    INNER JOIN User_Passwords ON Users.user_id = User_Passwords.user_id
+    INNER JOIN Company_Roles ON Users.company_role_id = Company_Roles.company_role_id
+    WHERE Emails.email = ?
+  `;
+  const rows = await db.query(query, [email]);
+  return rows;
+}
 // Check if user already exists by checking the Emails table
 async function checkIfUserExists(email) {
   try {
@@ -287,18 +302,16 @@ async function registerUser(userData) {
       userData.company_role_id || 3, // Default to 3 if company_role_id is not provided
     ]);
 
-    // Check if rows are returned
     if (!userRows || userRows.affectedRows !== 1) {
       return { status: "fail", message: "Failed to insert user data" };
     }
 
     const user_id = userRows.insertId;
 
-    // Step 2: Insert into Emails table only if the user doesn't already exist
+    // Step 2: Insert into Emails table
     const emailQuery = `INSERT INTO Emails (user_id, email) VALUES (?, ?)`;
     const emailRows = await db.query(emailQuery, [user_id, userData.email]);
 
-    // Check if rows are returned
     if (!emailRows || emailRows.affectedRows !== 1) {
       return { status: "fail", message: "Failed to insert email data" };
     }
@@ -311,18 +324,17 @@ async function registerUser(userData) {
       password_hashed,
     ]);
 
-    // Check if rows are returned
     if (!passwordRows || passwordRows.affectedRows !== 1) {
       return { status: "fail", message: "Failed to insert password data" };
     }
 
     return { status: "success", message: "User registered successfully" };
   } catch (error) {
-    console.error("Error during user registration:", error);
+    console.error("Error during user registration:", error); // Detailed error log
     return {
       status: "fail",
       message: error.sqlMessage || "User registration failed",
-    }; // Provide detailed error message
+    };
   }
 }
 
@@ -333,9 +345,9 @@ async function getUserById(user_id) {
     const rows = await db.query(query, [user_id]);
 
     if (rows.length > 0) {
-      return rows[0];  // Return the first user object
+      return rows[0]; // Return the first user object
     }
-    return null;  // User not found
+    return null; // User not found
   } catch (error) {
     console.error("Error fetching user:", error);
     throw new Error("Database error during user fetch");
@@ -410,22 +422,21 @@ async function updateUser(user_id, userData) {
   }
 }
 
-
 // Update user role
 const updateUserRole = async (userId, company_role_id) => {
-  const sql = 'UPDATE Users SET company_role_id = ? WHERE user_id = ?';
-  
+  const sql = "UPDATE Users SET company_role_id = ? WHERE user_id = ?";
+
   try {
     const result = await db.query(sql, [company_role_id, userId]);
-    
+
     if (result.affectedRows === 0) {
-      throw new Error('User not found or role not updated');
+      throw new Error("User not found or role not updated");
     }
 
     return { userId, company_role_id };
   } catch (error) {
-    console.error('Error updating user role:', error);
-    throw new Error('Error updating user role');
+    console.error("Error updating user role:", error);
+    throw new Error("Error updating user role");
   }
 };
 
@@ -435,4 +446,5 @@ module.exports = {
   registerUser,
   updateUser,
   updateUserRole,
+  getUserByEmail,
 };

@@ -1,4 +1,3 @@
-
 // const userService = require("../services/user.service");
 // async function registerUser(req, res) {
 //   const userData = req.body;
@@ -57,16 +56,14 @@
 //   }
 // }
 
-
 // module.exports = {
 //   registerUser,
 // };
 
-
 const userService = require("../services/user.service");
 async function registerUser(req, res) {
   const userData = req.body;
-
+  console.log("first");
   // Validate input fields
   const requiredFields = [
     "email",
@@ -75,7 +72,8 @@ async function registerUser(req, res) {
     "last_name",
     "phone_number",
     "city",
-    "country"  ];
+    "country",
+  ];
 
   for (const field of requiredFields) {
     if (!userData[field]) {
@@ -98,7 +96,6 @@ async function registerUser(req, res) {
 
     // Register the user
     const result = await userService.registerUser(userData);
-
     if (result.status === "fail") {
       return res.status(400).json({
         status: "fail",
@@ -106,13 +103,12 @@ async function registerUser(req, res) {
       });
     }
 
-    // If registration is successful
     return res.status(201).json({
       status: "success",
       message: "User registered successfully",
     });
   } catch (error) {
-    console.error("Error registering user:", error);
+    console.error("Error registering user:", error); // Detailed error log
     return res.status(500).json({
       status: "error",
       message: "An error occurred during registration",
@@ -128,7 +124,7 @@ async function updateUser(req, res) {
   try {
     // Step 1: Check if the user exists
     const userExists = await userService.getUserById(user_id);
-    console.log('Fetched User:', userExists);  // Debugging
+    console.log("Fetched User:", userExists); // Debugging
     if (!userExists) {
       return res.status(404).json({
         status: "fail",
@@ -159,31 +155,30 @@ async function updateUser(req, res) {
   }
 }
 
-
-
 // Controller method to handle the update
 const updateUserRole = async (req, res) => {
   const userId = req.params.userId;
   const { company_role_id } = req.body;
 
   try {
-    const updatedUser = await userService.updateUserRole(userId, company_role_id);
+    const updatedUser = await userService.updateUserRole(
+      userId,
+      company_role_id
+    );
     return res.status(200).json({
-      status: 'success',
-      message: 'User role updated successfully!',
+      status: "success",
+      message: "User role updated successfully!",
       data: updatedUser,
     });
   } catch (error) {
-    console.error('Error in controller:', error);
+    console.error("Error in controller:", error);
     return res.status(500).json({
-      status: 'fail',
-      message: 'Error updating user role!',
+      status: "fail",
+      message: "Error updating user role!",
       error: error.message,
     });
   }
 };
-
-
 
 module.exports = {
   registerUser,
