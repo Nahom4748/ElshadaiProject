@@ -20,6 +20,9 @@ const serviceRouter = require("./service.routes");
 //import the vehicle routes
 const vehicleRouter = require("./vehicle.routes");
 
+
+const passwordReset = require("./passwordResetRouter");
+
 router.use(customerRouter);
 
 //add the service routes
@@ -37,5 +40,7 @@ router.use(loginRoutes);
 router.use(vehicleRouter);
 
 router.use(newsRouter);
+router.use(passwordReset);
+
 // Export the router
 module.exports = router;
