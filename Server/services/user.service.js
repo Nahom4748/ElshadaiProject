@@ -440,6 +440,16 @@ const updateUserRole = async (userId, company_role_id) => {
   }
 };
 
+const getAllUsers = async () => {
+  try {
+    const sql = "SELECT * FROM Users";
+    const result = await db.query(sql);
+    return result;
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw new Error("Error fetching users");
+  }
+};
 module.exports = {
   checkIfUserExists,
   getUserById,
@@ -447,4 +457,5 @@ module.exports = {
   updateUser,
   updateUserRole,
   getUserByEmail,
+  getAllUsers,
 };

@@ -180,8 +180,26 @@ const updateUserRole = async (req, res) => {
   }
 };
 
+async function getAllUsers(req, res) {
+  try {
+    const users = await userService.getAllUsers();
+    return res.status(200).json({
+      status: "success",
+      message: "Users fetched successfully!",
+      data: users,
+    });
+  } catch (error) {
+    console.error("Error in controller:", error);
+    return res.status(500).json({
+      status: "fail",
+      message: "Error fetching users!",
+      error: error.message,
+    });
+  }
+}
 module.exports = {
   registerUser,
   updateUser,
   updateUserRole,
+  getAllUsers,
 };
