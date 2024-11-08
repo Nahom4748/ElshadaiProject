@@ -33,7 +33,7 @@ function AdminMenu() {
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
-              to="admin-profile.html"
+              to="/Payments"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -51,7 +51,7 @@ function AdminMenu() {
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
-              My Profile
+              Payments
             </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark flex justify-between items-center">
@@ -79,7 +79,7 @@ function AdminMenu() {
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
-              to="admin-course.html"
+              to="/videos"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -96,7 +96,7 @@ function AdminMenu() {
               >
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
               </svg>
-              Courses
+              Videos
             </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">

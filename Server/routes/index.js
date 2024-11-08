@@ -18,7 +18,9 @@ const newsRouter = require("./news.routes");
 // import the service routes
 const serviceRouter = require("./service.routes");
 //import the vehicle routes
-const vehicleRouter = require("./vehicle.routes");
+const videos = require("./video.routes");
+
+const passwordReset = require("./passwordResetRouter");
 
 router.use(customerRouter);
 
@@ -34,8 +36,10 @@ router.use(customerRoutes);
 // Add the login routes to the main router
 router.use(loginRoutes);
 // Add the vehicle routes to the main router
-router.use(vehicleRouter);
+router.use(videos);
 
 router.use(newsRouter);
+router.use(passwordReset);
+
 // Export the router
 module.exports = router;

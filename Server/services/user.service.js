@@ -442,14 +442,21 @@ const updateUserRole = async (userId, company_role_id) => {
 
 const getAllUsers = async () => {
   try {
-    const sql = "SELECT * FROM Users";
-    const result = await db.query(sql);
+    const sql = `
+      SELECT Users.*, emails.email
+      FROM Users
+      LEFT JOIN emails ON Users.user_id = emails.user_id
+    `;
+
+    // Using async/await here
+    const result = await db.query(sql); // This should work with the promise-based query function
     return result;
   } catch (error) {
     console.error("Error fetching users:", error);
     throw new Error("Error fetching users");
   }
 };
+
 module.exports = {
   checkIfUserExists,
   getUserById,
