@@ -21,7 +21,7 @@ const serviceRouter = require("./service.routes");
 const videos = require("./video.routes");
 
 const passwordReset = require("./passwordResetRouter");
-
+const paymentRouter = require("./payments.routes");
 router.use(customerRouter);
 
 //add the service routes
@@ -40,6 +40,7 @@ router.use(videos);
 
 router.use(newsRouter);
 router.use(passwordReset);
+router.use(paymentRouter);
 
 // Export the router
 module.exports = router;

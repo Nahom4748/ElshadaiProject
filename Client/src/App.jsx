@@ -12,7 +12,6 @@ import "../src/assets/css/video-modal.css";
 import "../src/assets/css/aos.css";
 import "../src/assets/css/style.css";
 
-import Dashbord from "./Components/Admin/DashBord/Dashbord.jsx";
 import Header from "./Components/Header/Header.jsx";
 import Home from "./Page/Home/Home.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
@@ -35,7 +34,6 @@ import BibleSchoolPa from "./Page/BibleSchool/BibleSchoolPa.jsx";
 import ContactUsPag from "./Page/ContactUs/ContactUsPag.jsx";
 import UsersList from "./Page/Admin/UsersList.jsx";
 import Video from "./Components/Admin/Video/Year1-Q1.jsx";
-import YearlyContent from "./Components/Admin/VideoComponent/YearlyContent.jsx";
 import Videos from "./Page/Admin/Videos.jsx";
 import Year1Q2 from "./Components/Admin/Video/Year1Q2.jsx";
 import Year1Q3 from "./Components/Admin/Video/Year1Q3.jsx";
@@ -51,7 +49,7 @@ function App() {
   return (
     <Router>
       <div className=" text-white">
-        {/* <Header /> */}
+        <Header />
         {/* <Home /> */}
         {/* <Dashbord /> */}
       </div>
@@ -88,7 +86,7 @@ function App() {
         />
         <Route path="/2nd-year/quarter-4" element={<SecondYearQuarterFour />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

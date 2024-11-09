@@ -45,11 +45,6 @@ const resetPassword = async (id, token) => {
 };
 //function to update user
 
-const updateUser = async (userId, userData, token) => {
-  const requestOptions =  {
-    method : "PUT",
-    headers : {
-      "Content-Type" : "application/json",
 const updateUser = async (id, userData, token) => {
   const requestOptions = {
     method: "PUT",
@@ -62,14 +57,9 @@ const updateUser = async (id, userData, token) => {
   const response = await fetch(`${api_url}/api/user/${userId}`, requestOptions);
   console.log(response.data);
   return response.data;
-
 };
 // function to delete user
-const deleteUser = async (userId, token) => {
-  const requestOptions =  {
-    method : "DELETE",
-    headers : {
-      "Content-Type" : "application/json",
+
 const deleteUser = async (id, token) => {
   const requestOptions = {
     method: "DELETE",

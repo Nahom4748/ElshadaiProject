@@ -1,46 +1,96 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  FaSearch,
-  FaChevronLeft,
-  FaChevronRight,
-  FaCheckCircle,
-  FaTimesCircle,
-} from "react-icons/fa"; // Importing FontAwesome icons
+import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const Payment = () => {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
+  const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedQuarters, setSelectedQuarters] = useState({});
+  const [selectedQuarter, setSelectedQuarter] = useState("Q1"); // Default to Q1
+  const [paymentFilter, setPaymentFilter] = useState("all"); // Filter by all, paid, or not paid
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
 
   const usersPerPage = 8;
 
   useEffect(() => {
+    // Fetch users
     axios
-      .get("http://localhost:5001/api/users") // Replace with your API endpoint
+      .get("http://localhost:5001/api/users")
       .then((response) => {
-        setUsers(response.data.data);
-        setFilteredUsers(response.data.data);
+        const students = response.data.data.filter(
+          (user) => user.company_role_id === 3
+        );
+        setUsers(students);
+        setFilteredUsers(students);
         setLoading(false);
       })
       .catch((err) => {
         setError(err.message);
         setLoading(false);
       });
+
+    // Fetch payments
+    axios
+      .get("http://localhost:5001/api/payments")
+      .then((response) => {
+        setPayments(response.data);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   }, []);
 
-  const handleCheckboxChange = (userId, year, quarter) => {
-    setSelectedQuarters((prevState) => ({
-      ...prevState,
-      [userId]: {
-        ...prevState[userId],
-        [`${year}-${quarter}`]: !prevState[userId]?.[`${year}-${quarter}`],
-      },
-    }));
+  // Function to check if a user has paid for a specific quarter
+  const getPaymentStatus = (userId, quarter) => {
+    const payment = payments.find(
+      (payment) => payment.user_id === userId && payment.quarter === quarter
+    );
+    return payment ? payment.status : 0; // Default to 0 (not paid) if no payment found
+  };
+
+  // Filter users based on selected quarter and payment status
+  const filterUsersByQuarterAndPayment = () => {
+    return users.filter((user) => {
+      const paymentStatus = getPaymentStatus(user.user_id, selectedQuarter);
+      if (paymentFilter === "paid" && paymentStatus === 1) {
+        return true;
+      } else if (paymentFilter === "not-paid" && paymentStatus === 0) {
+        return true;
+      } else if (paymentFilter === "all") {
+        return true;
+      }
+      return false;
+    });
+  };
+
+  const handleToggle = (userId, quarter) => {
+    const paymentStatus = getPaymentStatus(userId, quarter);
+    const newStatus = paymentStatus === 1 ? 0 : 1;
+
+    const payload = {
+      user_id: userId,
+      quarter: quarter,
+      status: newStatus,
+    };
+
+    axios
+      .post("http://localhost:5001/api/payments", payload)
+      .then(() => {
+        axios
+          .get("http://localhost:5001/api/payments")
+          .then((response) => {
+            setPayments(response.data);
+          })
+          .catch((err) => {
+            setError(err.message);
+          });
+      })
+      .catch((error) => {
+        console.error("Error updating payment:", error);
+      });
   };
 
   const handleSearch = (query) => {
@@ -97,89 +147,106 @@ const Payment = () => {
           </div>
         </div>
 
+        <div className="mb-6 flex justify-between">
+          <div>
+            <label className="text-gray-200 mr-2">Select Quarter:</label>
+            <select
+              value={selectedQuarter}
+              onChange={(e) => setSelectedQuarter(e.target.value)}
+              className="bg-gray-700 text-white p-2 rounded-lg"
+            >
+              {["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"].map((quarter) => (
+                <option key={quarter} value={quarter}>
+                  {quarter}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className="text-gray-200 mr-2">Filter Payment Status:</label>
+            <select
+              value={paymentFilter}
+              onChange={(e) => setPaymentFilter(e.target.value)}
+              className="bg-gray-700 text-white p-2 rounded-lg"
+            >
+              <option value="all">All</option>
+              <option value="paid">Paid</option>
+              <option value="not-paid">Not Paid</option>
+            </select>
+          </div>
+        </div>
+
         <div className="overflow-x-auto">
           <table className="w-full bg-gray-700 rounded-lg text-sm">
             <thead className="bg-gray-600 text-gray-200">
               <tr>
                 <th className="px-4 py-3 text-left">User Name</th>
-                <th colSpan={3} className="text-center">
-                  Year One
-                </th>
-                <th colSpan={3} className="text-center">
-                  Year Two
-                </th>
-              </tr>
-              <tr>
-                <th className="px-4 py-3"></th>
-                {["Q1", "Q2", "Q3"].map((quarter, index) => (
-                  <th key={`year1-${index}`} className="px-4 py-3 text-center">
-                    {quarter}
-                  </th>
-                ))}
-                {["Q1", "Q2", "Q3"].map((quarter, index) => (
-                  <th key={`year2-${index}`} className="px-4 py-3 text-center">
+                {["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"].map((quarter, index) => (
+                  <th
+                    key={`quarter-${index}`}
+                    className="px-4 py-3 text-center"
+                  >
                     {quarter}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {paginatedUsers.map((user) => (
+              {filterUsersByQuarterAndPayment().map((user) => (
                 <tr
                   key={user.user_id}
                   className="hover:bg-gray-600 transition-colors"
                 >
-                  <td className="px-4 py-3 text-lg">{`${user.first_name} ${user.last_name}`}</td>
-                  {["YearOne", "YearTwo"].map((year) =>
-                    ["Q1", "Q2", "Q3"].map((quarter) => (
+                  <td className="px-4 py-3 text-lg">
+                    {`${user.first_name} ${user.last_name}`}
+                  </td>
+                  {["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"].map((quarter) => {
+                    const paymentStatus = getPaymentStatus(
+                      user.user_id,
+                      quarter
+                    );
+                    return (
                       <td
-                        key={`${year}-${quarter}-${user.user_id}`}
+                        key={`${quarter}-${user.user_id}`}
                         className="px-4 py-3 text-center"
                       >
-                        <input
-                          type="checkbox"
-                          className="form-checkbox h-5 w-5 text-blue-500"
-                          checked={
-                            selectedQuarters[user.user_id]?.[
-                              `${year}-${quarter}`
-                            ] || false
-                          }
-                          onChange={() =>
-                            handleCheckboxChange(user.user_id, year, quarter)
-                          }
-                        />
+                        <button
+                          onClick={() => handleToggle(user.user_id, quarter)}
+                          className={`h-6 w-6 mx-auto rounded-lg cursor-pointer ${
+                            paymentStatus === 1
+                              ? "bg-green-500"
+                              : paymentStatus === 0
+                              ? "bg-red-500"
+                              : "bg-gray-500"
+                          }`}
+                        ></button>
                       </td>
-                    ))
-                  )}
+                    );
+                  })}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div className="mt-6 flex justify-between items-center">
+        <div className="flex justify-between items-center mt-6">
           <button
-            disabled={currentPage === 1}
             onClick={() => handlePageChange("prev")}
-            className={`px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 ${
-              currentPage === 1 && "opacity-50 cursor-not-allowed"
-            }`}
+            disabled={currentPage === 1}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg"
           >
             <FaChevronLeft />
           </button>
-          <p>
+          <p className="text-gray-200">
             Page {currentPage} of{" "}
             {Math.ceil(filteredUsers.length / usersPerPage)}
           </p>
           <button
+            onClick={() => handlePageChange("next")}
             disabled={
               currentPage === Math.ceil(filteredUsers.length / usersPerPage)
             }
-            onClick={() => handlePageChange("next")}
-            className={`px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 ${
-              currentPage === Math.ceil(filteredUsers.length / usersPerPage) &&
-              "opacity-50 cursor-not-allowed"
-            }`}
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg"
           >
             <FaChevronRight />
           </button>
