@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Modal from "react-modal";
 
 const Payment = () => {
   const [users, setUsers] = useState([]);
@@ -12,6 +13,9 @@ const Payment = () => {
   const [paymentFilter, setPaymentFilter] = useState("all"); // Filter by all, paid, or not paid
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedQuarterForModal, setSelectedQuarterForModal] = useState(null);
 
   const usersPerPage = 8;
 
@@ -43,7 +47,6 @@ const Payment = () => {
       });
   }, []);
 
-  // Function to check if a user has paid for a specific quarter
   const getPaymentStatus = (userId, quarter) => {
     const payment = payments.find(
       (payment) => payment.user_id === userId && payment.quarter === quarter
@@ -51,7 +54,6 @@ const Payment = () => {
     return payment ? payment.status : 0; // Default to 0 (not paid) if no payment found
   };
 
-  // Filter users based on selected quarter and payment status
   const filterUsersByQuarterAndPayment = () => {
     return users.filter((user) => {
       const paymentStatus = getPaymentStatus(user.user_id, selectedQuarter);
@@ -67,12 +69,21 @@ const Payment = () => {
   };
 
   const handleToggle = (userId, quarter) => {
-    const paymentStatus = getPaymentStatus(userId, quarter);
+    setSelectedUser(userId);
+    setSelectedQuarterForModal(quarter);
+    setIsModalOpen(true); // Open the modal on toggle
+  };
+
+  const handleConfirmAction = () => {
+    const paymentStatus = getPaymentStatus(
+      selectedUser,
+      selectedQuarterForModal
+    );
     const newStatus = paymentStatus === 1 ? 0 : 1;
 
     const payload = {
-      user_id: userId,
-      quarter: quarter,
+      user_id: selectedUser,
+      quarter: selectedQuarterForModal,
       status: newStatus,
     };
 
@@ -83,6 +94,7 @@ const Payment = () => {
           .get("http://localhost:5001/api/payments")
           .then((response) => {
             setPayments(response.data);
+            setIsModalOpen(false); // Close the modal after action
           })
           .catch((err) => {
             setError(err.message);
@@ -213,11 +225,7 @@ const Payment = () => {
                         <button
                           onClick={() => handleToggle(user.user_id, quarter)}
                           className={`h-6 w-6 mx-auto rounded-lg cursor-pointer ${
-                            paymentStatus === 1
-                              ? "bg-green-500"
-                              : paymentStatus === 0
-                              ? "bg-red-500"
-                              : "bg-gray-500"
+                            paymentStatus === 1 ? "bg-green-500" : "bg-red-500"
                           }`}
                         ></button>
                       </td>
@@ -233,24 +241,49 @@ const Payment = () => {
           <button
             onClick={() => handlePageChange("prev")}
             disabled={currentPage === 1}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+            className="bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-600"
           >
             <FaChevronLeft />
           </button>
-          <p className="text-gray-200">
+          <span className="text-white">
             Page {currentPage} of{" "}
             {Math.ceil(filteredUsers.length / usersPerPage)}
-          </p>
+          </span>
           <button
             onClick={() => handlePageChange("next")}
-            disabled={
-              currentPage === Math.ceil(filteredUsers.length / usersPerPage)
-            }
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+            disabled={currentPage * usersPerPage >= filteredUsers.length}
+            className="bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-600"
           >
             <FaChevronRight />
           </button>
         </div>
+
+        {/* Modal */}
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          contentLabel="Confirm Payment Status Change"
+          className="bg-gray-800 text-white p-6 rounded-lg max-w-sm mx-auto"
+          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+        >
+          <h2 className="text-xl font-semibold mb-4">
+            Are you sure you want to change the payment status?
+          </h2>
+          <div className="flex justify-around">
+            <button
+              onClick={handleConfirmAction}
+              className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-lg"
+            >
+              Yes, Confirm
+            </button>
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-lg"
+            >
+              Cancel
+            </button>
+          </div>
+        </Modal>
       </div>
     </div>
   );
