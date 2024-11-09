@@ -53,8 +53,6 @@
 
 // module.exports = authMiddleware;
 
-
-
 // Import the dotenv package
 require("dotenv").config();
 // Import the jsonwebtoken package
@@ -80,7 +78,7 @@ const verifyToken = async (req, res, next) => {
         message: "Unauthorized!",
       });
     }
-    
+
     req.user_email = decoded.user_email; // Update to use user_email
     next();
   });

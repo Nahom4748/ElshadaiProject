@@ -51,7 +51,7 @@ function App() {
   return (
     <Router>
       <div className=" text-white">
-        <Header />
+        {/* <Header /> */}
         {/* <Home /> */}
         {/* <Dashbord /> */}
       </div>
@@ -88,7 +88,7 @@ function App() {
         />
         <Route path="/2nd-year/quarter-4" element={<SecondYearQuarterFour />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
