@@ -1,4 +1,3 @@
-
 // const bcrypt = require("bcrypt");
 // const db = require("../config/db.config"); // Ensure this path is correct
 
@@ -319,7 +318,6 @@ async function getUserByEmail(email) {
   return rows;
 }
 
-
 // Register user function that handles multiple inserts
 async function registerUser(userData) {
   try {
@@ -370,43 +368,22 @@ async function registerUser(userData) {
   }
 }
 // function to get all users
-async function getAllUsers() {
-  try {
-    const query = `SELECT * FROM Users
-    INNER JOIN Emails ON Users.user_id = Emails.user_id 
-    INNER JOIN Company_Roles ON Users.company_role_id = Company_Roles.company_role_id 
-    ORDER BY Users.user_id`;
-    const rows = await db.query(query);
-    return rows;
-
-    const query = `SELECT * FROM Users WHERE user_id = ?`;
-    const rows = await db.query(query, [user_id]);
-
-    if (rows.length > 0) {
-      return rows[0]; // Return the first user object
-    }
-    return null; // User not found
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    throw new Error("Database error during user fetch");
-  }
-}
 
 // Get user by ID function
 async function getUserById(userId) {
   console.log("Received user_id:", userId); // Debugging: check the user_id passed to this function
-  
-    const query = `SELECT * FROM Users 
+
+  const query = `SELECT * FROM Users 
       INNER JOIN Emails ON Users.user_id = Emails.user_id
       WHERE Users.user_id = ?`;
-try {
-  const [rows] = await db.query(query, [userId]); // Use db.query here
-  return rows; // User not found
-} catch (error) {
-  console.error("Error fetching user:", error); // Debugging: log any error
-  console.error("Error fetching user:", error); // Debugging: log any error Error("Database error during user fetch");
-  return null;
-}
+  try {
+    const [rows] = await db.query(query, [userId]); // Use db.query here
+    return rows; // User not found
+  } catch (error) {
+    console.error("Error fetching user:", error); // Debugging: log any error
+    console.error("Error fetching user:", error); // Debugging: log any error Error("Database error during user fetch");
+    return null;
+  }
 }
 
 async function updateUser(userId, userData) {
@@ -453,14 +430,15 @@ async function updateUser(userId, userData) {
 
       // Check affectedRows directly from result
       if (result.affectedRows > 0) {
-        return { 
-          success: true, 
-          message: "User updated successfully" };
+        return {
+          success: true,
+          message: "User updated successfully",
+        };
       } else {
         return {
           success: false,
           message: "Failed to update user",
-      }
+        };
       }
     }
 
@@ -537,7 +515,9 @@ const getAllUsers = async () => {
     `;
 
     // Using async/await here
-    const result = await db.query(sql); // This should work with the promise-based query function
+    const result = await db.query(sql);
+    console.log(result);
+    // This should work with the promise-based query function
     return result;
   } catch (error) {
     console.error("Error fetching users:", error);

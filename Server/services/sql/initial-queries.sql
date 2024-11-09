@@ -55,6 +55,17 @@ VALUES ((SELECT `user_id` FROM `Users` WHERE `first_name` = 'Admin' AND `last_na
 INSERT INTO `User_Passwords` (`user_id`, `password_hashed`)
 VALUES ((SELECT `user_id` FROM `Users` WHERE `first_name` = 'Admin' AND `last_name` = 'User'), MD5('123456'));
 
+CREATE TABLE payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    quarter VARCHAR(20) NOT NULL,
+    status BOOLEAN DEFAULT FALSE,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+
+
 -- Create Quarter1 Table
 CREATE TABLE Quarter1 (
     id SERIAL PRIMARY KEY,

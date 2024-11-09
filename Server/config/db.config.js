@@ -1,4 +1,3 @@
-
 const mysql = require("mysql2/promise");
 
 const dbConfig = {
@@ -16,8 +15,6 @@ const pool = mysql.createPool(dbConfig);
 async function query(sql, params) {
   try {
     const [rows, fields] = await pool.execute(sql, params);
-    console.log("Query executed:", sql, "with params:", params);
-    console.log("Query result:", rows);
     return rows;
   } catch (error) {
     console.error("Error executing query:", error);
@@ -27,5 +24,5 @@ async function query(sql, params) {
 
 // Export the query function
 module.exports = {
-  query, 
+  query,
 };
