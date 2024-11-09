@@ -17,8 +17,6 @@ const getAllUsers = async () => {
     throw error;
   }
 };
-
-
 //get user by id
 const getUserById = async (id, token) => {
   const requestOptions =  {
@@ -44,7 +42,7 @@ const resetPassword = async (id, token) => {
   return response.json();
 };
 //function to update user
-const updateUser = async (id, userData, token) => {
+const updateUser = async (userId, userData, token) => {
   const requestOptions =  {
     method : "PUT",
     headers : {
@@ -53,11 +51,13 @@ const updateUser = async (id, userData, token) => {
     },
     body : JSON.stringify(userData),
   };
-  const response = await fetch(`${api_url}/api/user/:id`, requestOptions);
-  return response.json();
+  const response = await fetch(`${api_url}/api/user/${userId}`, requestOptions);
+  console.log(response.data);
+  return response.data;
+
 };
 // function to delete user
-const deleteUser = async (id, token) => {
+const deleteUser = async (userId, token) => {
   const requestOptions =  {
     method : "DELETE",
     headers : {
@@ -65,7 +65,7 @@ const deleteUser = async (id, token) => {
       "x-access-token": token,
     }
   };
-  const response = await fetch(`${api_url}/api/user/${id}`, requestOptions);
+  const response = await fetch(`${api_url}/api/user/${userId}`, requestOptions);
   return response.json();
 };
 const userService = {
