@@ -60,7 +60,6 @@
 //   registerUser,
 // };
 
-//
 
 const userService = require("../services/user.service");
 const bcrypt = require("bcrypt"); // Import bcrypt at the top of the file
@@ -95,7 +94,7 @@ async function getUserById(req, res, next) {
 
 async function registerUser(req, res) {
   const userData = req.body;
-
+  console.log("first");
   // Validate input fields
   const requiredFields = [
     "email",
@@ -136,7 +135,6 @@ async function registerUser(req, res) {
 
     // Register the user with the hashed password
     const result = await userService.registerUser(userData);
-
     if (result.status === "fail") {
       return res.status(400).json({
         status: "fail",
@@ -144,13 +142,12 @@ async function registerUser(req, res) {
       });
     }
 
-    // If registration is successful
     return res.status(201).json({
       status: "success",
       message: "User registered successfully",
     });
   } catch (error) {
-    console.error("Error registering user:", error);
+    console.error("Error registering user:", error); // Detailed error log
     return res.status(500).json({
       status: "error",
       message: "An error occurred during registration",
@@ -163,8 +160,16 @@ async function registerUser(req, res) {
 //   const userId = req.params.userId; // Retrieve userId from the URL parameters
 //   const userData = req.body;
 
-//   try {
-//     console.log("Received user_id:", userId); // Debugging: check if userId is received properly
+  try {
+    // Step 1: Check if the user exists
+    const userExists = await userService.getUserById(user_id);
+    console.log("Fetched User:", userExists); // Debugging
+    if (!userExists) {
+      return res.status(404).json({
+        status: "fail",
+        message: "User not found",
+      });
+    }
 
 //     // Step 1: Check if the user exists
 //     const userExists = await userService.getUserById(userId); // Use userId from the URL params
@@ -233,6 +238,7 @@ const deleteUser = async (req, res) => {
     });
   }
 };
+}
 
 // Controller method to handle the update
 const updateUserRole = async (req, res) => {
@@ -259,6 +265,24 @@ const updateUserRole = async (req, res) => {
   }
 };
 
+
+async function getAllUsers(req, res) {
+  try {
+    const users = await userService.getAllUsers();
+    return res.status(200).json({
+      status: "success",
+      message: "Users fetched successfully!",
+      data: users,
+    });
+  } catch (error) {
+    console.error("Error in controller:", error);
+    return res.status(500).json({
+      status: "fail",
+      message: "Error fetching users!",
+      error: error.message,
+    });
+  }
+}
 module.exports = {
   getAllUsers,
   getUserById,
@@ -266,4 +290,5 @@ module.exports = {
   updateUser,
   deleteUser,
   updateUserRole,
+  getAllUsers,
 };

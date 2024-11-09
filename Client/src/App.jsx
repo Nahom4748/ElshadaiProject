@@ -34,6 +34,16 @@ import AboutUsPage from "./Page/AboutUsPage/AboutUsPage.jsx";
 import BibleSchoolPa from "./Page/BibleSchool/BibleSchoolPa.jsx";
 import ContactUsPag from "./Page/ContactUs/ContactUsPag.jsx";
 import UsersList from "./Page/Admin/UsersList.jsx";
+import Video from "./Components/Admin/Video/Year1-Q1.jsx";
+import YearlyContent from "./Components/Admin/VideoComponent/YearlyContent.jsx";
+import Videos from "./Page/Admin/Videos.jsx";
+import Year1Q2 from "./Components/Admin/Video/Year1Q2.jsx";
+import Year1Q3 from "./Components/Admin/Video/Year1Q3.jsx";
+import Year2Q1 from "./Components/Admin/Video/Year2Q1.jsx";
+import Year2Q2 from "./Components/Admin/Video/Year2Q2.jsx";
+import Year2Q3 from "./Components/Admin/Video/Year2Q3.jsx";
+import UsersByQuarter from "./Components/Admin/Payment/Payment.jsx";
+import Payment from "./Components/Admin/Payment/Payment.jsx";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -63,6 +73,15 @@ function App() {
         <Route path="/1st-year/quarter-4" element={<FirstYearQuarterFour />} />
         <Route path="/2nd-year/quarter-1" element={<SecondYearQuarterOne />} />
         <Route path="/2nd-year/quarter-2" element={<SecondYearQuarterTwo />} />
+        <Route path="/videos" element={<Videos />} />
+        <Route path="/details/Year-One/Quarter-1" element={<Video />} />
+        <Route path="/details/Year-One/Quarter-2" element={<Year1Q2 />} />
+        <Route path="/details/Year-One/Quarter-3" element={<Year1Q3 />} />
+        <Route path="/details/Year-Two/Quarter-1" element={<Year2Q1 />} />
+        <Route path="/details/Year-Two/Quarter-2" element={<Year2Q2 />} />
+        <Route path="/details/Year-Two/Quarter-3" element={<Year2Q3 />} />
+        <Route path="/users" element={<UsersByQuarter />} />
+        <Route path="/Payments" element={<Payment />} />
         <Route
           path="/2nd-year/quarter-3"
           element={<SecondYearQuarterThree />}
