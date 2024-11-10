@@ -93,7 +93,7 @@ function Login() {
               <input type="checkbox" className="mr-2" />
               Remember me
             </label>
-            <Link to="#" className="text-blue hover:underline">
+            <Link to="/reset-password" className="text-blue hover:underline">
               Forgot your password?
             </Link>
           </div>

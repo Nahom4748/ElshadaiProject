@@ -12,6 +12,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// services/passwordReset.service.js
+
 async function requestPasswordReset(email) {
   try {
     const query = `SELECT user_id FROM Emails WHERE email = ?`;
@@ -19,14 +21,14 @@ async function requestPasswordReset(email) {
 
     // Check if the user exists
     if (result.length === 0) {
-      throw new Error("User not found"); // Handle the case where the user doesn't exist
+      return { status: 404, message: "This email is not registered with us." };
     }
 
-    const userId = result[0].user_id; // Access the user_id safely after check
+    const userId = result[0].user_id;
 
     // Generate a token
     const token = crypto.randomBytes(20).toString("hex");
-    const expiresAt = new Date(Date.now() + 3600000); // 1 hour expiration
+    const expiresAt = new Date(Date.now() + 1800000); // 30 minutes expiration
 
     // Store the token in the database
     await db.query(
@@ -34,13 +36,22 @@ async function requestPasswordReset(email) {
       [userId, token, expiresAt]
     );
 
-    // Send email with the reset link (you should customize this URL)
-    const resetLink = `http://your-frontend-url/reset/${token}`;
+    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    const resetLink = `${frontendUrl}/reset/${token}`;
+
+    // Send email with the reset link
     await transporter.sendMail({
       to: email,
-      subject: "Password Reset Request",
-      text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account. 
-      Please click on the following link, or paste this into your browser to complete the process: \n\n ${resetLink}`,
+      subject: "Your Password Reset Request",
+      text: `We received a request to reset your password. Please follow the link below to reset it. 
+      
+If you did not request this reset, you can ignore this email.
+
+To reset your password, click or paste this link into your browser:
+      
+${resetLink}
+
+This link is valid for 30 minutes.`,
     });
 
     return { status: 200, message: "Password reset email sent" };
