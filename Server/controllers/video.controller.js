@@ -16,7 +16,20 @@ async function quarter1videos(req, res, next) {
       .json({ error: "Unauthorized", message: "Authentication invalid" });
   }
 }
-
+async function update_quarter1videos(req, res, next) {
+  const { id } = req.params;
+  try {
+    //call the getAllCustomers method from the customer service
+    const updatedVideos = await videoService.update_quarter1(id, req.body);
+    //send the customers as a response
+    res.status(200).json(updatedVideos);
+  } catch (error) {
+    //send the error as a response
+    res
+      .status(401)
+      .json({ error: "Unauthorized", message: "Authentication invalid" });
+  }
+}
 async function quarter2videos(req, res, next) {
   try {
     //call the getAllCustomers method from the customer service
@@ -91,4 +104,5 @@ module.exports = {
   y2quarter1videos,
   y2quarter2videos,
   y2quarter3videos,
+  update_quarter1videos,
 };
