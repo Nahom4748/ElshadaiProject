@@ -7,6 +7,7 @@ const videoController = require("../controllers/video.controller");
 
 //
 router.get("/api/quarter1/videos", videoController.quarter1videos);
+router.put("/api/quarter1/videos/:id", videoController.update_quarter1videos);
 router.get("/api/quarter2/videos", videoController.quarter2videos);
 router.get("/api/quarter3/videos", videoController.quarter3videos);
 router.get("/api/y2-quarter1/videos", videoController.y2quarter1videos);
