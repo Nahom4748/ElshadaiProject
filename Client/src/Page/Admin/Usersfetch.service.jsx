@@ -45,7 +45,7 @@ const resetPassword = async (id, token) => {
 };
 //function to update user
 
-const updateUser = async (id, userData, token) => {
+const updateUser = async (userId, userData, token) => {
   const requestOptions = {
     method: "PUT",
     headers: {
@@ -60,7 +60,7 @@ const updateUser = async (id, userData, token) => {
 };
 // function to delete user
 
-const deleteUser = async (id, token) => {
+const deleteUser = async (userId, token) => {
   const requestOptions = {
     method: "DELETE",
     headers: {
