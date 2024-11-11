@@ -44,6 +44,8 @@ import UsersByQuarter from "./Components/Admin/Payment/Payment.jsx";
 import Payment from "./Components/Admin/Payment/Payment.jsx";
 import YearlyDocuments from "./Components/Admin/DocumentsComponent/DocumentsComponent.jsx";
 import Docy1q1 from "./Components/Admin/Documents/Docy1q1.jsx";
+import RequestPasswordReset from "./Page/RequestPasswordReset/RequestPasswordReset.jsx";
+import ResetPassword from "./Page/ResetPassword/ResetPassword.jsx";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -60,6 +62,8 @@ function App() {
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/contact-us" element={<ContactUsPag />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/reset-password" element={<RequestPasswordReset />} />
+        <Route path="/reset/:token" element={<ResetPassword />} />
         <Route path="/bible-school" element={<BibleSchoolPa />} />
         <Route path="/create-account" element={<CreateAccPage />} />
         <Route path="/student-dashboard" element={<StudentDashBoard />} />
