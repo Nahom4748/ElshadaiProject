@@ -43,7 +43,6 @@ import Year2Q3 from "./Components/Admin/Video/Year2Q3.jsx";
 import UsersByQuarter from "./Components/Admin/Payment/Payment.jsx";
 import Payment from "./Components/Admin/Payment/Payment.jsx";
 import YearlyDocuments from "./Components/Admin/DocumentsComponent/DocumentsComponent.jsx";
-import Docy1q1 from "./Components/Admin/Documents/Docy1q1.jsx";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -80,7 +79,6 @@ function App() {
         <Route path="/details/Year-Two/Quarter-1" element={<Year2Q1 />} />
         <Route path="/details/Year-Two/Quarter-2" element={<Year2Q2 />} />
         <Route path="/details/Year-Two/Quarter-3" element={<Year2Q3 />} />
-        <Route path="/d1" element={<Docy1q1 />} />
         <Route
           path="/details/Year-One/Document-1"
           element={<YearlyDocuments />}

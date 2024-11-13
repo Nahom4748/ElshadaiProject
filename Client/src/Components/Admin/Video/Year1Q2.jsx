@@ -6,9 +6,16 @@ const Year1Q2 = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isDocModalOpen, setIsDocModalOpen] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [userRole, setUserRole] = useState("admin"); // Default to admin, this can be dynamic
+  const [pdfFile, setPdfFile] = useState(null);
+  const [pdfDescription, setPdfDescription] = useState("");
 
-  useEffect(() => {
+  // Fetch videos from API
+  const fetchVideos = () => {
+    setLoading(true);
     axios
       .get("http://localhost:5001/api/quarter2/videos")
       .then((response) => {
@@ -19,21 +26,82 @@ const Year1Q2 = () => {
         setError(err.message);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchVideos();
   }, []);
 
-  const openModal = (video) => {
-    setSelectedVideo(video);
-    setIsModalOpen(true);
+  const openVideoModal = (video) => {
+    if (userRole === "admin") {
+      setSelectedVideo(video);
+      setIsVideoModalOpen(true);
+    }
   };
 
-  const closeModal = () => {
+  const openDocModal = (video) => {
+    if (userRole === "admin") {
+      setSelectedVideo(video);
+      setIsDocModalOpen(true);
+    }
+  };
+
+  const closeVideoModal = () => {
     setSelectedVideo(null);
-    setIsModalOpen(false);
+    setIsVideoModalOpen(false);
   };
 
-  const handleUpdate = () => {
-    console.log("Updated video details:", selectedVideo);
-    closeModal();
+  const closeDocModal = () => {
+    setSelectedVideo(null);
+    setIsDocModalOpen(false);
+    setPdfFile(null);
+    setPdfDescription("");
+  };
+
+  const handleVideoUpdate = () => {
+    if (!selectedVideo) return;
+    setSaving(true);
+
+    axios
+      .put(
+        `http://localhost:5001/api/quarter2/videos/${selectedVideo.id}`,
+        selectedVideo
+      )
+      .then(() => {
+        fetchVideos();
+        closeVideoModal();
+      })
+      .catch((error) => {
+        console.error("Error updating video:", error.message);
+      })
+      .finally(() => {
+        setSaving(false);
+      });
+  };
+
+  const handleDocUpdate = () => {
+    if (!selectedVideo) return;
+    setSaving(true);
+
+    const formData = new FormData();
+    formData.append("pdf", pdfFile);
+    formData.append("document_description", pdfDescription);
+
+    axios
+      .put(
+        `http://localhost:5001/api/quarter2/videos/${selectedVideo.id}/document`,
+        formData
+      )
+      .then(() => {
+        fetchVideos();
+        closeDocModal();
+      })
+      .catch((error) => {
+        console.error("Error updating document:", error.message);
+      })
+      .finally(() => {
+        setSaving(false);
+      });
   };
 
   const extractYouTubeID = (url) => {
@@ -42,96 +110,120 @@ const Year1Q2 = () => {
         /^.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
       const match = url.match(regExp);
       return match && match[1].length === 11 ? match[1] : null;
-    } catch (err) {
-      console.error("Invalid YouTube URL:", url);
+    } catch {
       return null;
     }
   };
 
   if (loading)
-    return <div className="text-white text-center">Loading videos...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white text-2xl">
+        Loading videos...
+      </div>
+    );
   if (error)
     return (
-      <div className="text-white text-center">
+      <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white text-xl">
         Error fetching videos: {error}
       </div>
     );
 
   return (
-    <div className="bg-gray-900 p-8 text-white min-h-screen">
+    <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-black p-8 min-h-screen text-white">
       <h2 className="text-center text-4xl font-semibold mb-12">
-        Year 1 Quarter 2 Videos
+        📹 Year 1 Quarter 2 Videos
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      {/* Display videos in a grid layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {videos.map((video) => (
           <div
             key={video.id}
-            className="bg-white p-4 rounded-xl shadow-lg transform hover:scale-105 transition-all"
+            className="relative group bg-gray-800 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
           >
-            <div className="flex justify-between items-center mb-4">
-              <h4 className="font-semibold text-base text-gray-800">{`Year ${video.year} - Week ${video.week}`}</h4>
-              <button
-                className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-700"
-                onClick={() => openModal(video)}
-                title="Edit Video"
-              >
-                ✎
-              </button>
-            </div>
             <a
               href={video.video}
               target="_blank"
               rel="noopener noreferrer"
-              className="block mb-4"
+              className="block overflow-hidden rounded-t-lg"
             >
               <img
                 src={`https://img.youtube.com/vi/${extractYouTubeID(
                   video.video
                 )}/0.jpg`}
                 alt={`Thumbnail for Year ${video.year} Week ${video.week}`}
-                className="w-full h-48 object-cover rounded-lg"
+                className="w-full h-48 object-cover group-hover:opacity-90 transition-opacity"
               />
             </a>
-            <p className="text-sm text-gray-700">{video.video_description}</p>
+
+            <div className="p-4">
+              <div className="flex items-center justify-between">
+                <h4 className="font-semibold text-lg text-white">
+                  {` ${video.year} -  ${video.week}`}
+                </h4>
+                {userRole === "admin" && (
+                  <button
+                    className="text-gray-400 hover:text-blue-500"
+                    onClick={() => openVideoModal(video)}
+                    title="Edit Video"
+                  >
+                    <i className="fas fa-edit"></i> Edit
+                  </button>
+                )}
+              </div>
+              <p className="text-sm text-gray-400">{video.video_description}</p>
+
+              {video.document && (
+                <div className="mt-4">
+                  <a
+                    href={`http://localhost:5001/${video.document}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline"
+                  >
+                    📄 View Document
+                  </a>
+                  <button
+                    className="text-gray-400 hover:text-green-500 px-4"
+                    onClick={() => openDocModal(video)}
+                    title="Edit Document"
+                  >
+                    <i className="fas fa-edit"></i>
+                  </button>
+                  <p className="text-sm text-gray-400">
+                    {video.document_description}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </div>
 
-      {isModalOpen && selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg w-full max-w-md transition-all">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+      {/* Video Modal */}
+      {isVideoModalOpen && selectedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-gray-900 p-8 rounded-lg shadow-xl w-full max-w-lg relative">
+            <button
+              className="absolute top-4 right-4 text-white hover:text-red-500 text-2xl"
+              onClick={closeVideoModal}
+            >
+              &times;
+            </button>
+            <h3 className="text-2xl font-bold text-white mb-6">
               Edit Video Details
             </h3>
             <div className="space-y-4">
-              <label className="block text-lg text-gray-800">Year:</label>
-              <input
-                type="text"
-                value={selectedVideo.year}
-                onChange={(e) =>
-                  setSelectedVideo({ ...selectedVideo, year: e.target.value })
-                }
-                className="w-full p-3 rounded-lg border-2 border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <label className="block text-lg text-gray-800">Week:</label>
-              <input
-                type="text"
-                value={selectedVideo.week}
-                onChange={(e) =>
-                  setSelectedVideo({ ...selectedVideo, week: e.target.value })
-                }
-                className="w-full p-3 rounded-lg border-2 border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <label className="block text-lg text-gray-800">Video URL:</label>
+              <label className="block text-lg text-gray-300">Video URL:</label>
               <input
                 type="text"
                 value={selectedVideo.video}
                 onChange={(e) =>
                   setSelectedVideo({ ...selectedVideo, video: e.target.value })
                 }
-                className="w-full p-3 rounded-lg border-2 border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 rounded-lg bg-gray-800 text-white"
               />
-              <label className="block text-lg text-gray-800">
+              <label className="block text-lg text-gray-300">
                 Video Description:
               </label>
               <textarea
@@ -142,22 +234,71 @@ const Year1Q2 = () => {
                     video_description: e.target.value,
                   })
                 }
-                className="w-full p-3 rounded-lg border-2 border-gray-300 bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 rounded-lg bg-gray-800 text-white"
               />
+              <div className="flex justify-between items-center mt-6">
+                <button
+                  onClick={handleVideoUpdate}
+                  disabled={saving}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                >
+                  {saving ? "Saving..." : "Save Changes"}
+                </button>
+                <button
+                  onClick={closeVideoModal}
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-            <div className="mt-6 flex justify-center space-x-4">
-              <button
-                onClick={handleUpdate}
-                className="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition-all"
-              >
-                Save Changes
-              </button>
-              <button
-                onClick={closeModal}
-                className="bg-gray-600 text-white px-6 py-3 rounded-md hover:bg-gray-700 transition-all"
-              >
-                Cancel
-              </button>
+          </div>
+        </div>
+      )}
+
+      {/* Document Modal */}
+      {isDocModalOpen && selectedVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-gray-900 p-8 rounded-lg shadow-xl w-full max-w-lg relative">
+            <button
+              className="absolute top-4 right-4 text-white hover:text-red-500 text-2xl"
+              onClick={closeDocModal}
+            >
+              &times;
+            </button>
+            <h3 className="text-2xl font-bold text-white mb-6">
+              Edit Document Details
+            </h3>
+            <div className="space-y-4">
+              <label className="block text-lg text-gray-300">PDF File:</label>
+              <input
+                type="file"
+                onChange={(e) => setPdfFile(e.target.files[0])}
+                className="w-full p-3 rounded-lg bg-gray-800 text-white"
+              />
+              <label className="block text-lg text-gray-300">
+                Document Description:
+              </label>
+              <textarea
+                value={pdfDescription}
+                onChange={(e) => setPdfDescription(e.target.value)}
+                className="w-full p-3 rounded-lg bg-gray-800 text-white"
+              />
+              <div className="flex justify-between items-center mt-6">
+                <button
+                  onClick={handleDocUpdate}
+                  disabled={saving}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg"
+                >
+                  {saving ? "Saving..." : "Save Changes"}
+                </button>
+                <button
+                  onClick={closeDocModal}
+                  className="bg-red-600 text-white px-4 py-2 rounded-lg"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </div>
