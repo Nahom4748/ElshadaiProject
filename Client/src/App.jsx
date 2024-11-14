@@ -72,12 +72,29 @@ function App() {
         <Route path="/all-users/role" element={<UsersList />} />
         <Route path="/admin-employee" element={<AdminAddEmployee />} />
         <Route path="/admin-usersList" element={<UsersList />} />
-        <Route path="/1st-year/quarter-1" element={<FirstYearQuarterOne />} />
-        <Route path="/1st-year/quarter-2" element={<FirstYearQuarterTwo />} />
-        <Route path="/1st-year/quarter-3" element={<FirstYearQuarterThree />} />
-        <Route path="/1st-year/quarter-4" element={<FirstYearQuarterFour />} />
-        <Route path="/2nd-year/quarter-1" element={<SecondYearQuarterOne />} />
-        <Route path="/2nd-year/quarter-2" element={<SecondYearQuarterTwo />} />
+        <Route path="/api/quarter1/videos" element={<FirstYearQuarterOne />} />
+        <Route path="/api/quarter2/videos" element={<FirstYearQuarterTwo />} />
+        <Route
+          path="/api/quarter3/videos"
+          element={<FirstYearQuarterThree />}
+        />
+        <Route path="/api/quarter4/videos" element={<FirstYearQuarterFour />} />
+        <Route
+          path="/api/y2-quarter1/videos"
+          element={<SecondYearQuarterOne />}
+        />
+        <Route
+          path="/api/y2-quarter2/videos"
+          element={<SecondYearQuarterTwo />}
+        />
+        <Route
+          path="/api/y2-quarter3/videos"
+          element={<SecondYearQuarterThree />}
+        />
+        <Route
+          path="/api/y2-quarter4/videos"
+          element={<SecondYearQuarterFour />}
+        />
         <Route path="/videos" element={<Videos />} />
         <Route path="/details/Year-One/Quarter-1" element={<Video />} />
         <Route path="/details/Year-One/Quarter-2" element={<Year1Q2 />} />
@@ -91,11 +108,7 @@ function App() {
         />
         <Route path="/users" element={<UsersByQuarter />} />
         <Route path="/Payments" element={<Payment />} />
-        <Route
-          path="/2nd-year/quarter-3"
-          element={<SecondYearQuarterThree />}
-        />
-        <Route path="/2nd-year/quarter-4" element={<SecondYearQuarterFour />} />
+       
       </Routes>
       <Footer />
     </Router>

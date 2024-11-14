@@ -1,251 +1,3 @@
-// const bcrypt = require("bcrypt");
-// const db = require("../config/db.config"); // Ensure this path is correct
-
-// const saltRounds = 10;
-
-// async function checkIfUserExists(email) {
-//   try {
-//     console.log("Checking for email:", email);
-//     const query = `SELECT * FROM Emails WHERE email = ?`;
-//     const rows = await db.query(query, [email]); // Use db.query here
-
-//     console.log("Query result:", rows);
-
-//     return rows.length > 0; // Return true if user exists
-//   } catch (error) {
-//     console.error("Error checking if user exists:", error);
-//     throw new Error("Database error during user existence check");
-//   }
-// }
-
-// // Register user function that handles multiple inserts
-// async function registerUser(userData) {
-//   try {
-//    const Role = userData.company_role_id;
-//    console.log(Role);
-
-// if (Role === null) {
-// Role = 3;
-// }
-//     // Step 1: Insert into `Users` table
-//     const userQuery = `INSERT INTO Users (first_name, last_name, phone_number, city, country, company_role_id) VALUES (?, ?, ?, ?, ?, ?)`;
-//     const userRows = await db.query(userQuery, [
-//       userData.first_name,
-//       userData.last_name,
-//       userData.phone_number,
-//       userData.city,
-//       userData.country,
-//       Role,
-//     ]);
-
-//     // Check if rows are returned
-//     if (!userRows || userRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert user data" };
-//     }
-
-//     const user_id = userRows.insertId;
-
-//     // Step 2: Insert into Emails table
-//     const emailQuery = `INSERT INTO Emails (user_id, email) VALUES (?, ?)`;
-//     const emailRows = await db.query(emailQuery, [user_id, userData.email]);
-
-//     // Check if rows are returned
-//     if (!emailRows || emailRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert email data" };
-//     }
-
-//     // Step 3: Hash password and insert into User_Passwords table
-//     const password_hashed = await bcrypt.hash(userData.password, saltRounds);
-//     const passwordQuery = `INSERT INTO User_Passwords (user_id, password_hashed) VALUES (?, ?)`;
-//     const passwordRows = await db.query(passwordQuery, [
-//       user_id,
-//       password_hashed,
-//     ]);
-
-//     // Check if rows are returned
-//     if (!passwordRows || passwordRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert password data" };
-//     }
-
-//     return { status: "success", message: "User registered successfully" };
-//   } catch (error) {
-//     console.error("Error during user registration:", error);
-//     return { status: "fail", message: "User registration failed" };
-//   }
-// }
-
-// module.exports = {
-//   checkIfUserExists,
-//   registerUser,
-// };
-
-// // services/user.service.js
-// const bcrypt = require("bcrypt");
-// const db = require("../config/db.config");
-
-// const saltRounds = 10;
-
-// // Check if user already exists by checking the Emails table
-// async function checkIfUserExists(email) {
-//   try {
-//     console.log("Checking for email:", email);
-//     const query = `SELECT * FROM Emails WHERE email = ?`;
-//     const [rows] = await db.query(query, [email]); // Destructure the result to get rows
-
-//     console.log("Query result:", rows);
-
-//     return rows.length > 0; // Return true if user exists
-//   } catch (error) {
-//     console.error("Error checking if user exists:", error);
-//     throw new Error("Database error during user existence check");
-//   }
-// }
-
-// // Register user function that handles multiple inserts
-// async function registerUser(userData) {
-//   try {
-//     let Role = userData.company_role_id; // Capture company role from user data
-
-//     // Set a default role if company_role_id is undefined or null
-//     if (Role === undefined || Role === null) {
-//       Role = 3; // Default role
-//     }
-
-//     // Step 1: Insert into `Users` table
-//     const userQuery = `INSERT INTO Users (first_name, last_name, phone_number, city, country, company_role_id) VALUES (?, ?, ?, ?, ?, ?)`;
-//     const userRows = await db.query(userQuery, [
-//       userData.first_name,
-//       userData.last_name,
-//       userData.phone_number,
-//       userData.city,
-//       userData.country,
-//       Role,
-//     ]);
-
-//     // Check if rows are returned
-//     if (!userRows || userRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert user data" };
-//     }
-
-//     const user_id = userRows.insertId;
-
-//     // Step 2: Insert into Emails table
-//     const emailQuery = `INSERT INTO Emails (user_id, email) VALUES (?, ?)`;
-//     const emailRows = await db.query(emailQuery, [user_id, userData.email]);
-
-//     // Check if rows are returned
-//     if (!emailRows || emailRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert email data" };
-//     }
-
-//     // Step 3: Hash password and insert into User_Passwords table
-//     const password_hashed = await bcrypt.hash(userData.password, saltRounds);
-//     const passwordQuery = `INSERT INTO User_Passwords (user_id, password_hashed) VALUES (?, ?)`;
-//     const passwordRows = await db.query(passwordQuery, [user_id, password_hashed]);
-
-//     // Check if rows are returned
-//     if (!passwordRows || passwordRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert password data" };
-//     }
-
-//     return { status: "success", message: "User registered successfully" };
-//   } catch (error) {
-//     console.error("Error during user registration:", error);
-//     return { status: "fail", message: "User registration failed" };
-//   }
-// }
-
-// module.exports = {
-//   checkIfUserExists,
-//   registerUser,
-// };
-
-// // services/user.service.js
-// const bcrypt = require("bcrypt");
-// const db = require("../config/db.config");
-
-// const saltRounds = 10;
-
-// // Check if user already exists by checking the Emails table
-// async function checkIfUserExists(email) {
-//   try {
-//     console.log("Checking for email:", email);
-//     const query = `SELECT * FROM Emails WHERE email = ?`;
-//     const [rows] = await db.query(query, [email]); // Correctly destructure the result
-
-//     console.log("Query result:", rows); // Log the rows for debugging
-
-//     // If rows is not defined, return false
-//     if (!rows) {
-//       return false;
-//     }
-
-//     return rows.length > 0; // Return true if user exists
-//   } catch (error) {
-//     console.error("Error checking if user exists:", error);
-//     throw new Error("Database error during user existence check");
-//   }
-// }
-
-// // Register user function that handles multiple inserts
-// async function registerUser(userData) {
-//   try {
-//     let Role = userData.company_role_id; // Capture company role from user data
-
-//     // Set a default role if company_role_id is undefined or null
-//     if (Role === undefined || Role === null) {
-//       Role = 3; // Default role
-//     }
-
-//     // Step 1: Insert into `Users` table
-//     const userQuery = `INSERT INTO Users (first_name, last_name, phone_number, city, country, company_role_id) VALUES (?, ?, ?, ?, ?, ?)`;
-//     const userRows = await db.query(userQuery, [
-//       userData.first_name,
-//       userData.last_name,
-//       userData.phone_number,
-//       userData.city,
-//       userData.country,
-//       Role,
-//     ]);
-
-//     // Check if rows are returned
-//     if (!userRows || userRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert user data" };
-//     }
-
-//     const user_id = userRows.insertId;
-
-//     // Step 2: Insert into Emails table
-//     const emailQuery = `INSERT INTO Emails (user_id, email) VALUES (?, ?)`;
-//     const emailRows = await db.query(emailQuery, [user_id, userData.email]);
-
-//     // Check if rows are returned
-//     if (!emailRows || emailRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert email data" };
-//     }
-
-//     // Step 3: Hash password and insert into User_Passwords table
-//     const password_hashed = await bcrypt.hash(userData.password, saltRounds);
-//     const passwordQuery = `INSERT INTO User_Passwords (user_id, password_hashed) VALUES (?, ?)`;
-//     const passwordRows = await db.query(passwordQuery, [user_id, password_hashed]);
-
-//     // Check if rows are returned
-//     if (!passwordRows || passwordRows.affectedRows !== 1) {
-//       return { status: "fail", message: "Failed to insert password data" };
-//     }
-
-//     return { status: "success", message: "User registered successfully" };
-//   } catch (error) {
-//     console.error("Error during user registration:", error);
-//     return { status: "fail", message: "User registration failed" };
-//   }
-// }
-
-// module.exports = {
-//   checkIfUserExists,
-//   registerUser,
-// };
-
 const bcrypt = require("bcrypt");
 const db = require("../config/db.config");
 const saltRounds = 10;
@@ -392,11 +144,9 @@ async function updateUser(userId, userData) {
       throw new Error("userId is required");
     }
 
-    // Step 1: Dynamically build the query based on the provided fields
     const updateFields = [];
     const updateValues = [];
 
-    // Check each field and add it to the query if it exists in the request
     if (userData.first_name) {
       updateFields.push("first_name = ?");
       updateValues.push(userData.first_name);
@@ -417,62 +167,43 @@ async function updateUser(userId, userData) {
       updateFields.push("country = ?");
       updateValues.push(userData.country);
     }
-
-    // Ensure we only try to update if there's something to update
-    if (updateFields.length > 0) {
-      const updateQuery = `UPDATE Users SET ${updateFields.join(
-        ", "
-      )} WHERE user_id = ?`;
-      updateValues.push(userId); // Add user_id to the end of the values array
-
-      // Execute the query without destructuring
-      const result = await db.query(updateQuery, updateValues);
-
-      // Check affectedRows directly from result
-      if (result.affectedRows > 0) {
-        return {
-          success: true,
-          message: "User updated successfully",
-        };
-      } else {
-        return {
-          success: false,
-          message: "Failed to update user",
-        };
-      }
+    if (userData.company_role_id) {
+      updateFields.push("company_role_id = ?");
+      updateValues.push(userData.company_role_id);
     }
 
-    // Step 2: Update the password if provided
-    if (userData.password) {
-      if (userData.password.length < 6) {
+    if (updateFields.length === 0) {
+      return { status: "fail", message: "No fields provided for update" };
+    }
+
+    // Build the update query and execute it
+    const updateQuery = `UPDATE Users SET ${updateFields.join(
+      ", "
+    )} WHERE user_id = ?`;
+    updateValues.push(userId);
+
+    const result = await db.query(updateQuery, updateValues);
+    console.log("Database result:", result);
+
+    // Check if any row was updated
+    if (result.affectedRows > 0) {
+      if (result.changedRows === 0) {
         return {
           status: "fail",
-          message: "Password must be at least 6 characters long",
+          message: "No new data provided for update. Fields remain unchanged.",
         };
+      } else {
+        return { status: "success", message: "User updated successfully" };
       }
-
-      // Hash the password
-      const password_hashed = await bcrypt.hash(userData.password, saltRounds);
-
-      // Update the password in the User_Passwords table
-      const passwordQuery = `UPDATE User_Passwords SET password_hashed = ? WHERE user_id = ?`;
-      const passwordResult = await db.query(passwordQuery, [
-        password_hashed,
-        userId,
-      ]);
-
-      // Check affectedRows directly from passwordResult
-      if (passwordResult.affectedRows !== 1) {
-        return { status: "fail", message: "Failed to update password" };
-      }
+    } else {
+      return { status: "fail", message: "User not found or nothing to update" };
     }
-
-    return { status: "success", message: "User updated successfully" };
   } catch (error) {
     console.error("Error updating user:", error);
-    return { status: "fail", message: "User update failed" };
+    return { status: "fail", message: "An error occurred during user update" };
   }
 }
+
 // create a function to delete a user
 async function deleteUser(userId) {
   try {
@@ -488,23 +219,7 @@ async function deleteUser(userId) {
   }
 }
 
-// Update user role
-const updateUserRole = async (userId, company_role_id) => {
-  const sql = "UPDATE Users SET company_role_id = ? WHERE user_id = ?";
 
-  try {
-    const result = await db.query(sql, [company_role_id, userId]);
-
-    if (result.affectedRows === 0) {
-      throw new Error("User not found or role not updated");
-    }
-
-    return { userId, company_role_id };
-  } catch (error) {
-    console.error("Error updating user role:", error);
-    throw new Error("Error updating user role");
-  }
-};
 
 const getAllUsers = async () => {
   try {
@@ -533,7 +248,6 @@ module.exports = {
   registerUser,
   updateUser,
   deleteUser,
-  updateUserRole,
   getUserByEmail,
   getAllUsers,
 };
