@@ -139,6 +139,7 @@ async function getUserById(userId) {
 }
 
 async function updateUser(userId, userData) {
+  console.log(userData)
   try {
     if (!userId) {
       throw new Error("userId is required");

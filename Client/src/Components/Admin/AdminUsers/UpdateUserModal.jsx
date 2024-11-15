@@ -6,7 +6,7 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
   const [updatedUser, setUpdatedUser] = useState({ ...user });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState(null); // New success message state
+  const [successMessage, setSuccessMessage] = useState(null);
   const navigate = useNavigate();
 
   const roles = [
@@ -16,6 +16,46 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
     { id: 4, name: "Partner" },
   ];
 
+  // Handle changes in input fields
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedUser((prev) => ({
+      ...prev,
+      [name]: name === "company_role_id" ? parseInt(value) : value,
+    }));
+  };
+
+  // Update user details
+  const handleSave = async () => {
+    if (!updatedUser.user_id) return;
+
+    setIsLoading(true);
+    setError(null);
+    setSuccessMessage(null);
+
+    try {
+      const response = await userService.updateUser(
+        updatedUser.user_id,
+        updatedUser
+      );
+      if (response.success) {
+        setSuccessMessage("User updated successfully.");
+        onSave();
+        navigate("/admin-usersList");
+      } else {
+        setError(
+          response.message || "Failed to update user. Please try again."
+        );
+      }
+    } catch (error) {
+      setError(error.message || "Error updating user. Please try again.");
+      console.error("Detailed error message:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Delete user
   const handleDelete = async () => {
     if (!updatedUser.user_id) return;
 
@@ -56,7 +96,7 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
 
         {/* Success and error messages */}
         {successMessage && (
-          <p className="text-green-500 mb-2">{successMessage}</p>
+          <p className="text-green-900 mb-2">{successMessage}</p>
         )}
         {error && <p className="text-red-500 mb-2">{error}</p>}
 
@@ -67,7 +107,7 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
           </div>
         ) : (
           <>
-            {/* Display user information as plain text when deleting or viewing */}
+            {/* Display plain text fields for view or delete */}
             {actionType === "delete" || actionType === "view" ? (
               <>
                 <p>
@@ -96,17 +136,12 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
               </>
             ) : (
               <>
-                {/* Editable fields only for edit action */}
+                {/* Editable fields for edit */}
                 <input
                   type="text"
                   name="first_name"
                   value={updatedUser.first_name || ""}
-                  onChange={(e) =>
-                    setUpdatedUser({
-                      ...updatedUser,
-                      first_name: e.target.value,
-                    })
-                  }
+                  onChange={handleChange}
                   className="border p-2 w-full mb-2"
                   placeholder="First Name"
                 />
@@ -114,12 +149,7 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
                   type="text"
                   name="last_name"
                   value={updatedUser.last_name || ""}
-                  onChange={(e) =>
-                    setUpdatedUser({
-                      ...updatedUser,
-                      last_name: e.target.value,
-                    })
-                  }
+                  onChange={handleChange}
                   className="border p-2 w-full mb-2"
                   placeholder="Last Name"
                 />
@@ -127,9 +157,7 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
                   type="email"
                   name="email"
                   value={updatedUser.email || ""}
-                  onChange={(e) =>
-                    setUpdatedUser({ ...updatedUser, email: e.target.value })
-                  }
+                  onChange={handleChange}
                   className="border p-2 w-full mb-2"
                   placeholder="Email"
                 />
@@ -137,12 +165,7 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
                   type="text"
                   name="phone_number"
                   value={updatedUser.phone_number || ""}
-                  onChange={(e) =>
-                    setUpdatedUser({
-                      ...updatedUser,
-                      phone_number: e.target.value,
-                    })
-                  }
+                  onChange={handleChange}
                   className="border p-2 w-full mb-2"
                   placeholder="Phone Number"
                 />
@@ -150,9 +173,7 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
                   type="text"
                   name="city"
                   value={updatedUser.city || ""}
-                  onChange={(e) =>
-                    setUpdatedUser({ ...updatedUser, city: e.target.value })
-                  }
+                  onChange={handleChange}
                   className="border p-2 w-full mb-2"
                   placeholder="City"
                 />
@@ -160,21 +181,14 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
                   type="text"
                   name="country"
                   value={updatedUser.country || ""}
-                  onChange={(e) =>
-                    setUpdatedUser({ ...updatedUser, country: e.target.value })
-                  }
+                  onChange={handleChange}
                   className="border p-2 w-full mb-2"
                   placeholder="Country"
                 />
                 <select
                   name="company_role_id"
                   value={updatedUser.company_role_id || ""}
-                  onChange={(e) =>
-                    setUpdatedUser({
-                      ...updatedUser,
-                      company_role_id: parseInt(e.target.value),
-                    })
-                  }
+                  onChange={handleChange}
                   className="border p-2 w-full mb-2"
                 >
                   <option value="">Select Role</option>
@@ -189,11 +203,11 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
           </>
         )}
 
+        {/* Modal actions */}
         <div className="modal-actions flex space-x-4 mt-4">
-          {/* Conditional rendering of buttons based on action type */}
           {actionType === "edit" && (
             <button
-              onClick={onSave}
+              onClick={handleSave}
               disabled={isLoading}
               className="bg-green-500 text-white p-2 rounded"
             >
