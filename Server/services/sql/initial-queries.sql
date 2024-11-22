@@ -201,3 +201,10 @@ CREATE TABLE IF NOT EXISTS `Password_Resets` (
     `used` TINYINT(1) NOT NULL DEFAULT 0,
     FOREIGN KEY (`password_id`) REFERENCES `User_Passwords`(`password_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS `Partners_Videos` (
+    `video_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `video_link` VARCHAR(255) NOT NULL,
+    `description` TEXT,
+    `uploaded_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
