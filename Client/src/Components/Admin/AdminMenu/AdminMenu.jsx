@@ -118,12 +118,12 @@ function AdminMenu() {
               >
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
               </svg>
-              Users List
+              Partners Videos
             </Link>
           </li>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
-              to="admin-quiz-attempts.html"
+              to="/Partners"
               class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
