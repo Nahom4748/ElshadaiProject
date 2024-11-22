@@ -31,6 +31,7 @@ function AdminMenu() {
               Dashboard
             </Link>
           </li>
+
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/Payments"
@@ -46,14 +47,15 @@ function AdminMenu() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="feather feather-user"
+                class="feather feather-credit-card"
               >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                <line x1="1" y1="10" x2="23" y2="10"></line>
               </svg>
               Payments
             </Link>
           </li>
+
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark flex justify-between items-center">
             <Link
               to="/admin-employee"
@@ -69,14 +71,17 @@ function AdminMenu() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="feather feather-book-open"
+                class="feather feather-user-plus"
               >
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                <path d="M16 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M8 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                <line x1="20" y1="8" x2="20" y2="14"></line>
+                <line x1="23" y1="11" x2="17" y2="11"></line>
               </svg>
               Add Employee
             </Link>
           </li>
+
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/videos"
@@ -92,13 +97,15 @@ function AdminMenu() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="feather feather-bookmark"
+                class="feather feather-play-circle"
               >
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8"></polygon>
               </svg>
               Videos
             </Link>
           </li>
+
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/admin-usersList"
@@ -114,13 +121,17 @@ function AdminMenu() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="feather feather-star"
+                class="feather feather-users"
               >
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
-              Partners Videos
+              List of Users
             </Link>
           </li>
+
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/Partners"
@@ -136,13 +147,12 @@ function AdminMenu() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="feather feather-help-circle"
+                class="feather feather-video"
               >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                <rect x="3" y="6" width="15" height="12" rx="2" ry="2"></rect>
+                <polygon points="16 10 22 6 22 18 16 14 16 10"></polygon>
               </svg>
-              Quiz Attempts
+              Partners Videos
             </Link>
           </li>
         </ul>
@@ -177,7 +187,7 @@ function AdminMenu() {
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="#"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
+              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 items-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -189,10 +199,11 @@ function AdminMenu() {
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="feather feather-volume-1"
+                class="feather feather-log-out"
               >
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M17 9l3-3-3-3"></path>
+                <path d="M3 12h14"></path>
+                <path d="M3 12l3 3-3 3"></path>
               </svg>
               Logout
             </Link>
