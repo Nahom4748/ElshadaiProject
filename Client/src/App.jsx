@@ -21,11 +21,11 @@ import StudentDashBoard from "./Page/Student/StudentDashBoard.jsx";
 import FirstYearQuarterOne from "./Page/Student/FirstYear/FirstYearQuarterOne.jsx";
 import FirstYearQuarterTwo from "./Page/Student/FirstYear/FirstYearQuarterTwo.jsx";
 import FirstYearQuarterThree from "./Page/Student/FirstYear/FirstYearQuarterThree.jsx";
-import FirstYearQuarterFour from "./Page/Student/FirstYear/FirstYearQuarterFour.jsx";
+
 import SecondYearQuarterOne from "./Page/Student/SecondYear/SecondYearQuarterOne.jsx";
 import SecondYearQuarterTwo from "./Page/Student/SecondYear/SecondYearQuarterTwo.jsx";
 import SecondYearQuarterThree from "./Page/Student/SecondYear/SecondYearQuarterThree.jsx";
-import SecondYearQuarterFour from "./Page/Student/SecondYear/SecondYearQuarterFour.jsx";
+
 import LoginPage from "./Page/LoginPage/LoginPage.jsx";
 import CreateAccPage from "./Page/CreateAccoun/CreateAccPage.jsx";
 import AdminAddEmployee from "./Page/Admin/AdminAddEmployee.jsx";
@@ -80,7 +80,7 @@ function App() {
           path="/api/quarter3/videos"
           element={<FirstYearQuarterThree />}
         />
-        <Route path="/api/quarter4/videos" element={<FirstYearQuarterFour />} />
+       
         <Route
           path="/api/y2-quarter1/videos"
           element={<SecondYearQuarterOne />}
@@ -93,10 +93,7 @@ function App() {
           path="/api/y2-quarter3/videos"
           element={<SecondYearQuarterThree />}
         />
-        <Route
-          path="/api/y2-quarter4/videos"
-          element={<SecondYearQuarterFour />}
-        />
+       
         <Route path="/videos" element={<Videos />} />
         <Route path="/details/Year-One/Quarter-1" element={<Video />} />
         <Route path="/details/Year-One/Quarter-2" element={<Year1Q2 />} />
