@@ -1,17 +1,20 @@
+
+
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 
 // function Partner() {
 //   const [videos, setVideos] = useState([]);
 //   const [selectedVideo, setSelectedVideo] = useState("");
-//   const [openVideoIndex, setOpenVideoIndex] = useState(null);
+//   const [openWeek, setOpenWeek] = useState(0); // Week 1 open by default
 
 //   // Fetch partner videos on component load
 //   useEffect(() => {
 //     axios
 //       .get("http://localhost:5001/api/partners/videos")
 //       .then((response) => {
-//         console.log("API Response:", response.data);
+//         console.log("Full response:", response); // Logs the entire response object
+//         console.log("Response data:", response.data); // Logs the `data` property of the response
 //         const fetchedVideos = response.data.data;
 //         setVideos(fetchedVideos);
 
@@ -40,34 +43,62 @@
 //   };
 
 //   // Toggle accordion state
-//   const toggleAccordion = (index) => {
-//     setOpenVideoIndex(openVideoIndex === index ? null : index);
+//   const toggleAccordion = (weekIndex) => {
+//     setOpenWeek(openWeek === weekIndex ? null : weekIndex);
 //   };
 
 //   return (
 //     <section>
 //       <div className="container-fluid-2 pt-50px pb-100px">
 //         <div className="grid grid-cols-1 xl:grid-cols-12 gap-30px">
-//           {/* Accordion Panel */}
-//           <div className="xl:col-start-1 xl:col-span-4" data-aos="fade-up">
-//             <ul className="accordion-container">
+//           {/* Left Panel: Scrollable Weeks */}
+//           <div
+//             className="xl:col-start-1 xl:col-span-4"
+//             data-aos="fade-up"
+//             style={{
+//               maxHeight: "600px", // Limit the height
+//               overflowY: "auto", // Enable vertical scrolling
+//               msOverflowStyle: "none", // Hide scrollbar for IE and Edge
+//               scrollbarWidth: "none", // Hide scrollbar for Firefox
+//             }}
+//           >
+//             <ul>
 //               {videos.map((video, index) => (
 //                 <li
 //                   key={video.video_id}
-//                   className={`accordion mb-25px overflow-hidden ${
-//                     openVideoIndex === index ? "active" : ""
-//                   }`}
+//                   style={{
+//                     marginBottom: "25px",
+//                     overflow: "hidden",
+//                   }}
 //                 >
-//                   <div className="bg-whiteColor border border-borderColor dark:bg-whiteColor-dark dark:border-borderColor-dark">
+//                   <div
+//                     style={{
+//                       backgroundColor: "#fff",
+//                       border: "1px solid #ddd",
+//                     }}
+//                   >
 //                     <button
 //                       onClick={() => toggleAccordion(index)}
-//                       className="accordion-controller flex justify-between items-center text-xl text-headingColor font-bold w-full px-5 py-18px dark:text-headingColor-dark font-hind leading-[20px]"
+//                       style={{
+//                         display: "flex",
+//                         justifyContent: "space-between",
+//                         alignItems: "center",
+//                         fontSize: "1.25rem",
+//                         fontWeight: "bold",
+//                         width: "100%",
+//                         padding: "10px 20px",
+//                         backgroundColor: "transparent",
+//                         border: "none",
+//                         cursor: "pointer",
+//                       }}
 //                     >
-//                       <span>{`Week ${videos.length - index}`}</span>
+//                       <span>{`Week ${index + 1}`}</span> {/* Increment Week */}
 //                       <svg
-//                         className={`transition-all duration-500 ${
-//                           openVideoIndex === index ? "rotate-180" : "rotate-0"
-//                         }`}
+//                         style={{
+//                           transform:
+//                             openWeek === index ? "rotate(180deg)" : "rotate(0)",
+//                           transition: "transform 0.5s",
+//                         }}
 //                         width="20"
 //                         xmlns="http://www.w3.org/2000/svg"
 //                         viewBox="0 0 16 16"
@@ -79,28 +110,64 @@
 //                         ></path>
 //                       </svg>
 //                     </button>
-//                     {openVideoIndex === index && (
-//                       <div className="accordion-content transition-all duration-500 h-auto">
-//                         <div className="content-wrapper p-10px md:px-30px">
-//                           <ul>
-//                             <li
-//                               className="py-4 flex items-center justify-between flex-wrap border-b border-borderColor dark:border-borderColor-dark"
-//                               onClick={() =>
-//                                 handleVideoSelect(video.video_link)
-//                               }
+//                     {openWeek === index && (
+//                       <div
+//                         style={{
+//                           padding: "10px 20px",
+//                         }}
+//                       >
+//                         <ul>
+//                           <li
+//                             style={{
+//                               padding: "10px 0",
+//                               borderBottom: "1px solid #ddd",
+//                               cursor: "pointer",
+//                             }}
+//                             onClick={() => handleVideoSelect(video.video_link)}
+//                           >
+//                             <h4
+//                               style={{
+//                                 margin: 0,
+//                                 fontWeight: "normal",
+//                                 fontSize: "1rem",
+//                               }}
 //                             >
-//                               <div>
-//                                 {/* Video Description */}
-//                                 <h4 className="text-blackColor dark:text-blackColor-dark leading-1 font-light">
-//                                   <i className="icofont-video-alt mr-10px"></i>
-//                                   <span className="font-medium text-contentColor dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor cursor-pointer">
-//                                     {video.description}
-//                                   </span>
-//                                 </h4>
+//                               <i
+//                                 style={{
+//                                   marginRight: "10px",
+//                                 }}
+//                                 className="icofont-video-alt"
+//                               ></i>
+//                               <span>{video.description}</span>
+//                             </h4>
+//                             {video.document && (
+//                               <div
+//                                 style={{
+//                                   marginTop: "10px",
+//                                   display: "flex",
+//                                   alignItems: "center",
+//                                 }}
+//                               >
+//                                 <i
+//                                   style={{
+//                                     marginRight: "5px",
+//                                     color: "red",
+//                                     fontSize: "1.25rem",
+//                                   }}
+//                                   className="icofont-file-pdf"
+//                                 ></i>
+//                                 <a
+//                                   href={`http://localhost:5001/${video.document}`}
+//                                   target="_blank"
+//                                   rel="noopener noreferrer"
+//                                 >
+//                                   {video.document_description ||
+//                                     "View Document"}
+//                                 </a>
 //                               </div>
-//                             </li>
-//                           </ul>
-//                         </div>
+//                             )}
+//                           </li>
+//                         </ul>
 //                       </div>
 //                     )}
 //                   </div>
@@ -109,7 +176,7 @@
 //             </ul>
 //           </div>
 
-//           {/* Video Display */}
+//           {/* Right Panel: Video Player */}
 //           <div
 //             className="xl:col-end-13 xl:col-span-7"
 //             data-aos="fade-up"
@@ -133,8 +200,6 @@
 // }
 
 // export default Partner;
-
-
 
 
 
@@ -195,10 +260,11 @@ function Partner() {
             className="xl:col-start-1 xl:col-span-4"
             data-aos="fade-up"
             style={{
-              maxHeight: "600px", // Limit the height
+              maxHeight: "600px", // Set a maximum height for the scrollable panel
               overflowY: "auto", // Enable vertical scrolling
-              msOverflowStyle: "none", // Hide scrollbar for IE and Edge
-              scrollbarWidth: "none", // Hide scrollbar for Firefox
+              paddingRight: "10px", // Add space for the scrollbar
+              scrollbarWidth: "thin", // Firefox: Thin scrollbar
+              msOverflowStyle: "auto", // Default scrollbar for IE/Edge
             }}
           >
             <ul>
