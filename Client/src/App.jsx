@@ -47,6 +47,7 @@ import YearlyDocuments from "./Components/Admin/DocumentsComponent/DocumentsComp
 import RequestPasswordReset from "./Page/RequestPasswordReset/RequestPasswordReset.jsx";
 import ResetPassword from "./Page/ResetPassword/ResetPassword.jsx";
 import PartnerVideo from "./Components/Admin/PartnerVideo/PartnerVideo.jsx";
+import Partner from "./Page/Partner/Partner.jsx";
 
 function App() {
   useEffect(() => {
@@ -110,6 +111,8 @@ function App() {
         <Route path="/users" element={<UsersByQuarter />} />
         <Route path="/Partners" element={<PartnerVideo />} />
         <Route path="/Payments" element={<Payment />} />
+        <Route path="/api/partners/videos" element={<Partner />} />
+
       </Routes>
       <Footer />
     </Router>
