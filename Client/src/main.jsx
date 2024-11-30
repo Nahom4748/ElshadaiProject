@@ -5,11 +5,11 @@ import "./index.css";
 import { AuthProvider } from "./Contexts/AuthContext.jsx"; // Import AuthProvider
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <div className="bg-bodyBg-dark">
-      <AuthProvider>
+  <div className="bg-bodyBg-dark">
+    <AuthProvider>
+      <StrictMode>
         <App />
-      </AuthProvider>
-    </div>
-  </StrictMode>
+      </StrictMode>
+    </AuthProvider>
+  </div>
 );

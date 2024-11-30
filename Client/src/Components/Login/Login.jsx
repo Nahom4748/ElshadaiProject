@@ -36,7 +36,7 @@ function Login() {
 
       localStorage.setItem("authToken", JSON.stringify(response.data.data));
       setRes(response.data);
-      navigate("/dashboard"); // Redirect after successful login
+      navigate("/"); // Redirect after successful login
     } catch (err) {
       setError("Invalid email or password");
     }

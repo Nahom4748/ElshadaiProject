@@ -3,7 +3,6 @@
 // import { useAuth } from "../../../Contexts/AuthContext";
 // import UserModal from "./UpdateUserModal";
 
-
 // const roleLabels = {
 //   1: "Admin",
 //   2: "Manager",
@@ -87,7 +86,6 @@
 //      setApiErrorMessage("Failed to update user. Please try again.");
 //    }
 //  };
-
 
 //   const handleDeleteUser = async (userId) => {
 //     if (!window.confirm("Are you sure you want to delete this user?")) return;
@@ -231,7 +229,6 @@
 
 // export default AdminUsersList;
 
-
 import React, { useState, useEffect } from "react";
 import userService from "../../../Page/Admin/Usersfetch.service";
 import { useAuth } from "../../../Contexts/AuthContext";
@@ -259,11 +256,11 @@ function AdminUsersList() {
   const [selectedUser, setSelectedUser] = useState(null);
   const [actionType, setActionType] = useState(""); // State for action type (edit or delete)
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { userType } = useAuth();
+  const { userType, user } = useAuth();
 
   useEffect(() => {
     const fetchUsers = async () => {
-      if (userType === "Admin") {
+      if (user.role == "Admin") {
         setApiError(true);
         setApiErrorMessage("You do not have permission to access this page.");
         setLoading(false);
@@ -311,11 +308,11 @@ function AdminUsersList() {
     setSelectedUser(user);
     setActionType("delete"); // Set action type to delete
   };
-const handleRowClick = (user) => {
-  setSelectedUser(user);
-  setActionType("view"); // Or another action type as needed
-  setIsModalOpen(true);
-};
+  const handleRowClick = (user) => {
+    setSelectedUser(user);
+    setActionType("view"); // Or another action type as needed
+    setIsModalOpen(true);
+  };
 
   const handleSaveUser = async (updatedUser) => {
     try {
@@ -363,42 +360,42 @@ const handleRowClick = (user) => {
         {/* <td>{roleLabels[user.company_role_id]}</td> */}
         <td className="px-3">{user.email}</td>
         <td className="px-4 py-2 flex space-x-2">
-            <button
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent row click from triggering
-            handleEditUser(user);
-          }}
-          className="text-green-600 hover:text-green-800 px-3"
-        >
-           <svg
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent row click from triggering
+              handleEditUser(user);
+            }}
+            className="text-green-600 hover:text-green-800 px-3"
+          >
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="currentColor"
               className="size-4"
             >
-             <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
-                           <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+              <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+              <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
             </svg>
           </button>
-            <button
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent row click from triggering
-            handleDeleteUser(user);
-          }}
-          className="ml-4 text-red-600 hover:text-red-800"
-        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent row click from triggering
+              handleDeleteUser(user);
+            }}
+            className="ml-4 text-red-600 hover:text-red-800"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="currentColor"
               class="size-4"
             >
-               <path
+              <path
                 fill-rule="evenodd"
                 d="M5 3.25V4H2.75a.75.75 0 0 0 0 1.5h.3l.815 8.15A1.5 1.5 0 0 0 5.357 15h5.285a1.5 1.5 0 0 0 1.493-1.35l.815-8.15h.3a.75.75 0 0 0 0-1.5H11v-.75A2.25 2.25 0 0 0 8.75 1h-1.5A2.25 2.25 0 0 0 5 3.25Zm2.25-.75a.75.75 0 0 0-.75.75V4h3v-.75a.75.75 0 0 0-.75-.75h-1.5ZM6.05 6a.75.75 0 0 1 .787.713l.275 5.5a.75.75 0 0 1-1.498.075l-.275-5.5A.75.75 0 0 1 6.05 6Zm3.9 0a.75.75 0 0 1 .712.787l-.275 5.5a.75.75 0 0 1-1.498-.075l.275-5.5a.75.75 0 0 1 .786-.711Z"
                 clip-rule="evenodd"
               />
-             </svg>
+            </svg>
           </button>
         </td>
       </tr>

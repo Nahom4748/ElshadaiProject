@@ -2,7 +2,12 @@ import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import "../src/assets/js/counterup.js";
 import "../src/assets/js/vanilla-tilt.js";
 import "../src/assets/css/icofont.min.css";
@@ -48,70 +53,140 @@ import RequestPasswordReset from "./Page/RequestPasswordReset/RequestPasswordRes
 import ResetPassword from "./Page/ResetPassword/ResetPassword.jsx";
 import PartnerVideo from "./Components/Admin/PartnerVideo/PartnerVideo.jsx";
 import Partner from "./Page/Partner/Partner.jsx";
+import { useAuth } from "./Contexts/AuthContext.jsx";
+import PrivateAuthRoute from "../Auth/PrivateAuthRoute.jsx";
 
 function App() {
+  const { userType, isLogged, user } = useAuth();
+
   useEffect(() => {
     AOS.init();
   }, []);
   return (
     <Router>
-      <div className=" text-white">
-        <Header />
-        {/* <Home /> */}
-        {/* <Dashbord /> */}
-      </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/contact-us" element={<ContactUsPag />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/reset-password" element={<RequestPasswordReset />} />
-        <Route path="/reset/:token" element={<ResetPassword />} />
-        <Route path="/bible-school" element={<BibleSchoolPa />} />
-        <Route path="/create-account" element={<CreateAccPage />} />
-        <Route path="/student-dashboard" element={<StudentDashBoard />} />
-        <Route path="/admin-dashboard" element={<AdminPage />} />
-        <Route path="/all-users/role" element={<UsersList />} />
-        <Route path="/admin-employee" element={<AdminAddEmployee />} />
-        <Route path="/admin-usersList" element={<UsersList />} />
-        <Route path="/api/quarter1/videos" element={<FirstYearQuarterOne />} />
-        <Route path="/api/quarter2/videos" element={<FirstYearQuarterTwo />} />
-        <Route
-          path="/api/quarter3/videos"
-          element={<FirstYearQuarterThree />}
-        />
-       
-        <Route
-          path="/api/y2-quarter1/videos"
-          element={<SecondYearQuarterOne />}
-        />
-        <Route
-          path="/api/y2-quarter2/videos"
-          element={<SecondYearQuarterTwo />}
-        />
-        <Route
-          path="/api/y2-quarter3/videos"
-          element={<SecondYearQuarterThree />}
-        />
-       
-        <Route path="/videos" element={<Videos />} />
-        <Route path="/details/Year-One/Quarter-1" element={<Video />} />
-        <Route path="/details/Year-One/Quarter-2" element={<Year1Q2 />} />
-        <Route path="/details/Year-One/Quarter-3" element={<Year1Q3 />} />
-        <Route path="/details/Year-Two/Quarter-1" element={<Year2Q1 />} />
-        <Route path="/details/Year-Two/Quarter-2" element={<Year2Q2 />} />
-        <Route path="/details/Year-Two/Quarter-3" element={<Year2Q3 />} />
-        <Route
-          path="/details/Year-One/Document-1"
-          element={<YearlyDocuments />}
-        />
-        <Route path="/users" element={<UsersByQuarter />} />
-        <Route path="/Partners" element={<PartnerVideo />} />
-        <Route path="/Payments" element={<Payment />} />
-        <Route path="/api/partners/videos" element={<Partner />} />
+      {!isLogged && (
+        <div className=" text-white">
+          <Header />
+        </div>
+      )}
 
+      <Routes>
+        {!isLogged ? (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/contact-us" element={<ContactUsPag />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/reset-password" element={<RequestPasswordReset />} />
+            <Route path="/reset/:token" element={<ResetPassword />} />
+            <Route path="/bible-school" element={<BibleSchoolPa />} />
+            <Route path="/create-account" element={<CreateAccPage />} />
+          </>
+        ) : (
+          <>
+            <Route element={<PrivateAuthRoute />}>
+              {user?.user_role == 2 || user?.user_role == 4 ? (
+                <>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route
+                    path="/"
+                    element={<Navigate to="/student-dashboard" />}
+                  />
+                  <Route
+                    path="/student-dashboard"
+                    element={<StudentDashBoard />}
+                  />
+
+                  <Route
+                    path="/api/quarter1/videos"
+                    element={<FirstYearQuarterOne />}
+                  />
+                  <Route
+                    path="/api/quarter2/videos"
+                    element={<FirstYearQuarterTwo />}
+                  />
+                  <Route
+                    path="/api/quarter3/videos"
+                    element={<FirstYearQuarterThree />}
+                  />
+
+                  <Route
+                    path="/api/y2-quarter1/videos"
+                    element={<SecondYearQuarterOne />}
+                  />
+                  <Route
+                    path="/api/y2-quarter2/videos"
+                    element={<SecondYearQuarterTwo />}
+                  />
+                  <Route
+                    path="/api/y2-quarter3/videos"
+                    element={<SecondYearQuarterThree />}
+                  />
+                </>
+              ) : (
+                <>
+                  {user?.user_role == 1 ? (
+                    <>
+                      <Route path="/login" element={<LoginPage />} />
+
+                      <Route
+                        path="/"
+                        element={<Navigate to="/admin-dashboard" />}
+                      />
+                      <Route path="/admin-dashboard" element={<AdminPage />} />
+                      <Route path="/all-users/role" element={<UsersList />} />
+                      <Route
+                        path="/admin-employee"
+                        element={<AdminAddEmployee />}
+                      />
+                      <Route path="/admin-usersList" element={<UsersList />} />
+                      <Route path="/videos" element={<Videos />} />
+                      <Route
+                        path="/details/Year-One/Quarter-1"
+                        element={<Video />}
+                      />
+                      <Route
+                        path="/details/Year-One/Quarter-2"
+                        element={<Year1Q2 />}
+                      />
+                      <Route
+                        path="/details/Year-One/Quarter-3"
+                        element={<Year1Q3 />}
+                      />
+                      <Route
+                        path="/details/Year-Two/Quarter-1"
+                        element={<Year2Q1 />}
+                      />
+                      <Route
+                        path="/details/Year-Two/Quarter-2"
+                        element={<Year2Q2 />}
+                      />
+                      <Route
+                        path="/details/Year-Two/Quarter-3"
+                        element={<Year2Q3 />}
+                      />
+                      <Route
+                        path="/details/Year-One/Document-1"
+                        element={<YearlyDocuments />}
+                      />
+                      <Route path="/users" element={<UsersByQuarter />} />
+                      <Route path="/Partners" element={<PartnerVideo />} />
+                      <Route path="/Payments" element={<Payment />} />
+                      <Route
+                        path="/api/partners/videos"
+                        element={<Partner />}
+                      />
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              )}
+            </Route>
+          </>
+        )}
       </Routes>
-      <Footer />
+      {!isLogged && <Footer />}
     </Router>
   );
 }
