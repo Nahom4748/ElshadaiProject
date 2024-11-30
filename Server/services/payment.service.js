@@ -49,5 +49,15 @@ async function updatePayment(payment) {
     };
   }
 }
+async function getPaymentByUserId(userId) {
+  try {
+    const query = `SELECT * FROM payments WHERE user_id = ?;`;
+    const rows = await conn.query(query, [userId]); // Ensure proper destructuring for rows.
+    return rows; // Return the rows as an array of payment objects.
+  } catch (error) {
+    console.error(`Error fetching payments for user_id ${userId}:`, error);
+    throw new Error("Failed to fetch payments for the user.");
+  }
+}
 
-module.exports = { getAllPayments, updatePayment };
+module.exports = { getAllPayments, updatePayment, getPaymentByUserId };

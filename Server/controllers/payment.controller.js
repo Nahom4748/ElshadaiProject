@@ -17,7 +17,28 @@ async function updatePayment(req, res, next) {
     res.status(500).json({ error: error.message });
   }
 }
+async function getPaymentByUserId(req, res) {
+  const { userId } = req.params;
+
+  try {
+    const payments = await paynmentService.getPaymentByUserId(userId);
+
+    if (payments.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No payments found for this user." });
+    }
+
+    res.status(200).json(payments);
+  } catch (error) {
+    console.error(`Error fetching payments for user ID ${userId}:`, error);
+    res
+      .status(500)
+      .json({ message: "Failed to fetch payments.", error: error.message });
+  }
+}
 module.exports = {
   getAllPayments,
   updatePayment,
+  getPaymentByUserId,
 };

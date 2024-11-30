@@ -13,7 +13,6 @@ async function logIn(userData) {
 
     // Get user by email
     const user = await userService.getUserByEmail(userData.email);
-    console.log(user);
     // If user does not exist
     if (user.length === 0) {
       return {

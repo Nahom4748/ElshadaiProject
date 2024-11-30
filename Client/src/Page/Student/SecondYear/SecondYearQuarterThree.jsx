@@ -1,12 +1,13 @@
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth } from "../../../Contexts/AuthContext";
 
 function SecondYearQuarterThree() {
   const [lessons, setLessons] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState("");
-  const [openWeek, setOpenWeek] = useState(0); // Week 1 open by default
+  const [openWeek, setOpenWeek] = useState(0);
+  const [hasPaidy2Q3, setHasPaidy2Q3] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     axios
@@ -19,6 +20,19 @@ function SecondYearQuarterThree() {
       })
       .catch((error) => console.error("Error fetching lessons:", error));
   }, []);
+
+  useEffect(() => {
+    // Check payment status for Quarter 1
+    axios
+      .get(`http://localhost:5001/api/payments/${user.user_id}`)
+      .then((response) => {
+        const hasPaid = response.data.some(
+          (payment) => payment.quarter === "Q6" && payment.status === 1
+        );
+        setHasPaidy2Q3(hasPaid);
+      })
+      .catch((error) => console.error("Error fetching payments:", error));
+  }, [user.user_id]);
 
   const formatYouTubeUrl = (url) => {
     const urlObj = new URL(url);
@@ -35,114 +49,123 @@ function SecondYearQuarterThree() {
   };
 
   return (
-    <section>
-      <div className="container-fluid-2 pt-50px pb-100px">
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-30px">
-          {/* Scrollable Left Panel */}
-          <div
-            className="xl:col-start-1 xl:col-span-4"
-            data-aos="fade-up"
-            style={{
-              maxHeight: "600px", // Set a maximum height for the scrollable panel
-              overflowY: "scroll", // Enable vertical scrolling
-              paddingRight: "10px", // Add space for the scrollbar
-              scrollbarWidth: "thin", // Firefox: Thin scrollbar
-              msOverflowStyle: "auto", // Default scrollbar for IE/Edge
-            }}
-          >
-            <ul
-              className="accordion-container"
-              style={{ padding: 0, margin: 0 }}
-            >
-              {lessons.map((lesson, index) => (
-                <li
-                  key={lesson.id}
-                  className={`accordion mb-25px overflow-hidden ${
-                    openWeek === index ? "active" : ""
-                  }`}
-                  style={{ listStyle: "none" }}
-                >
-                  <div className="bg-whiteColor border border-borderColor dark:bg-whiteColor-dark dark:border-borderColor-dark">
-                    <button
-                      onClick={() => toggleAccordion(index)}
-                      className="accordion-controller flex justify-between items-center text-xl text-headingColor font-bold w-full px-5 py-18px dark:text-headingColor-dark font-hind leading-[20px]"
-                    >
-                      <span>{lesson.week}</span>
-                      <svg
-                        className={`transition-all duration-500 ${
-                          openWeek === index ? "rotate-180" : "rotate-0"
+    <div className="bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white min-h-screen">
+      {hasPaidy2Q3 ? (
+        <section className="py-12">
+          <div className="container mx-auto">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+              {/* Sidebar for lessons */}
+              <div
+                className="xl:col-span-4 p-6 bg-blue-800 shadow-lg rounded-lg overflow-y-auto border border-blue-600"
+                style={{ minHeight: "500px", maxHeight: "500px" }}
+              >
+                <h2 className="text-2xl font-semibold mb-6 flex items-center">
+                  <i className="icofont-books mr-2 text-yellow-400"></i> Lessons
+                </h2>
+                <ul>
+                  {lessons.map((lesson, index) => (
+                    <li key={lesson.id} className="mb-4">
+                      <div
+                        className={`border rounded-lg shadow-md bg-blue-700 hover:bg-blue-600 transition-all transform ${
+                          openWeek === index ? "scale-105" : ""
                         }`}
-                        width="20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="#212529"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                        ></path>
-                      </svg>
-                    </button>
-                    {openWeek === index && (
-                      <div className="accordion-content transition-all duration-500 h-auto">
-                        <div className="content-wrapper p-10px md:px-30px">
-                          <ul>
-                            <li
-                              className="py-4 flex items-center justify-between flex-wrap border-b border-borderColor dark:border-borderColor-dark"
-                              onClick={() => handleVideoSelect(lesson.video)}
-                            >
-                              <div>
-                                {/* Video Description */}
-                                <h4 className="text-blackColor dark:text-blackColor-dark leading-1 font-light">
-                                  <i className="icofont-video-alt mr-10px"></i>
-                                  <span className="font-medium text-contentColor dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor cursor-pointer">
-                                    {lesson.video_description}
-                                  </span>
+                        <button
+                          onClick={() => toggleAccordion(index)}
+                          className="w-full text-left p-4 flex justify-between items-center rounded-t-lg text-lg"
+                        >
+                          <span>
+                            <i className="icofont-light-bulb mr-2 text-yellow-400"></i>{" "}
+                            {lesson.week}
+                          </span>
+                          <svg
+                            className={`w-5 h-5 transform transition-transform ${
+                              openWeek === index ? "rotate-180" : ""
+                            }`}
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                        {openWeek === index && (
+                          <div className="p-4 bg-blue-800 rounded-b-lg transition-all">
+                            <ul>
+                              <li
+                                className="cursor-pointer border-b py-2 hover:bg-blue-700 transition-colors"
+                                onClick={() => handleVideoSelect(lesson.video)}
+                              >
+                                <h4 className="text-base flex items-center">
+                                  <i className="icofont-play-alt-1 mr-2 text-green-400"></i>
+                                  {lesson.video_description}
                                 </h4>
-                                {/* Document Link with Icon and Spacing */}
-                                <div className="mt-4 flex items-center">
-                                  <i className="icofont-file-pdf mr-2 text-red-600 text-lg"></i>
+                              </li>
+                              {lesson.document && (
+                                <div className="flex items-center mt-2">
+                                  <i className="icofont-file-pdf text-red-400 mr-2"></i>
                                   <a
                                     href={`http://localhost:5001/${lesson.document}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="font-medium text-contentColor dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor cursor-pointer"
+                                    className="text-blue-300 hover:underline"
                                   >
                                     {lesson.document_description}
                                   </a>
                                 </div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
+                              )}
+                            </ul>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {/* Right Panel: Video Player */}
-          <div
-            className="xl:col-end-13 xl:col-span-7"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div className="embed-responsive aspect-video">
-              <iframe
-                className="embed-responsive-item rounded-xl"
-                width="100%"
-                height="480"
-                src={selectedVideo}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {/* Video Player */}
+              <div
+                className="xl:col-span-8 p-6 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-800 shadow-lg rounded-lg border border-purple-600"
+                style={{ minHeight: "500px" }}
+              >
+                <h2 className="text-2xl font-semibold mb-6 flex items-center">
+                  <i className="icofont-ui-play mr-2 text-green-400"></i> Video
+                  Player
+                </h2>
+                <div
+                  className="rounded-lg overflow-hidden border border-blue-700 shadow-lg"
+                  style={{ height: "450px" }}
+                >
+                  <iframe
+                    className="w-full h-full"
+                    src={selectedVideo}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
+      ) : (
+        <div className="flex items-center justify-center h-screen">
+          <div className="text-center p-8 bg-gradient-to-r from-red-800 to-red-600 shadow-lg rounded-lg border border-red-700">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Access Denied 🚫
+            </h1>
+            <p className="text-gray-200 text-lg">
+              Complete the payment for Quarter 2 to unlock this content.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      )}
+    </div>
   );
 }
 

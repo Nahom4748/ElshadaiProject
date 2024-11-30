@@ -1,27 +1,39 @@
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth } from "../../../Contexts/AuthContext";
 
 function FirstYearQuarterOne() {
   const [lessons, setLessons] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState("");
-  const [openWeek, setOpenWeek] = useState(0); // Week 1 open by default
+  const [openWeek, setOpenWeek] = useState(0);
+  const [hasPaidQ1, setHasPaidQ1] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
+    // Fetch lessons for Quarter 1
     axios
       .get("http://localhost:5001/api/quarter1/videos")
       .then((response) => {
-        console.log("Full response:", response); // Logs the entire response object
-        console.log("Response data:", response.data); // Logs the `data` property of the response
         setLessons(response.data);
-
         if (response.data.length > 0) {
           setSelectedVideo(formatYouTubeUrl(response.data[0].video));
         }
       })
       .catch((error) => console.error("Error fetching lessons:", error));
   }, []);
+
+  useEffect(() => {
+    // Check payment status for Quarter 1
+    axios
+      .get(`http://localhost:5001/api/payments/${user.user_id}`)
+      .then((response) => {
+        const hasPaid = response.data.some(
+          (payment) => payment.quarter === "Q1" && payment.status === 1
+        );
+        setHasPaidQ1(hasPaid);
+      })
+      .catch((error) => console.error("Error fetching payments:", error));
+  }, [user.user_id]);
 
   const formatYouTubeUrl = (url) => {
     const urlObj = new URL(url);
@@ -38,153 +50,123 @@ function FirstYearQuarterOne() {
   };
 
   return (
-    <section>
-      <div className="container-fluid-2 pt-50px pb-100px">
-        <div className="grid grid-cols-1 xl:grid-cols-12 gap-30px">
-          {/* Left Panel: Scrollable Weeks */}
-          <div
-            className="xl:col-start-1 xl:col-span-4"
-            data-aos="fade-up"
-            style={{
-              maxHeight: "600px", // Limit the height
-              overflowY: "scroll", // Enable vertical scrolling
-              paddingRight: "10px", // Space for scrollbar
-              scrollbarWidth: "thin", // Custom scrollbar width for Firefox
-              msOverflowStyle: "auto", // Default scrollbar for IE/Edge
-            }}
-          >
-            <ul style={{ padding: 0, margin: 0 }}>
-              {lessons.map((lesson, index) => (
-                <li
-                  key={lesson.id}
-                  style={{
-                    marginBottom: "25px",
-                    overflow: "hidden",
-                    listStyle: "none", // Remove bullet points
-                  }}
-                >
-                  <div
-                    style={{
-                      backgroundColor: "#fff",
-                      border: "1px solid #ddd",
-                    }}
-                  >
-                    <button
-                      onClick={() => toggleAccordion(index)}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        fontSize: "1.25rem",
-                        fontWeight: "bold",
-                        width: "100%",
-                        padding: "10px 20px",
-                        backgroundColor: "transparent",
-                        border: "none",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <span>{lesson.week}</span>
-                      <svg
-                        style={{
-                          transform:
-                            openWeek === index ? "rotate(180deg)" : "rotate(0)",
-                          transition: "transform 0.5s",
-                        }}
-                        width="20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="#212529"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                        ></path>
-                      </svg>
-                    </button>
-                    {openWeek === index && (
+    <div className="bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white min-h-screen">
+      {hasPaidQ1 ? (
+        <section className="py-12">
+          <div className="container mx-auto">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+              {/* Sidebar for lessons */}
+              <div
+                className="xl:col-span-4 p-6 bg-blue-800 shadow-lg rounded-lg overflow-y-auto border border-blue-600"
+                style={{ minHeight: "500px", maxHeight: "500px" }}
+              >
+                <h2 className="text-2xl font-semibold mb-6 flex items-center">
+                  <i className="icofont-books mr-2 text-yellow-400"></i> Lessons
+                </h2>
+                <ul>
+                  {lessons.map((lesson, index) => (
+                    <li key={lesson.id} className="mb-4">
                       <div
-                        style={{
-                          padding: "10px 20px",
-                        }}
+                        className={`border rounded-lg shadow-md bg-blue-700 hover:bg-blue-600 transition-all transform ${
+                          openWeek === index ? "scale-105" : ""
+                        }`}
                       >
-                        <ul>
-                          <li
-                            style={{
-                              padding: "10px 0",
-                              borderBottom: "1px solid #ddd",
-                              cursor: "pointer",
-                            }}
-                            onClick={() => handleVideoSelect(lesson.video)}
+                        <button
+                          onClick={() => toggleAccordion(index)}
+                          className="w-full text-left p-4 flex justify-between items-center rounded-t-lg text-lg"
+                        >
+                          <span>
+                            <i className="icofont-light-bulb mr-2 text-yellow-400"></i>{" "}
+                            {lesson.week}
+                          </span>
+                          <svg
+                            className={`w-5 h-5 transform transition-transform ${
+                              openWeek === index ? "rotate-180" : ""
+                            }`}
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
                           >
-                            <h4
-                              style={{
-                                margin: 0,
-                                fontWeight: "normal",
-                                fontSize: "1rem",
-                              }}
-                            >
-                              <i
-                                style={{
-                                  marginRight: "10px",
-                                }}
-                                className="icofont-video-alt"
-                              ></i>
-                              <span>{lesson.video_description}</span>
-                            </h4>
-                            <div
-                              style={{
-                                marginTop: "10px",
-                                display: "flex",
-                                alignItems: "center",
-                              }}
-                            >
-                              <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "red",
-                                  fontSize: "1.25rem",
-                                }}
-                                className="icofont-file-pdf"
-                              ></i>
-                              <a
-                                href={`http://localhost:5001/${lesson.document}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </button>
+                        {openWeek === index && (
+                          <div className="p-4 bg-blue-800 rounded-b-lg transition-all">
+                            <ul>
+                              <li
+                                className="cursor-pointer border-b py-2 hover:bg-blue-700 transition-colors"
+                                onClick={() => handleVideoSelect(lesson.video)}
                               >
-                                {lesson.document_description}
-                              </a>
-                            </div>
-                          </li>
-                        </ul>
+                                <h4 className="text-base flex items-center">
+                                  <i className="icofont-play-alt-1 mr-2 text-green-400"></i>
+                                  {lesson.video_description}
+                                </h4>
+                              </li>
+                              {lesson.document && (
+                                <div className="flex items-center mt-2">
+                                  <i className="icofont-file-pdf text-red-400 mr-2"></i>
+                                  <a
+                                    href={`http://localhost:5001/${lesson.document}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-300 hover:underline"
+                                  >
+                                    {lesson.document_description}
+                                  </a>
+                                </div>
+                              )}
+                            </ul>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {/* Right Panel: Video Player */}
-          <div
-            className="xl:col-end-13 xl:col-span-7"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div className="embed-responsive aspect-video">
-              <iframe
-                className="embed-responsive-item rounded-xl"
-                width="100%"
-                height="480"
-                src={selectedVideo}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {/* Video Player */}
+              <div
+                className="xl:col-span-8 p-6 bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-800 shadow-lg rounded-lg border border-purple-600"
+                style={{ minHeight: "500px" }}
+              >
+                <h2 className="text-2xl font-semibold mb-6 flex items-center">
+                  <i className="icofont-ui-play mr-2 text-green-400"></i> Video
+                  Player
+                </h2>
+                <div
+                  className="rounded-lg overflow-hidden border border-blue-700 shadow-lg"
+                  style={{ height: "450px" }}
+                >
+                  <iframe
+                    className="w-full h-full"
+                    src={selectedVideo}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
+      ) : (
+        <div className="flex items-center justify-center h-screen">
+          <div className="text-center p-8 bg-gradient-to-r from-red-800 to-red-600 shadow-lg rounded-lg border border-red-700">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Access Denied 🚫
+            </h1>
+            <p className="text-gray-200 text-lg">
+              Complete the payment for Quarter 1 to unlock this content.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      )}
+    </div>
   );
 }
 

@@ -12,26 +12,40 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState(null);
-  const [userType, setUserType] = useState();
+  const [userType, setUserType] = useState(null);
 
   useEffect(() => {
     const checkAuth = async () => {
-      const loggedInUser = await getAuth();
-      console.log(loggedInUser);
-      if (loggedInUser.user_token) {
-        setIsLogged(true);
-        setUser(loggedInUser);
-        setUserType(loggedInUser.company_role_name);
+      try {
+        const loggedInUser = await getAuth();
+        console.log(loggedInUser);
+
+        if (loggedInUser && loggedInUser?.user_token) {
+          setIsLogged(true);
+          setUser(loggedInUser);
+          setUserType(loggedInUser.user_role);
+          console.log("User Role:", loggedInUser.user_role);
+        } else {
+          // Clear state if not authenticated
+          setIsLogged(false);
+          setUser(null);
+          setUserType(null);
+        }
+      } catch (error) {
+        console.error("Error checking authentication:", error);
+        setIsLogged(false);
+        setUser(null);
+        setUserType(null);
       }
     };
 
     checkAuth();
-  }, []);
+  }, [userType, isLogged]);
 
   const logout = () => {
     setIsLogged(false);
-    setIsAdmin(false);
-    setEmployee(null);
+    setUser(null);
+    setUserType(null);
     localStorage.removeItem("authToken");
   };
 
