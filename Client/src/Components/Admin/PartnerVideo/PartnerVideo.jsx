@@ -16,8 +16,8 @@ const customModalStyles = {
     borderRadius: "10px",
     padding: "20px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-    width: "80%",
-    maxWidth: "400px",
+    width: "90%",
+    maxWidth: "500px",
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -122,35 +122,35 @@ const PartnerVideo = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black p-8 min-h-screen text-white">
-      <h1 className="text-3xl font-bold text-center mb-8">
+      <h1 className="text-4xl font-bold text-center mb-10">
         📹 Manage Partner Videos
       </h1>
 
       {/* Error Message */}
       {error && (
-        <div className="bg-red-500 text-white p-3 rounded mb-4 text-center">
+        <div className="bg-red-500 text-white p-4 rounded mb-6 text-center shadow-lg">
           {error}
         </div>
       )}
 
       {/* Add new video section */}
-      <div className="bg-gray-900 p-8 rounded-lg shadow-xl mb-12 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-4 text-center">
+      <div className="bg-gray-900 p-8 rounded-lg shadow-xl mb-16 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-semibold mb-6 text-center">
           Add New Video
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-6">
           <input
             type="text"
             placeholder="Video Link"
             value={videoLink}
             onChange={(e) => setVideoLink(e.target.value)}
-            className="w-full p-4 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full p-5 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
           <textarea
             placeholder="Description (Optional)"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-4 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="w-full p-5 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
           ></textarea>
           <button
             onClick={handleAddVideo}
@@ -164,11 +164,11 @@ const PartnerVideo = () => {
 
       {/* All videos section */}
       <div>
-        <h2 className="text-2xl font-semibold mb-6">All Videos</h2>
+        <h2 className="text-2xl font-semibold mb-8">All Videos</h2>
         {fetchLoading && (
           <p className="text-center text-blue-400">Loading...</p>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {videos.map((video) => {
             const videoId =
               video.video_link && video.video_link.includes("v=")
@@ -178,7 +178,7 @@ const PartnerVideo = () => {
             return (
               <div
                 key={video.video_id}
-                className="bg-gray-800 p-4 rounded-lg shadow-xl transform transition-all hover:scale-105"
+                className="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-all hover:scale-105 flex flex-col items-center"
               >
                 {videoId ? (
                   <a
@@ -190,7 +190,7 @@ const PartnerVideo = () => {
                     <img
                       src={`https://img.youtube.com/vi/${videoId}/0.jpg`}
                       alt="Video Thumbnail"
-                      className="w-full h-40 object-cover rounded"
+                      className="w-full h-40 object-cover rounded-lg shadow-md"
                     />
                   </a>
                 ) : (
@@ -198,11 +198,13 @@ const PartnerVideo = () => {
                     Invalid video link
                   </div>
                 )}
-                <p className="text-sm text-gray-300">{video.description}</p>
+                <p className="text-sm text-gray-300 mt-4">
+                  {video.description}
+                </p>
                 <button
                   onClick={() => handleDeleteVideo(video.video_id)}
                   disabled={deleteLoading}
-                  className="mt-4 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
+                  className="mt-6 bg-red-600 hover:bg-red-700 text-white py-2 px-5 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
                 >
                   {deleteLoading ? "Deleting..." : "Delete"}
                 </button>
@@ -219,18 +221,18 @@ const PartnerVideo = () => {
         style={customModalStyles}
       >
         <p className="text-center text-lg">{modalMessage}</p>
-        <div className="mt-6 flex justify-center space-x-4">
+        <div className="mt-6 flex justify-center space-x-6">
           {modalAction && (
             <button
               onClick={modalAction}
-              className="bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg"
+              className="bg-red-600 hover:bg-red-700 text-white py-2 px-5 rounded-lg"
             >
               Confirm
             </button>
           )}
           <button
             onClick={() => setModalIsOpen(false)}
-            className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg"
+            className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-5 rounded-lg"
           >
             Close
           </button>

@@ -80,7 +80,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-200"
+            className="w-full  bg-blue text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-200"
             disabled={loading}
           >
             {loading ? "Logging in..." : "Log in"}

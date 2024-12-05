@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkAuth();
-  }, [isLogged, user, userType]);
+  }, [isLogged, userType]);
 
   const logout = () => {
     setIsLogged(false);

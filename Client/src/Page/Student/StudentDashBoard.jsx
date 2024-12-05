@@ -238,7 +238,7 @@ function StudentDashBoard() {
                     </div>
                   </li>
 
-                  {userType == "Partner" && (
+                  {userType == 4 && (
                     <>
                       <li className="accordion mb-25px overflow-hidden">
                         <div className="bg-whiteColor border border-borderColor dark:bg-whiteColor-dark dark:border-borderColor-dark rounded-t-md">

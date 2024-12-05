@@ -2,7 +2,12 @@ import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import "../src/assets/js/counterup.js";
 import "../src/assets/js/vanilla-tilt.js";
 import "../src/assets/css/icofont.min.css";
@@ -50,6 +55,8 @@ import PartnerVideo from "./Components/Admin/PartnerVideo/PartnerVideo.jsx";
 import Partner from "./Page/Partner/Partner.jsx";
 import { useAuth } from "./Contexts/AuthContext.jsx";
 import PrivateAuthRoute from "../Auth/PrivateAuthRoute.jsx";
+import StudentHeader from "./Page/Student/StudentHeader/StudentHeader.jsx";
+import AdminHeading from "./Components/Admin/AdminHeading/AdminHeading.jsx";
 
 function App() {
   const { userType, isLogged } = useAuth();
@@ -57,9 +64,8 @@ function App() {
   useEffect(() => {
     AOS.init();
   }, []);
-
   return (
-    <>
+    <Router>
       {!isLogged && (
         <div className=" text-white">
           <Header />
@@ -81,7 +87,7 @@ function App() {
         ) : (
           <>
             <Route element={<PrivateAuthRoute />}>
-              {userType === 2 || userType === 4 ? (
+              {userType == 2 || userType == 4 ? (
                 <>
                   <Route path="/login" element={<LoginPage />} />
                   <Route
@@ -90,8 +96,14 @@ function App() {
                   />
                   <Route
                     path="/student-dashboard"
-                    element={<StudentDashBoard />}
+                    element={
+                      <>
+                        <StudentHeader />
+                        <StudentDashBoard />
+                      </>
+                    }
                   />
+
                   <Route
                     path="/api/quarter1/videos"
                     element={<FirstYearQuarterOne />}
@@ -104,6 +116,7 @@ function App() {
                     path="/api/quarter3/videos"
                     element={<FirstYearQuarterThree />}
                   />
+
                   <Route
                     path="/api/y2-quarter1/videos"
                     element={<SecondYearQuarterOne />}
@@ -119,9 +132,10 @@ function App() {
                 </>
               ) : (
                 <>
-                  {userType === 1 ? (
+                  {userType == 1 ? (
                     <>
                       <Route path="/login" element={<LoginPage />} />
+
                       <Route
                         path="/"
                         element={<Navigate to="/admin-dashboard" />}
@@ -136,38 +150,92 @@ function App() {
                       <Route path="/videos" element={<Videos />} />
                       <Route
                         path="/details/Year-One/Quarter-1"
-                        element={<Video />}
+                        element={
+                          <>
+                            <AdminHeading />
+                            <Video />
+                          </>
+                        }
                       />
                       <Route
                         path="/details/Year-One/Quarter-2"
-                        element={<Year1Q2 />}
+                        element={
+                          <>
+                            <AdminHeading />
+                            <Year1Q2 />
+                          </>
+                        }
                       />
                       <Route
                         path="/details/Year-One/Quarter-3"
-                        element={<Year1Q3 />}
+                        element={
+                          <>
+                            {" "}
+                            <AdminHeading />
+                            <Year1Q3 />
+                          </>
+                        }
                       />
                       <Route
                         path="/details/Year-Two/Quarter-1"
-                        element={<Year2Q1 />}
+                        element={
+                          <>
+                            {" "}
+                            <AdminHeading />
+                            <Year2Q1 />
+                          </>
+                        }
                       />
                       <Route
                         path="/details/Year-Two/Quarter-2"
-                        element={<Year2Q2 />}
+                        element={
+                          <>
+                            <AdminHeading />
+                            <Year2Q2 />
+                          </>
+                        }
                       />
                       <Route
                         path="/details/Year-Two/Quarter-3"
-                        element={<Year2Q3 />}
+                        element={
+                          <>
+                            {" "}
+                            <AdminHeading />
+                            <Year2Q3 />
+                          </>
+                        }
                       />
                       <Route
                         path="/details/Year-One/Document-1"
                         element={<YearlyDocuments />}
                       />
                       <Route path="/users" element={<UsersByQuarter />} />
-                      <Route path="/Partners" element={<PartnerVideo />} />
-                      <Route path="/Payments" element={<Payment />} />
+                      <Route
+                        path="/Partners"
+                        element={
+                          <>
+                            <AdminHeading />
+                            <PartnerVideo />
+                          </>
+                        }
+                      />
+                      <Route
+                        path="/Payments"
+                        element={
+                          <>
+                            <AdminHeading />
+                            <Payment />
+                          </>
+                        }
+                      />
                       <Route
                         path="/api/partners/videos"
-                        element={<Partner />}
+                        element={
+                          <>
+                            <AdminHeading />
+                            <Partner />
+                          </>
+                        }
                       />
                     </>
                   ) : (
@@ -180,7 +248,7 @@ function App() {
         )}
       </Routes>
       {!isLogged && <Footer />}
-    </>
+    </Router>
   );
 }
 

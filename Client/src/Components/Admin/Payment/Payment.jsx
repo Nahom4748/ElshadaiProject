@@ -9,8 +9,8 @@ const Payment = () => {
   const [payments, setPayments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedQuarter, setSelectedQuarter] = useState("Q1"); // Default to Q1
-  const [paymentFilter, setPaymentFilter] = useState("all"); // Filter by all, paid, or not paid
+  const [selectedQuarter, setSelectedQuarter] = useState("Q1");
+  const [paymentFilter, setPaymentFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,23 +55,29 @@ const Payment = () => {
   };
 
   const filterUsersByQuarterAndPayment = () => {
-    return users.filter((user) => {
+    const filtered = users.filter((user) => {
       const paymentStatus = getPaymentStatus(user.user_id, selectedQuarter);
-      if (paymentFilter === "paid" && paymentStatus === 1) {
-        return true;
-      } else if (paymentFilter === "not-paid" && paymentStatus === 0) {
-        return true;
-      } else if (paymentFilter === "all") {
-        return true;
-      }
+      if (paymentFilter === "paid" && paymentStatus === 1) return true;
+      if (paymentFilter === "not-paid" && paymentStatus === 0) return true;
+      if (paymentFilter === "all") return true;
       return false;
     });
+
+    if (searchQuery.trim() !== "") {
+      return filtered.filter(
+        (user) =>
+          user.first_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          user.last_name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    return filtered;
   };
 
   const handleToggle = (userId, quarter) => {
     setSelectedUser(userId);
     setSelectedQuarterForModal(quarter);
-    setIsModalOpen(true); // Open the modal on toggle
+    setIsModalOpen(true);
   };
 
   const handleConfirmAction = () => {
@@ -94,7 +100,7 @@ const Payment = () => {
           .get("http://localhost:5001/api/payments")
           .then((response) => {
             setPayments(response.data);
-            setIsModalOpen(false); // Close the modal after action
+            setIsModalOpen(false);
           })
           .catch((err) => {
             setError(err.message);
@@ -107,12 +113,6 @@ const Payment = () => {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
-    const filtered = users.filter(
-      (user) =>
-        user.first_name.toLowerCase().includes(query.toLowerCase()) ||
-        user.last_name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredUsers(filtered);
     setCurrentPage(1);
   };
 
@@ -134,14 +134,14 @@ const Payment = () => {
     );
 
   const startIndex = (currentPage - 1) * usersPerPage;
-  const paginatedUsers = filteredUsers.slice(
+  const paginatedUsers = filterUsersByQuarterAndPayment().slice(
     startIndex,
     startIndex + usersPerPage
   );
 
   return (
     <div className="bg-gray-900 text-white min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-screen-lg mx-auto p-6 bg-gray-800 rounded-lg shadow-md overflow-hidden">
+      <div className="w-full max-w-screen-lg mx-auto p-4 bg-gray-800 rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center mb-6">
           Student Payments
         </h2>
@@ -204,7 +204,7 @@ const Payment = () => {
               </tr>
             </thead>
             <tbody>
-              {filterUsersByQuarterAndPayment().map((user) => (
+              {paginatedUsers.map((user) => (
                 <tr
                   key={user.user_id}
                   className="hover:bg-gray-600 transition-colors"
@@ -247,44 +247,47 @@ const Payment = () => {
           </button>
           <span className="text-white">
             Page {currentPage} of{" "}
-            {Math.ceil(filteredUsers.length / usersPerPage)}
+            {Math.ceil(filterUsersByQuarterAndPayment().length / usersPerPage)}
           </span>
           <button
             onClick={() => handlePageChange("next")}
-            disabled={currentPage * usersPerPage >= filteredUsers.length}
+            disabled={
+              currentPage ===
+              Math.ceil(filterUsersByQuarterAndPayment().length / usersPerPage)
+            }
             className="bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-600"
           >
             <FaChevronRight />
           </button>
         </div>
-
-        {/* Modal */}
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          contentLabel="Confirm Payment Status Change"
-          className="bg-gray-800 text-white p-6 rounded-lg max-w-sm mx-auto"
-          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-        >
-          <h2 className="text-xl font-semibold mb-4">
-            Are you sure you want to change the payment status?
-          </h2>
-          <div className="flex justify-around">
-            <button
-              onClick={handleConfirmAction}
-              className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded-lg"
-            >
-              Yes, Confirm
-            </button>
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-lg"
-            >
-              Cancel
-            </button>
-          </div>
-        </Modal>
       </div>
+
+      {/* Confirmation Modal */}
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        className="bg-gray-900 text-white p-6 rounded-lg shadow-lg max-w-lg mx-auto mt-20"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50"
+      >
+        <h2 className="text-2xl font-bold mb-4">Confirm Payment Action</h2>
+        <p className="mb-6">
+          Are you sure you want to toggle payment status for this user?
+        </p>
+        <div className="flex justify-end space-x-4">
+          <button
+            onClick={() => setIsModalOpen(false)}
+            className="bg-gray-700 text-white py-2 px-4 rounded-lg hover:bg-gray-600"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleConfirmAction}
+            className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-400"
+          >
+            Confirm
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

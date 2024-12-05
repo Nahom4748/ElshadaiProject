@@ -30,7 +30,7 @@ const Year1Q2 = () => {
 
   useEffect(() => {
     fetchVideos();
-  }, []);
+  }, [setVideos]);
 
   const openVideoModal = (video) => {
     if (userRole === "admin") {
