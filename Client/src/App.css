@@ -112,11 +112,10 @@ h6 {
 }
 
 .sticky-header.scrolled {
- margin-top: 0px;
-   background-color: #0c0e2b; /* Change background on scroll */
+  margin-top: 0px;
+  background-color: #0c0e2b; /* Change background on scroll */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
-
 
 /* tab */
 

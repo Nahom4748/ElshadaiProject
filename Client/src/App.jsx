@@ -2,12 +2,7 @@ import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "../src/assets/js/counterup.js";
 import "../src/assets/js/vanilla-tilt.js";
 import "../src/assets/css/icofont.min.css";
@@ -57,13 +52,14 @@ import { useAuth } from "./Contexts/AuthContext.jsx";
 import PrivateAuthRoute from "../Auth/PrivateAuthRoute.jsx";
 
 function App() {
-  const { userType, isLogged, user } = useAuth();
+  const { userType, isLogged } = useAuth();
 
   useEffect(() => {
     AOS.init();
   }, []);
+
   return (
-    <Router>
+    <>
       {!isLogged && (
         <div className=" text-white">
           <Header />
@@ -85,7 +81,7 @@ function App() {
         ) : (
           <>
             <Route element={<PrivateAuthRoute />}>
-              {user?.user_role == 2 || user?.user_role == 4 ? (
+              {userType === 2 || userType === 4 ? (
                 <>
                   <Route path="/login" element={<LoginPage />} />
                   <Route
@@ -96,7 +92,6 @@ function App() {
                     path="/student-dashboard"
                     element={<StudentDashBoard />}
                   />
-
                   <Route
                     path="/api/quarter1/videos"
                     element={<FirstYearQuarterOne />}
@@ -109,7 +104,6 @@ function App() {
                     path="/api/quarter3/videos"
                     element={<FirstYearQuarterThree />}
                   />
-
                   <Route
                     path="/api/y2-quarter1/videos"
                     element={<SecondYearQuarterOne />}
@@ -125,10 +119,9 @@ function App() {
                 </>
               ) : (
                 <>
-                  {user?.user_role == 1 ? (
+                  {userType === 1 ? (
                     <>
                       <Route path="/login" element={<LoginPage />} />
-
                       <Route
                         path="/"
                         element={<Navigate to="/admin-dashboard" />}
@@ -187,7 +180,7 @@ function App() {
         )}
       </Routes>
       {!isLogged && <Footer />}
-    </Router>
+    </>
   );
 }
 

@@ -5,7 +5,6 @@ const userAuthHeader = async () => {
 
   if (user && user.user_token) {
     const decodedToken = decodeTokenPayload(user.user_token);
-    console.log(decodedToken);
     user.user_role = decodedToken.user_role;
     user.user_id = decodedToken.user_id;
     user.user_first_name = decodedToken.user_first_name;
