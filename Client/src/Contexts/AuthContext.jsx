@@ -1,5 +1,3 @@
-// src/Contexts/AuthContext.js
-
 import React, { useState, useEffect, useContext } from "react";
 import getAuth from "../util/userAuthHeader";
 
@@ -18,15 +16,12 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       try {
         const loggedInUser = await getAuth();
-        console.log(loggedInUser);
 
         if (loggedInUser && loggedInUser?.user_token) {
           setIsLogged(true);
           setUser(loggedInUser);
           setUserType(loggedInUser.user_role);
-          console.log("User Role:", loggedInUser.user_role);
         } else {
-          // Clear state if not authenticated
           setIsLogged(false);
           setUser(null);
           setUserType(null);
@@ -40,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkAuth();
-  }, [userType, isLogged]);
+  }, [isLogged, user, userType]);
 
   const logout = () => {
     setIsLogged(false);
@@ -51,12 +46,11 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     isLogged,
-    setIsLogged,
     user,
-    setUser,
-    logout,
     userType,
-    setUserType,
+    setIsLogged,
+    logout,
+    setUser,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

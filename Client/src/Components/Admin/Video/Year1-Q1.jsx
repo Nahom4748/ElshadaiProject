@@ -19,7 +19,6 @@ const Year1Q1 = () => {
     axios
       .get("http://localhost:5001/api/quarter1/videos")
       .then((response) => {
-       
         setVideos(response.data);
         setLoading(false);
       })
@@ -31,7 +30,7 @@ const Year1Q1 = () => {
 
   useEffect(() => {
     fetchVideos();
-  }, []);
+  }, [setVideos]);
 
   const openVideoModal = (video) => {
     if (userRole === "admin") {

@@ -9,84 +9,21 @@ import { useAuth } from "../../Contexts/AuthContext";
 function StudentDashBoard() {
   // State to control which year is open
   const [openYear, setOpenYear] = useState("firstYear"); // "firstYear" is open by default
-  const { userType } = useAuth();
+  const { userType, user } = useAuth();
   // Effect to automatically expand the 1st year on page load
   useEffect(() => {
-    setOpenYear("firstYear"); // Auto-expand 1st year when the component mounts
+    setOpenYear("firstYear");
   }, []);
 
   // Function to handle toggling the accordions
   const toggleAccordion = (year) => {
     setOpenYear((prevYear) => (prevYear === year ? "" : year)); // Toggle between years, only one can be open at a time
   };
-
   return (
     <>
-      <section>
-        <div className="container-fluid-2">
-          <div className="bg-primaryColor p-5 md:p-10 rounded-5 flex justify-center md:justify-between items-center flex-wrap gap-2">
-            <div className="flex items-center flex-wrap justify-center sm:justify-start">
-              <div className="mr-5">
-                <img
-                  src={BibleImage}
-                  alt=""
-                  className="w-27 h-27 md:w-22 md:h-22 lg:w-27 lg:h-27 rounded-full p-1 border-2 border-darkdeep7 box-content"
-                />
-              </div>
-              <div className="text-whiteColor font-bold text-center sm:text-start">
-                <h5 className="text-2xl leading-1.24 mb-5px">Hello</h5>
-                <ul className="flex items-center gap-15px">
-                  <li className="text-sm font-normal flex items-center gap-0.5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="feather feather-book-open"
-                    >
-                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                    </svg>
-                    9 Courses Enrolled
-                  </li>
-                  <li className="text-sm font-normal flex items-center gap-0.5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="feather feather-award"
-                    >
-                      <circle cx="12" cy="8" r="7"></circle>
-                      <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                    </svg>
-                    8 Certificates
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-50px md:py-70px lg:py-20 2xl:pt-0 2xl:pb-50px mt-5">
         <div className="py-10 md:py-10 2xl:py-50px 3xl:py-30 mx-10px md:mx-50px 3xl:mx-150px dark:bg-darkdeep3-dark shadow-container rounded-5">
           <div className="container">
-            <div className="mb-5 md:mb-10" data-aos="fade-up">
-              <h3 className="text-3xl md:text-[35px] lg:text-size-38 3xl:text-size-42 leading-10 mf:leading-45px 2xl:leading-50px 3xl:leading-2xl font-bold text-white dark:text-white text-center">
-                Course Content.
-              </h3>
-            </div>
             <div className="fees grid grid-cols-1 lg:grid-cols-12 gap-30px">
               <div
                 className="lg:col-start-1 lg:col-span-5 xl:col-span-4"
