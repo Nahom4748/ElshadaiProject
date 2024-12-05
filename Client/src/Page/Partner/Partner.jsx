@@ -1,5 +1,3 @@
-
-
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 
@@ -200,9 +198,6 @@
 // }
 
 // export default Partner;
-
-
-
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
