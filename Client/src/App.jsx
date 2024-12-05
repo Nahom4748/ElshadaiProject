@@ -2,7 +2,12 @@ import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import "../src/assets/js/counterup.js";
 import "../src/assets/js/vanilla-tilt.js";
 import "../src/assets/css/icofont.min.css";
@@ -50,6 +55,7 @@ import PartnerVideo from "./Components/Admin/PartnerVideo/PartnerVideo.jsx";
 import Partner from "./Page/Partner/Partner.jsx";
 import { useAuth } from "./Contexts/AuthContext.jsx";
 import PrivateAuthRoute from "../Auth/PrivateAuthRoute.jsx";
+import StudentHeader from "./Page/Student/StudentHeader/StudentHeader.jsx";
 
 function App() {
   const { userType, isLogged } = useAuth();
@@ -57,9 +63,8 @@ function App() {
   useEffect(() => {
     AOS.init();
   }, []);
-
   return (
-    <>
+    <Router>
       {!isLogged && (
         <div className=" text-white">
           <Header />
@@ -81,7 +86,7 @@ function App() {
         ) : (
           <>
             <Route element={<PrivateAuthRoute />}>
-              {userType === 2 || userType === 4 ? (
+              {userType == 2 || userType == 4 ? (
                 <>
                   <Route path="/login" element={<LoginPage />} />
                   <Route
@@ -90,8 +95,14 @@ function App() {
                   />
                   <Route
                     path="/student-dashboard"
-                    element={<StudentDashBoard />}
+                    element={
+                      <>
+                        <StudentHeader />
+                        <StudentDashBoard />
+                      </>
+                    }
                   />
+
                   <Route
                     path="/api/quarter1/videos"
                     element={<FirstYearQuarterOne />}
@@ -104,6 +115,7 @@ function App() {
                     path="/api/quarter3/videos"
                     element={<FirstYearQuarterThree />}
                   />
+
                   <Route
                     path="/api/y2-quarter1/videos"
                     element={<SecondYearQuarterOne />}
@@ -119,9 +131,10 @@ function App() {
                 </>
               ) : (
                 <>
-                  {userType === 1 ? (
+                  {userType == 1 ? (
                     <>
                       <Route path="/login" element={<LoginPage />} />
+
                       <Route
                         path="/"
                         element={<Navigate to="/admin-dashboard" />}
@@ -180,7 +193,7 @@ function App() {
         )}
       </Routes>
       {!isLogged && <Footer />}
-    </>
+    </Router>
   );
 }
 
