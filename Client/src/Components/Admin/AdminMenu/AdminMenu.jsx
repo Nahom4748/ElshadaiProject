@@ -1,16 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../Contexts/AuthContext";
 function AdminMenu() {
+  const { user } = useAuth();
   return (
     <div class="lg:col-start-1 lg:col-span-3 border border-whitegrey">
-      <div class="p-30px pt-5 lg:p-5 2xl:p-30px 2xl:pt-5 rounded-lg2 shadow-accordion dark:shadow-accordion-dark text-white dark:bg-whiteColor-dark">
-        <h5 class="text-sm leading-1 font-semibold uppercase text-white dark:text-white-dark dark:bg-whiteColor-dark p-10px pb-7px mt-5 mb-10px">
-          WELCOME, MICLE OBEMA
+      <div class="p-20px pt-5 lg:p-5 2xl:p-30px 2xl:pt-5 rounded-lg2 shadow-accordion dark:shadow-accordion-dark text-white dark:bg-whiteColor-dark">
+        <h5 className="text-sm leading-1 font-semibold uppercase text-white dark:text-white-dark dark:bg-whiteColor-dark p-10px pb-7px mt-5 mb-10px">
+          {user.user_first_name} {user.user_last_name}
         </h5>
+
         <ul>
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
-              to="admin-dashboard.html"
+              to="/admin-dashboard"
               class="text-white hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
               <svg
@@ -31,11 +34,13 @@ function AdminMenu() {
               Dashboard
             </Link>
           </li>
+
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/Payments"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
+              className="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
+              {/* Credit Card Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -43,13 +48,13 @@ function AdminMenu() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-user"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-credit-card"
               >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
+                <rect x="1" y="4" width="22" height="16" rx="3" />
+                <line x1="1" y1="10" x2="23" y2="10" />
               </svg>
               Payments
             </Link>
@@ -57,8 +62,9 @@ function AdminMenu() {
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark flex justify-between items-center">
             <Link
               to="/admin-employee"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
+              className="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
+              {/* User Add Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -66,13 +72,14 @@ function AdminMenu() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-book-open"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-user-plus"
               >
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                <path d="M16 7a4 4 0 1 0-8 0 4 4 0 0 0 8 0z"></path>
+                <path d="M12 14c-2 0-4 1-4 3v2h8v-2c0-2-2-3-4-3z"></path>
+                <path d="M18 6h6M21 3v6"></path>
               </svg>
               Add Employee
             </Link>
@@ -80,8 +87,9 @@ function AdminMenu() {
           <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/videos"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
+              className="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-[1.8] flex gap-3 text-nowrap"
             >
+              {/* Updated Film Reel Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -89,21 +97,33 @@ function AdminMenu() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-bookmark"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-film"
               >
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="2.18"
+                  ry="2.18"
+                ></rect>
+                <line x1="7" y1="2" x2="7" y2="22"></line>
+                <line x1="17" y1="2" x2="17" y2="22"></line>
+                <line x1="2" y1="7" x2="22" y2="7"></line>
+                <line x1="2" y1="17" x2="22" y2="17"></line>
               </svg>
-              Videos
+              Manage Videos
             </Link>
           </li>
-          <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
+          <li className="py-[10px] border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/admin-usersList"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
+              className="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-[1.8] flex gap-3 text-nowrap"
             >
+              {/* User Icon for Manage Users */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -111,38 +131,40 @@ function AdminMenu() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-star"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-users"
               >
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
               </svg>
-              Partners Videos
+              Manage users
             </Link>
           </li>
-          <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
+
+          <li className="py-[10px] border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="/Partners"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
+              className="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-[1.8] flex items-center gap-3 text-nowrap"
             >
+              {/* New icon - Video Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="24"
+                width="1em"
+                height="1em"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-help-circle"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-video"
               >
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                <polygon points="23 7 16 12 23 17 23 7" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
               </svg>
-              Quiz Attempts
+              Partner Videos
             </Link>
           </li>
         </ul>
@@ -150,35 +172,12 @@ function AdminMenu() {
           USER
         </h5>
         <ul>
-          <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <Link
-              to="admin-settings.html"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-settings"
-              >
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-              </svg>
-              Settings
-            </Link>
-          </li>
-
-          <li class="py-10px border-b border-whitegrey dark:border-whitegrey-dark">
+          <li className="pt-10px border-b border-whitegrey dark:border-whitegrey-dark">
             <Link
               to="#"
-              class="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
+              className="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
             >
+              {/* Log-out Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -186,13 +185,13 @@ function AdminMenu() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="feather feather-volume-1"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="feather feather-log-out"
               >
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M17 11l4-4-4-4"></path>
+                <path d="M3 15l4 4 4-4M3 4h10a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H3a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"></path>
               </svg>
               Logout
             </Link>

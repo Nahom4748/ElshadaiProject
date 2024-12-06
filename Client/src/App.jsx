@@ -57,6 +57,14 @@ import { useAuth } from "./Contexts/AuthContext.jsx";
 import PrivateAuthRoute from "../Auth/PrivateAuthRoute.jsx";
 import StudentHeader from "./Page/Student/StudentHeader/StudentHeader.jsx";
 import AdminHeading from "./Components/Admin/AdminHeading/AdminHeading.jsx";
+import PaymentAdmin from "./Page/Admin/PaymentAdmin.jsx";
+import AdminPartnersVideos from "./Page/Admin/AdminPartnersVideos.jsx";
+import AdminStudentVideosY1Q1 from "./Page/Admin/Video/AdminStudentVideosY1Q1.jsx";
+import AdminStudentVideosY1Q2 from "./Page/Admin/Video/AdminStudentVideosY1Q2.jsx";
+import AdminStudentVideosY1Q3 from "./Page/Admin/Video/AdminStudentVideosY1Q3.jsx";
+import AdminStudentVideosY2Q1 from "./Page/Admin/Video/AdminStudentVideosY2Q1.jsx";
+import AdminStudentVideosY2Q2 from "./Page/Admin/Video/AdminStudentVideosY2Q2.jsx";
+import AdminStudentVideosY2Q3 from "./Page/Admin/Video/AdminStudentVideosY2Q3.jsx";
 
 function App() {
   const { userType, isLogged } = useAuth();
@@ -79,7 +87,7 @@ function App() {
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/contact-us" element={<ContactUsPag />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/reset-password" element={<RequestPasswordReset />} />
+            <Route path="/forgot-password" element={<RequestPasswordReset />} />
             <Route path="/reset/:token" element={<ResetPassword />} />
             <Route path="/bible-school" element={<BibleSchoolPa />} />
             <Route path="/create-account" element={<CreateAccPage />} />
@@ -106,28 +114,62 @@ function App() {
 
                   <Route
                     path="/api/quarter1/videos"
-                    element={<FirstYearQuarterOne />}
+                    element={
+                      <>
+                        <StudentHeader />
+                        <FirstYearQuarterOne />
+                      </>
+                    }
                   />
                   <Route
                     path="/api/quarter2/videos"
-                    element={<FirstYearQuarterTwo />}
+                    element={
+                      <>
+                        {" "}
+                        <StudentHeader />
+                        <FirstYearQuarterTwo />
+                      </>
+                    }
                   />
                   <Route
                     path="/api/quarter3/videos"
-                    element={<FirstYearQuarterThree />}
+                    element={
+                      <>
+                        {" "}
+                        <StudentHeader />
+                        <FirstYearQuarterThree />
+                      </>
+                    }
                   />
 
                   <Route
                     path="/api/y2-quarter1/videos"
-                    element={<SecondYearQuarterOne />}
+                    element={
+                      <>
+                        <StudentHeader />
+                        <SecondYearQuarterOne />
+                      </>
+                    }
                   />
                   <Route
                     path="/api/y2-quarter2/videos"
-                    element={<SecondYearQuarterTwo />}
+                    element={
+                      <>
+                        {" "}
+                        <StudentHeader />
+                        <SecondYearQuarterTwo />
+                      </>
+                    }
                   />
                   <Route
                     path="/api/y2-quarter3/videos"
-                    element={<SecondYearQuarterThree />}
+                    element={
+                      <>
+                        {" "}
+                        <StudentHeader />
+                        <SecondYearQuarterThree />
+                      </>
+                    }
                   />
                 </>
               ) : (
@@ -152,8 +194,7 @@ function App() {
                         path="/details/Year-One/Quarter-1"
                         element={
                           <>
-                            <AdminHeading />
-                            <Video />
+                            <AdminStudentVideosY1Q1 />
                           </>
                         }
                       />
@@ -161,8 +202,7 @@ function App() {
                         path="/details/Year-One/Quarter-2"
                         element={
                           <>
-                            <AdminHeading />
-                            <Year1Q2 />
+                            <AdminStudentVideosY1Q2 />
                           </>
                         }
                       />
@@ -170,9 +210,7 @@ function App() {
                         path="/details/Year-One/Quarter-3"
                         element={
                           <>
-                            {" "}
-                            <AdminHeading />
-                            <Year1Q3 />
+                            <AdminStudentVideosY1Q3 />
                           </>
                         }
                       />
@@ -180,9 +218,7 @@ function App() {
                         path="/details/Year-Two/Quarter-1"
                         element={
                           <>
-                            {" "}
-                            <AdminHeading />
-                            <Year2Q1 />
+                            <AdminStudentVideosY2Q1 />
                           </>
                         }
                       />
@@ -190,8 +226,7 @@ function App() {
                         path="/details/Year-Two/Quarter-2"
                         element={
                           <>
-                            <AdminHeading />
-                            <Year2Q2 />
+                            <AdminStudentVideosY2Q2 />
                           </>
                         }
                       />
@@ -199,9 +234,7 @@ function App() {
                         path="/details/Year-Two/Quarter-3"
                         element={
                           <>
-                            {" "}
-                            <AdminHeading />
-                            <Year2Q3 />
+                            <AdminStudentVideosY2Q3 />
                           </>
                         }
                       />
@@ -215,7 +248,7 @@ function App() {
                         element={
                           <>
                             <AdminHeading />
-                            <PartnerVideo />
+                            <AdminPartnersVideos />
                           </>
                         }
                       />
@@ -224,7 +257,7 @@ function App() {
                         element={
                           <>
                             <AdminHeading />
-                            <Payment />
+                            <PaymentAdmin />
                           </>
                         }
                       />

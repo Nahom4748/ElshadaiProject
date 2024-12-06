@@ -2,20 +2,18 @@ import React from "react";
 import AdminMenu from "../../Components/Admin/AdminMenu/AdminMenu";
 import AdminDashbord from "../../Components/Admin/DashBord/AdminDashbord";
 import AdminHeading from "../../Components/Admin/AdminHeading/AdminHeading";
-import AddCourse from "../../Components/Admin/AddCourse/AddCourse";
-import AddEmployee from "../../Components/Admin/AddEmployee/AddEmployee";
-import AdminSetting from "../../Components/Admin/AdminSetting/AdminSetting";
 
 function AdminPage() {
   return (
     <>
       <AdminHeading />
-      <div class="container-fluid-2">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-30px pt-30px pb-100px">
+      <div className="flex flex-col md:flex-row min-h-screen ">
+        {/* Admin Menu */}
+        <div className="w-full md:w-1/4  p-4">
           <AdminMenu />
+        </div>
+        <div className="w-full md:w-3/4 p-4">
           <AdminDashbord />
-          {/* <AddCourse /> */}
-          {/* <AdminSetting /> */}
         </div>
       </div>
     </>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaSave, FaTrash, FaTimes } from "react-icons/fa"; // Import icons
 import userService from "../../../Page/Admin/Usersfetch.service";
 
 const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
@@ -107,7 +108,6 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
           </div>
         ) : (
           <>
-            {/* Display plain text fields for view or delete */}
             {actionType === "delete" || actionType === "view" ? (
               <>
                 <p>
@@ -154,12 +154,11 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
                   placeholder="Last Name"
                 />
                 <input
-                  type="email"
+                  type="text"
                   name="email"
                   value={updatedUser.email || ""}
-                  onChange={handleChange}
-                  className="border p-2 w-full mb-2"
-                  placeholder="Email"
+                  disabled
+                  className="border p-2 w-full mb-2 bg-gray-200 text-gray-700 cursor-not-allowed"
                 />
                 <input
                   type="text"
@@ -209,25 +208,25 @@ const UserModal = ({ user, actionType, onDelete, onClose, onSave }) => {
             <button
               onClick={handleSave}
               disabled={isLoading}
-              className="bg-green-500 text-white p-2 rounded"
+              className="flex items-center bg-green-500 text-white p-2 rounded"
             >
-              {isLoading ? "Saving..." : "Save"}
+              <FaSave className="mr-2" /> Save
             </button>
           )}
           {actionType === "delete" && (
             <button
               onClick={handleDelete}
               disabled={isLoading}
-              className="bg-red-500 text-white p-2 rounded"
+              className="flex items-center bg-red-500 text-white p-2 rounded"
             >
-              {isLoading ? "Deleting..." : "Delete"}
+              <FaTrash className="mr-2" /> Delete
             </button>
           )}
           <button
             onClick={onClose}
-            className="bg-gray-500 text-white p-2 rounded"
+            className="flex items-center bg-gray-500 text-white p-2 rounded"
           >
-            Close
+            <FaTimes className="mr-2" /> Close
           </button>
         </div>
       </div>

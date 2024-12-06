@@ -2,29 +2,6 @@ const bcrypt = require("bcrypt");
 const db = require("../config/db.config");
 const saltRounds = 10;
 
-async function getUserByEmail(email) {
-  const query = `
-    SELECT 
-      Users.user_id, 
-      Users.first_name, 
-      Users.last_name, 
-      Users.phone_number, 
-      Users.city, 
-      Users.country, 
-      Users.active_status, 
-      Users.added_date, 
-      Emails.email, 
-      User_Passwords.password_hashed, 
-      Company_Roles.company_role_name
-    FROM Users
-    INNER JOIN Emails ON Users.user_id = Emails.user_id
-    INNER JOIN User_Passwords ON Users.user_id = User_Passwords.user_id
-    INNER JOIN Company_Roles ON Users.company_role_id = Company_Roles.company_role_id
-    WHERE Emails.email = ?
-  `;
-  const rows = await db.query(query, [email]);
-  return rows;
-}
 // Check if user already exists by checking the Emails table
 async function checkIfUserExists(email) {
   try {
@@ -51,8 +28,6 @@ async function getUserByEmail(email) {
       Users.phone_number, 
       Users.city, 
       Users.country, 
-      Users.active_status, 
-      Users.added_date, 
       Emails.email, 
       User_Passwords.password_hashed, 
       Company_Roles.company_role_name
@@ -129,7 +104,7 @@ async function getUserById(userId) {
       INNER JOIN Emails ON Users.user_id = Emails.user_id
       WHERE Users.user_id = ?`;
   try {
-    const [rows] = await db.query(query, [userId]); // Use db.query here
+    const rows = await db.query(query, [userId]); // Use db.query here
     return rows; // User not found
   } catch (error) {
     console.error("Error fetching user:", error); // Debugging: log any error
@@ -139,7 +114,7 @@ async function getUserById(userId) {
 }
 
 async function updateUser(userId, userData) {
-  console.log(userData)
+  console.log(userData);
   try {
     if (!userId) {
       throw new Error("userId is required");
@@ -220,8 +195,6 @@ async function deleteUser(userId) {
   }
 }
 
-
-
 const getAllUsers = async () => {
   try {
     const sql = `
@@ -243,12 +216,10 @@ const getAllUsers = async () => {
 
 module.exports = {
   checkIfUserExists,
-  getUserByEmail,
   getAllUsers,
   getUserById,
   registerUser,
   updateUser,
   deleteUser,
   getUserByEmail,
-  getAllUsers,
 };

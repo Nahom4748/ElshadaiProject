@@ -12,6 +12,8 @@ const Year1Q1 = () => {
   const [userRole, setUserRole] = useState("admin"); // Default to admin, this can be dynamic
   const [pdfFile, setPdfFile] = useState(null);
   const [pdfDescription, setPdfDescription] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const videosPerPage = 4;
 
   // Fetch videos from API
   const fetchVideos = () => {
@@ -31,6 +33,16 @@ const Year1Q1 = () => {
   useEffect(() => {
     fetchVideos();
   }, [setVideos]);
+
+  const indexOfLastVideo = currentPage * videosPerPage;
+  const indexOfFirstVideo = indexOfLastVideo - videosPerPage;
+  const currentVideos = videos.slice(indexOfFirstVideo, indexOfLastVideo);
+
+  const totalPages = Math.ceil(videos.length / videosPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   const openVideoModal = (video) => {
     if (userRole === "admin") {
@@ -130,13 +142,13 @@ const Year1Q1 = () => {
 
   return (
     <div className="bg-gradient-to-br from-gray-900 via-blue-900 to-black p-8 min-h-screen text-white">
-      <h2 className="text-center text-4xl font-semibold mb-12">
+      <h2 className="text-center text-2xl font-semibold mb-12">
         📹 Year 1 Quarter 1 Videos
       </h2>
 
       {/* Display videos in a grid layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {videos.map((video) => (
+        {currentVideos.map((video) => (
           <div
             key={video.id}
             className="relative group bg-gray-800 rounded-lg shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl"
@@ -200,32 +212,76 @@ const Year1Q1 = () => {
         ))}
       </div>
 
+      {/* Pagination controls */}
+      <div className="flex justify-center items-center mt-8 space-x-4">
+        {/* Previous Button */}
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={`${
+            currentPage === 1
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700"
+          } text-white px-6 py-2 rounded-lg transition duration-300 ease-in-out`}
+        >
+          Previous
+        </button>
+
+        {/* Page Numbers */}
+        <div className="flex space-x-2">
+          {Array.from({ length: totalPages }).map((_, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                key={pageNumber}
+                onClick={() => handlePageChange(pageNumber)}
+                className={`${
+                  currentPage === pageNumber
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-700 text-gray-300 hover:bg-blue-600 hover:text-white"
+                } px-4 py-2 rounded-lg text-lg transition duration-300 ease-in-out`}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Next Button */}
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className={`${
+            currentPage === totalPages
+              ? "bg-gray-500 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700"
+          } text-white px-6 py-2 rounded-lg transition duration-300 ease-in-out`}
+        >
+          Next
+        </button>
+      </div>
+
       {/* Video Modal */}
       {isVideoModalOpen && selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-900 p-8 rounded-lg shadow-xl w-full max-w-lg relative">
-            <button
-              className="absolute top-4 right-4 text-white hover:text-red-500 text-2xl"
-              onClick={closeVideoModal}
-            >
-              &times;
-            </button>
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Edit Video Details
-            </h3>
-            <div className="space-y-4">
-              <label className="block text-lg text-gray-300">Video URL:</label>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-gray-800 p-8 rounded-lg w-96">
+            <h3 className="text-xl text-white mb-4">Edit Video</h3>
+            <div className="mb-4">
+              <label className="block text-white">Video URL:</label>
               <input
                 type="text"
                 value={selectedVideo.video}
                 onChange={(e) =>
-                  setSelectedVideo({ ...selectedVideo, video: e.target.value })
+                  setSelectedVideo({
+                    ...selectedVideo,
+                    video: e.target.value,
+                  })
                 }
-                className="w-full p-3 rounded-lg bg-gray-800 text-white"
+                className="w-full p-2 rounded-lg text-black"
               />
-              <label className="block text-lg text-gray-300">
-                Video Description:
-              </label>
+            </div>
+            <div className="mb-4">
+              <label className="block text-white">Description:</label>
               <textarea
                 value={selectedVideo.video_description}
                 onChange={(e) =>
@@ -234,23 +290,22 @@ const Year1Q1 = () => {
                     video_description: e.target.value,
                   })
                 }
-                className="w-full p-3 rounded-lg bg-gray-800 text-white"
+                className="w-full p-2 rounded-lg text-black"
               />
-              <div className="flex justify-between items-center mt-6">
-                <button
-                  onClick={handleVideoUpdate}
-                  disabled={saving}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg"
-                >
-                  {saving ? "Saving..." : "Save Changes"}
-                </button>
-                <button
-                  onClick={closeVideoModal}
-                  className="bg-red-600 text-white px-4 py-2 rounded-lg"
-                >
-                  Cancel
-                </button>
-              </div>
+            </div>
+            <div className="flex justify-between">
+              <button
+                onClick={handleVideoUpdate}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
+                {saving ? "Saving..." : "Save"}
+              </button>
+              <button
+                onClick={closeVideoModal}
+                className="bg-gray-600 text-white px-4 py-2 rounded-lg"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
@@ -258,47 +313,39 @@ const Year1Q1 = () => {
 
       {/* Document Modal */}
       {isDocModalOpen && selectedVideo && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-gray-900 p-8 rounded-lg shadow-xl w-full max-w-lg relative">
-            <button
-              className="absolute top-4 right-4 text-white hover:text-red-500 text-2xl"
-              onClick={closeDocModal}
-            >
-              &times;
-            </button>
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Edit Document Details
-            </h3>
-            <div className="space-y-4">
-              <label className="block text-lg text-gray-300">PDF File:</label>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="bg-gray-800 p-8 rounded-lg w-96">
+            <h3 className="text-xl text-white mb-4">Edit Document</h3>
+            <div className="mb-4">
+              <label className="block text-white">Upload PDF:</label>
               <input
                 type="file"
                 onChange={(e) => setPdfFile(e.target.files[0])}
-                className="w-full p-3 rounded-lg bg-gray-800 text-white"
+                className="w-full p-2 rounded-lg text-black"
               />
-              <label className="block text-lg text-gray-300">
-                Document Description:
-              </label>
-              <textarea
+            </div>
+            <div className="mb-4">
+              <label className="block text-white">Description:</label>
+              <input
+                type="text"
                 value={pdfDescription}
                 onChange={(e) => setPdfDescription(e.target.value)}
-                className="w-full p-3 rounded-lg bg-gray-800 text-white"
+                className="w-full p-2 rounded-lg text-black"
               />
-              <div className="flex justify-between items-center mt-6">
-                <button
-                  onClick={handleDocUpdate}
-                  disabled={saving}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg"
-                >
-                  {saving ? "Saving..." : "Save Changes"}
-                </button>
-                <button
-                  onClick={closeDocModal}
-                  className="bg-red-600 text-white px-4 py-2 rounded-lg"
-                >
-                  Cancel
-                </button>
-              </div>
+            </div>
+            <div className="flex justify-between">
+              <button
+                onClick={handleDocUpdate}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+              >
+                {saving ? "Saving..." : "Save"}
+              </button>
+              <button
+                onClick={closeDocModal}
+                className="bg-gray-600 text-white px-4 py-2 rounded-lg"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
