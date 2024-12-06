@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "react-modal";
+import { FaPlus, FaTrashAlt } from "react-icons/fa";
+import ReactPaginate from "react-paginate";
 
-// Modal styles
 const customModalStyles = {
   content: {
     top: "50%",
@@ -11,13 +12,13 @@ const customModalStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    backgroundColor: "#1f2937", // Tailwind gray-800
+    backgroundColor: "#1f2937",
     color: "white",
     borderRadius: "10px",
     padding: "20px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
     width: "90%",
-    maxWidth: "500px",
+    maxWidth: "400px",
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.75)",
@@ -26,6 +27,12 @@ const customModalStyles = {
 
 Modal.setAppElement("#root");
 
+const extractYouTubeID = (url) => {
+  const regex = /(?:\?v=|\/embed\/|\/v\/|youtu\.be\/|\/watch\?v=)([^&?/\s]+)/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+};
+
 const PartnerVideo = () => {
   const [videos, setVideos] = useState([]);
   const [videoLink, setVideoLink] = useState("");
@@ -33,47 +40,39 @@ const PartnerVideo = () => {
   const [fetchLoading, setFetchLoading] = useState(false);
   const [addLoading, setAddLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
-  const [error, setError] = useState(null);
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
-  const [modalAction, setModalAction] = useState(null);
+  const [confirmModalIsOpen, setConfirmModalIsOpen] = useState(false);
+  const [videoToDelete, setVideoToDelete] = useState(null);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  // Function to fetch videos
+  const videosPerPage = 6;
+
   const fetchVideos = async () => {
     setFetchLoading(true);
-    setError(null);
     try {
       const response = await axios.get(
         "http://localhost:5001/api/partners/videos"
       );
-      if (response.data.success && Array.isArray(response.data.data)) {
-        setVideos(response.data.data);
-      } else {
-        setError("No videos found or data is in an unexpected format.");
-      }
+      setVideos(response.data.data || []);
     } catch (err) {
-      setError("Failed to load videos. Please try again later.");
+      setError("Failed to load videos.");
     } finally {
       setFetchLoading(false);
     }
   };
 
-  // Fetch videos when the component mounts
   useEffect(() => {
     fetchVideos();
   }, []);
 
-  // Function to handle adding a new video
   const handleAddVideo = async () => {
     if (!videoLink) {
       setError("Video link is required!");
       return;
     }
 
-    setError(null);
     setAddLoading(true);
-
     try {
       const response = await axios.post(
         "http://localhost:5001/api/partners/videos",
@@ -84,157 +83,163 @@ const PartnerVideo = () => {
       );
 
       if (response.status === 201) {
-        setModalMessage("Video added successfully!");
-        setModalAction(null);
-        setModalIsOpen(true);
+        fetchVideos();
         setVideoLink("");
         setDescription("");
-        fetchVideos();
-      } else {
-        setError("Failed to add video. Please try again.");
+        setModalIsOpen(false);
       }
     } catch (err) {
-      setError("Failed to add video. Please try again.");
+      setError("Failed to add video.");
     } finally {
       setAddLoading(false);
     }
   };
 
-  // Function to handle deleting a video
-  const handleDeleteVideo = (id) => {
-    setModalMessage("Are you sure you want to delete this video?");
-    setModalAction(() => async () => {
-      setDeleteLoading(true);
-      try {
-        await axios.delete(`http://localhost:5001/api/partners/videos/${id}`);
-        setModalMessage("Video deleted successfully!");
-        setModalAction(null);
-        fetchVideos();
-      } catch (err) {
-        setError("Failed to delete video. Please try again.");
-      } finally {
-        setDeleteLoading(false);
-        setModalIsOpen(false);
-      }
-    });
-    setModalIsOpen(true);
+  const confirmDelete = (id) => {
+    setVideoToDelete(id);
+    setConfirmModalIsOpen(true);
   };
+
+  const handleDeleteVideo = async () => {
+    if (!videoToDelete) return;
+
+    setDeleteLoading(true);
+    try {
+      await axios.delete(
+        `http://localhost:5001/api/partners/videos/${videoToDelete}`
+      );
+      fetchVideos();
+      setConfirmModalIsOpen(false);
+      setVideoToDelete(null);
+    } catch (err) {
+      setError("Failed to delete video.");
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
+
+  const handlePageClick = (data) => {
+    setCurrentPage(data.selected);
+  };
+
+  const paginatedVideos = videos.slice(
+    currentPage * videosPerPage,
+    currentPage * videosPerPage + videosPerPage
+  );
 
   return (
     <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-black p-8 min-h-screen text-white">
-      <h1 className="text-4xl font-bold text-center mb-10">
-        📹 Manage Partner Videos
-      </h1>
+      <h1 className="font-bold text-center mb-10">📹 Manage Partner Videos</h1>
 
-      {/* Error Message */}
       {error && (
-        <div className="bg-red-500 text-white p-4 rounded mb-6 text-center shadow-lg">
+        <div className="bg-red-500 text-white p-4 rounded mb-6 text-center">
           {error}
         </div>
       )}
 
-      {/* Add new video section */}
-      <div className="bg-gray-900 p-8 rounded-lg shadow-xl mb-16 max-w-3xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
-          Add New Video
-        </h2>
-        <div className="space-y-6">
-          <input
-            type="text"
-            placeholder="Video Link"
-            value={videoLink}
-            onChange={(e) => setVideoLink(e.target.value)}
-            className="w-full p-5 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-          />
-          <textarea
-            placeholder="Description (Optional)"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-5 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-          ></textarea>
-          <button
-            onClick={handleAddVideo}
-            disabled={addLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-          >
-            {addLoading ? "Adding..." : "Add Video"}
-          </button>
-        </div>
-      </div>
-
-      {/* All videos section */}
-      <div>
-        <h2 className="text-2xl font-semibold mb-8">All Videos</h2>
-        {fetchLoading && (
-          <p className="text-center text-blue-400">Loading...</p>
-        )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {videos.map((video) => {
-            const videoId =
-              video.video_link && video.video_link.includes("v=")
-                ? video.video_link.split("v=")[1].split("&")[0]
-                : null;
-
-            return (
-              <div
-                key={video.video_id}
-                className="bg-gray-800 p-6 rounded-lg shadow-xl transform transition-all hover:scale-105 flex flex-col items-center"
-              >
-                {videoId ? (
-                  <a
-                    href={video.video_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block mb-4"
-                  >
-                    <img
-                      src={`https://img.youtube.com/vi/${videoId}/0.jpg`}
-                      alt="Video Thumbnail"
-                      className="w-full h-40 object-cover rounded-lg shadow-md"
-                    />
-                  </a>
-                ) : (
-                  <div className="text-center text-red-500">
-                    Invalid video link
-                  </div>
-                )}
-                <p className="text-sm text-gray-300 mt-4">
-                  {video.description}
-                </p>
-                <button
-                  onClick={() => handleDeleteVideo(video.video_id)}
-                  disabled={deleteLoading}
-                  className="mt-6 bg-red-600 hover:bg-red-700 text-white py-2 px-5 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
-                >
-                  {deleteLoading ? "Deleting..." : "Delete"}
-                </button>
+      {fetchLoading ? (
+        <p className="text-center text-blue-400">Loading...</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {paginatedVideos.map((video) => (
+            <div
+              key={video.video_id}
+              className="relative group bg-gray-800 rounded-lg shadow-lg p-4"
+            >
+              <div className="aspect-w-16 aspect-h-9">
+                <iframe
+                  className="w-full h-full rounded-lg"
+                  src={`https://www.youtube.com/embed/${extractYouTubeID(
+                    video.video_link
+                  )}`}
+                  title={video.description || "Video"}
+                  allowFullScreen
+                ></iframe>
               </div>
-            );
-          })}
+              <p className="text-sm text-gray-300 mt-2">
+                {video.description || "No description"}
+              </p>
+              <button
+                onClick={() => confirmDelete(video.video_id)}
+                className="bg-red-600 hover:bg-red-700 text-white py-1 px-4 rounded-lg mt-4 flex items-center justify-center"
+              >
+                <FaTrashAlt className="mr-2" /> Delete
+              </button>
+            </div>
+          ))}
         </div>
-      </div>
+      )}
 
-      {/* Modal */}
+      <ReactPaginate
+        previousLabel={"← Previous"}
+        nextLabel={"Next →"}
+        pageCount={Math.ceil(videos.length / videosPerPage)}
+        onPageChange={handlePageClick}
+        containerClassName={"flex justify-center mt-8 space-x-4"}
+        previousLinkClassName={
+          "bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+        }
+        nextLinkClassName={
+          "bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded"
+        }
+        disabledClassName={"opacity-50 cursor-not-allowed"}
+        activeClassName={"bg-blue-700 text-white px-3 py-1 rounded"}
+      />
+
+      <button
+        onClick={() => setModalIsOpen(true)}
+        className="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg border-4 border-white"
+      >
+        <FaPlus className="text-2xl" />
+      </button>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         style={customModalStyles}
       >
-        <p className="text-center text-lg">{modalMessage}</p>
-        <div className="mt-6 flex justify-center space-x-6">
-          {modalAction && (
-            <button
-              onClick={modalAction}
-              className="bg-red-600 hover:bg-red-700 text-white py-2 px-5 rounded-lg"
-            >
-              Confirm
-            </button>
-          )}
+        <h2 className="text-2xl mb-4">Add New Video</h2>
+        <input
+          type="text"
+          placeholder="Video Link"
+          value={videoLink}
+          onChange={(e) => setVideoLink(e.target.value)}
+          className="w-full p-3 mb-4 bg-gray-800 text-white rounded-lg"
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="w-full p-3 mb-4 bg-gray-800 text-white rounded-lg"
+        />
+        <button
+          onClick={handleAddVideo}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg"
+        >
+          {addLoading ? "Adding..." : "Add Video"}
+        </button>
+      </Modal>
+
+      {/* Confirmation Modal */}
+      <Modal
+        isOpen={confirmModalIsOpen}
+        onRequestClose={() => setConfirmModalIsOpen(false)}
+        style={customModalStyles}
+      >
+        <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
+        <p className="mb-6">Are you sure you want to delete this video?</p>
+        <div className="flex justify-end space-x-4">
           <button
-            onClick={() => setModalIsOpen(false)}
-            className="bg-gray-600 hover:bg-gray-700 text-white py-2 px-5 rounded-lg"
+            onClick={() => setConfirmModalIsOpen(false)}
+            className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg"
           >
-            Close
+            Cancel
+          </button>
+          <button
+            onClick={handleDeleteVideo}
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
+          >
+            {deleteLoading ? "Deleting..." : "Delete"}
           </button>
         </div>
       </Modal>
