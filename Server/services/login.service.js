@@ -1,65 +1,41 @@
-// Import the query function from the db.config.js file
-const conn = require("../config/db.config");
-// Import the bcrypt module to do the password comparison
-const bcrypt = require("bcrypt");
-// Import the user service to get user by email
 const userService = require("./user.service");
-const { use } = require("../routes");
+const bcrypt = require("bcrypt");
 
-// Handle user login
 async function logIn(userData) {
+  const { email, password } = userData;
+
   try {
-    let returnData = {}; // Object to be returned
+    const user = await userService.getUserByEmail(email);
 
-    // Get user by email
-    const user = await userService.getUserByEmail(userData.email);
-    console.log(user);
-    // If user does not exist
-    if (user.length === 0) {
+    if (!user) {
       return {
         status: "fail",
-        message: "User does not exist",
+        message: "User not found",
       };
     }
 
-    // Assuming user[0] exists, check password
-    const passwordHashed = user[0].password_hashed;
-
-    // Check if the password hashed exists
-    if (!passwordHashed) {
-      return {
-        status: "fail",
-        message: "Password hash not found",
-      };
-    }
-
-    // Compare provided password with hashed password
-    const passwordMatch = await bcrypt.compare(
-      userData.password,
-      passwordHashed
+    const isPasswordValid = await bcrypt.compare(
+      password,
+      user.password_hashed
     );
-    if (!passwordMatch) {
+    console.log(user);
+    if (!isPasswordValid) {
       return {
         status: "fail",
-        message: "Incorrect password",
+        message: "Invalid email or password",
       };
     }
 
-    returnData = {
+    return {
       status: "success",
-      data: user[0], // Make sure this is not undefined
+      data: user,
     };
-    return returnData;
   } catch (error) {
     console.error("Error in login service:", error);
-    return {
-      status: "error",
-      message: "An error occurred during login",
-    };
+    throw new Error("An error occurred while logging in");
   }
 }
 
-// Export the function
 module.exports = {
   logIn,
 };

@@ -174,7 +174,7 @@ function App() {
                 </>
               ) : (
                 <>
-                  {userType == 1 ? (
+                  {userType == 1 || userType == 3 ? (
                     <>
                       <Route path="/login" element={<LoginPage />} />
 

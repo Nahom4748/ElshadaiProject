@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
 function AdminMenu() {
   const { user } = useAuth();
+  console.log(user);
   return (
     <div class="lg:col-start-1 lg:col-span-3 border border-whitegrey">
       <div class="p-20px pt-5 lg:p-5 2xl:p-30px 2xl:pt-5 rounded-lg2 shadow-accordion dark:shadow-accordion-dark text-white dark:bg-whiteColor-dark">
