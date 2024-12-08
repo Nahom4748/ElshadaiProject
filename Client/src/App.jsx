@@ -38,20 +38,13 @@ import AboutUsPage from "./Page/AboutUsPage/AboutUsPage.jsx";
 import BibleSchoolPa from "./Page/BibleSchool/BibleSchoolPa.jsx";
 import ContactUsPag from "./Page/ContactUs/ContactUsPag.jsx";
 import UsersList from "./Page/Admin/UsersList.jsx";
-import Video from "./Components/Admin/Video/Year1-Q1.jsx";
 import Videos from "./Page/Admin/Videos.jsx";
-import Year1Q2 from "./Components/Admin/Video/Year1Q2.jsx";
-import Year1Q3 from "./Components/Admin/Video/Year1Q3.jsx";
-import Year2Q1 from "./Components/Admin/Video/Year2Q1.jsx";
-import Year2Q2 from "./Components/Admin/Video/Year2Q2.jsx";
-import Year2Q3 from "./Components/Admin/Video/Year2Q3.jsx";
+
 import UsersByQuarter from "./Components/Admin/Payment/Payment.jsx";
-import Payment from "./Components/Admin/Payment/Payment.jsx";
 import YearlyDocuments from "./Components/Admin/DocumentsComponent/DocumentsComponent.jsx";
 
 import RequestPasswordReset from "./Page/RequestPasswordReset/RequestPasswordReset.jsx";
 import ResetPassword from "./Page/ResetPassword/ResetPassword.jsx";
-import PartnerVideo from "./Components/Admin/PartnerVideo/PartnerVideo.jsx";
 import Partner from "./Page/Partner/Partner.jsx";
 import { useAuth } from "./Contexts/AuthContext.jsx";
 import PrivateAuthRoute from "../Auth/PrivateAuthRoute.jsx";
