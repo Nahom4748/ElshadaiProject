@@ -20,7 +20,6 @@ const Login = () => {
 
     try {
       const response = await loginService.logIn(formData); // Using axios
-      console.log(response);
       if (response.status === "success") {
         const userToken = response.data?.user_token;
         if (userToken) {
