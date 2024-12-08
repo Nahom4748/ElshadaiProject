@@ -1,38 +1,51 @@
 const userService = require("../services/user.service");
-const bcrypt = require("bcrypt"); // Import bcrypt at the top of the file
+const loginService = require("../services/login.service");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-//create a function to get all users
+const jwtSecret = process.env.SECRET_KEY;
+
+// Get all users
 async function getAllUsers(req, res, next) {
   try {
     const users = await userService.getAllUsers();
-    res.status(200).json(users);
+    res.status(200).json({
+      status: "success",
+      message: "Users fetched successfully!",
+      data: users,
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("Error in controller:", error);
+    res.status(500).json({
+      status: "fail",
+      message: "Error fetching users!",
+      error: error.message,
+    });
   } finally {
-    next(); // Correctly placed curly brace
+    next();
   }
 }
 
+// Get user by ID
 async function getUserById(req, res, next) {
   const { userId } = req.params;
   try {
-    console.log("request id", userId);
     const user = await userService.getUserById(userId);
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
     res.status(200).json(user);
   } catch (error) {
+    console.error("Error fetching user:", error);
     res.status(500).json({ error: error.message });
   } finally {
-    next(); // Correctly placed curly brace
+    next();
   }
 }
 
+// Register a new user
 async function registerUser(req, res) {
   const userData = req.body;
-  console.log("first");
-  // Validate input fields
   const requiredFields = [
     "email",
     "password",
@@ -53,7 +66,6 @@ async function registerUser(req, res) {
   }
 
   try {
-    // Check if user already exists
     const userExists = await userService.checkIfUserExists(userData.email);
     if (userExists) {
       return res.status(400).json({
@@ -61,47 +73,36 @@ async function registerUser(req, res) {
         message: "User already exists",
       });
     }
-    // Ensure the password is a string
-    if (typeof userData.password !== "string") {
-      throw new Error("Password must be a string");
-    }
 
-    // Hash the password before registering the user
-    const saltRounds = 10;
-    userData.password = await bcrypt.hash(userData.password, saltRounds);
-
-    // Register the user with the hashed password
     const result = await userService.registerUser(userData);
+
     if (result.status === "fail") {
       return res.status(400).json({
-        status: "fail",
+        status: result.status,
         message: result.message,
       });
     }
 
-    return res.status(201).json({
-      status: "success",
-      message: "User registered successfully",
+    res.status(201).json({
+      status: result.status,
+      message: result.message,
     });
   } catch (error) {
-    console.error("Error registering user:", error); // Detailed error log
-    return res.status(500).json({
+    console.error("Error registering user:", error);
+    res.status(500).json({
       status: "error",
       message: "An error occurred during registration",
     });
   }
 }
 
-// Update User Controller
+// Update a user
 async function updateUser(req, res) {
+  const { userId } = req.params;
+  const userData = req.body;
+
   try {
-    const userId = req.params.userId; // Retrieve userId from URL
-    const userData = req.body; // Retrieve user data from request body
-
-    // Step 1: Check if the user exists
     const userExists = await userService.getUserById(userId);
-    console.log("Fetched User:", userExists); // Debugging: verify user exists
-
     if (!userExists) {
       return res.status(404).json({
         status: "fail",
@@ -109,7 +110,6 @@ async function updateUser(req, res) {
       });
     }
 
-    // Step 2: Update the user data
     const result = await userService.updateUser(userId, userData);
 
     if (result.status === "fail") {
@@ -119,64 +119,90 @@ async function updateUser(req, res) {
       });
     }
 
-    return res.status(200).json({
+    res.status(200).json({
       status: "success",
       message: "User updated successfully",
     });
   } catch (error) {
     console.error("Error updating user:", error);
-    return res.status(500).json({
+    res.status(500).json({
       status: "error",
       message: "An error occurred while updating the user",
     });
   }
 }
 
-
-// controller method to delete a user
-const deleteUser = async (req, res) => {
-  const userId = req.params.userId;
+// Delete a user
+async function deleteUser(req, res) {
+  const { userId } = req.params;
   try {
     const result = await userService.deleteUser(userId);
-    return res.status(200).json({
+    res.status(200).json({
       status: "success",
       message: "User deleted successfully!",
       data: result,
     });
   } catch (error) {
     console.error("Error in controller:", error);
-    return res.status(500).json({
+    res.status(500).json({
       status: "fail",
       message: "Error deleting user!",
       error: error.message,
     });
   }
-};
+}
 
-
-
-async function getAllUsers(req, res) {
+// Handle user login
+async function logIn(req, res) {
+  const userData = req.body;
   try {
-    const users = await userService.getAllUsers();
-    return res.status(200).json({
+    const user = await loginService.logIn(userData);
+
+    if (user.status === "fail") {
+      return res.status(403).json({
+        status: user.status,
+        message: user.message,
+      });
+    }
+
+    const roleMapping = {
+      Admin: 1,
+      Student: 2,
+      Manager: 3,
+      Partner: 4,
+    };
+
+    const roleValue = roleMapping[user.data.company_role_name] || null;
+
+    const payload = {
+      user_id: user.data.user_id,
+      user_email: user.data.email,
+      user_role: roleValue,
+      user_first_name: user.data.first_name,
+      user_last_name: user.data.last_name,
+    };
+
+    const token = jwt.sign(payload, jwtSecret, { expiresIn: "24h" });
+
+    res.status(200).json({
       status: "success",
-      message: "Users fetched successfully!",
-      data: users,
+      message: "User logged in successfully",
+      data: { user_token: token },
     });
   } catch (error) {
-    console.error("Error in controller:", error);
-    return res.status(500).json({
-      status: "fail",
-      message: "Error fetching users!",
-      error: error.message,
+    console.error("Login error:", error);
+    res.status(500).json({
+      status: "error",
+      message: "An error occurred during login",
     });
   }
 }
+
 module.exports = {
   getAllUsers,
   getUserById,
   registerUser,
   updateUser,
   deleteUser,
-  getAllUsers,
+  logIn,
 };
