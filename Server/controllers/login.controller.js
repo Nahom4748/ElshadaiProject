@@ -17,8 +17,8 @@ async function logIn(req, res) {
 
     const roleMapping = {
       Admin: 1,
-      Student: 2,
-      Manager: 3,
+      Manager: 2,
+      Student: 3,
       Partner: 4,
     };
 

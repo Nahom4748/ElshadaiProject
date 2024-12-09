@@ -88,7 +88,7 @@ function App() {
         ) : (
           <>
             <Route element={<PrivateAuthRoute />}>
-              {userType == 2 || userType == 4 ? (
+              {userType == 3 || userType == 4 ? (
                 <>
                   <Route path="/login" element={<LoginPage />} />
                   <Route
@@ -164,10 +164,19 @@ function App() {
                       </>
                     }
                   />
+                  <Route
+                    path="/api/partners/videos"
+                    element={
+                      <>
+                        {" "}
+                        <StudentHeader /> <Partner />{" "}
+                      </>
+                    }
+                  />
                 </>
               ) : (
                 <>
-                  {userType == 1 || userType == 3 ? (
+                  {userType == 1 || userType == 2 ? (
                     <>
                       <Route path="/login" element={<LoginPage />} />
 

@@ -280,57 +280,16 @@ function StudentDashBoard() {
                                 <li className="py-4 flex items-center justify-between flex-wrap border-b border-borderColor dark:border-borderColor-dark">
                                   <div>
                                     <h4 className="text-blackColor dark:text-blackColor-dark leading-1 font-light">
-                                      <i className="fas fa-handshake mr-10px"></i>
+                                      {/* Change the icon to a video icon */}
+                                      <i className="fas fa-video mr-10px"></i>
                                       <span className="font-medium">
-                                        Quarter 1
+                                        Videos
                                       </span>
                                     </h4>
                                   </div>
                                   <div className="text-blackColor dark:text-blackColor-dark text-sm flex items-center">
                                     <Link
-                                      to="/api/partners/videos"
-                                      className="bg-primaryColor text-whiteColor text-sm ml-5 rounded py-0.5"
-                                    >
-                                      <p className="px-10px">
-                                        <i className="icofont-eye"></i> View
-                                      </p>
-                                    </Link>
-                                  </div>
-                                </li>
-
-                                <li className="py-4 flex items-center justify-between flex-wrap border-b border-borderColor dark:border-borderColor-dark">
-                                  <div>
-                                    <h4 className="text-blackColor dark:text-blackColor-dark leading-1 font-light">
-                                      <i className="fas fa-handshake mr-10px"></i>
-                                      <span className="font-medium">
-                                        Quarter 2
-                                      </span>
-                                    </h4>
-                                  </div>
-                                  <div className="text-blackColor dark:text-blackColor-dark text-sm flex items-center">
-                                    <Link
-                                      to="/partner2/details"
-                                      className="bg-primaryColor text-whiteColor text-sm ml-5 rounded py-0.5"
-                                    >
-                                      <p className="px-10px">
-                                        <i className="icofont-eye"></i> View
-                                      </p>
-                                    </Link>
-                                  </div>
-                                </li>
-
-                                <li className="py-4 flex items-center justify-between flex-wrap border-b border-borderColor dark:border-borderColor-dark">
-                                  <div>
-                                    <h4 className="text-blackColor dark:text-blackColor-dark leading-1 font-light">
-                                      <i className="fas fa-handshake mr-10px"></i>
-                                      <span className="font-medium">
-                                        Quarter 3
-                                      </span>
-                                    </h4>
-                                  </div>
-                                  <div className="text-blackColor dark:text-blackColor-dark text-sm flex items-center">
-                                    <Link
-                                      to="/partner3/details"
+                                      to="/api/partners/videos" // This link should point to your video page
                                       className="bg-primaryColor text-whiteColor text-sm ml-5 rounded py-0.5"
                                     >
                                       <p className="px-10px">
