@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function WhatWeDo() {
   return (
@@ -253,4 +253,4 @@ function WhatWeDo() {
   );
 }
 
-export default WhatWeDo
+export default WhatWeDo;

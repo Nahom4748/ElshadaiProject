@@ -90,7 +90,6 @@ function App() {
             <Route element={<PrivateAuthRoute />}>
               {userType == 3 || userType == 4 ? (
                 <>
-                  <Route path="/login" element={<LoginPage />} />
                   <Route
                     path="/"
                     element={<Navigate to="/student-dashboard" />}
@@ -164,6 +163,7 @@ function App() {
                       </>
                     }
                   />
+
                   <Route
                     path="/api/partners/videos"
                     element={
@@ -173,13 +173,15 @@ function App() {
                       </>
                     }
                   />
+                  <Route
+                    path="*"
+                    element={<Navigate to="/student-dashboard" />}
+                  />
                 </>
               ) : (
                 <>
-                  {userType == 1 || userType == 2 ? (
+                  {userType === 1 || userType === 2 ? (
                     <>
-                      <Route path="/login" element={<LoginPage />} />
-
                       <Route
                         path="/"
                         element={<Navigate to="/admin-dashboard" />}
@@ -194,51 +196,27 @@ function App() {
                       <Route path="/videos" element={<Videos />} />
                       <Route
                         path="/details/Year-One/Quarter-1"
-                        element={
-                          <>
-                            <AdminStudentVideosY1Q1 />
-                          </>
-                        }
+                        element={<AdminStudentVideosY1Q1 />}
                       />
                       <Route
                         path="/details/Year-One/Quarter-2"
-                        element={
-                          <>
-                            <AdminStudentVideosY1Q2 />
-                          </>
-                        }
+                        element={<AdminStudentVideosY1Q2 />}
                       />
                       <Route
                         path="/details/Year-One/Quarter-3"
-                        element={
-                          <>
-                            <AdminStudentVideosY1Q3 />
-                          </>
-                        }
+                        element={<AdminStudentVideosY1Q3 />}
                       />
                       <Route
                         path="/details/Year-Two/Quarter-1"
-                        element={
-                          <>
-                            <AdminStudentVideosY2Q1 />
-                          </>
-                        }
+                        element={<AdminStudentVideosY2Q1 />}
                       />
                       <Route
                         path="/details/Year-Two/Quarter-2"
-                        element={
-                          <>
-                            <AdminStudentVideosY2Q2 />
-                          </>
-                        }
+                        element={<AdminStudentVideosY2Q2 />}
                       />
                       <Route
                         path="/details/Year-Two/Quarter-3"
-                        element={
-                          <>
-                            <AdminStudentVideosY2Q3 />
-                          </>
-                        }
+                        element={<AdminStudentVideosY2Q3 />}
                       />
                       <Route
                         path="/details/Year-One/Document-1"
@@ -271,6 +249,11 @@ function App() {
                             <Partner />
                           </>
                         }
+                      />
+                      {/* Fallback route */}
+                      <Route
+                        path="*"
+                        element={<Navigate to="/admin-dashboard" />}
                       />
                     </>
                   ) : (
