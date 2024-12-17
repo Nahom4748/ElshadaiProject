@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import img_her2 from "../../assets/images/education/hero_shape2.png";
 import img_her3 from "../../assets/images/education/hero_shape3.png";
 import img_her4 from "../../assets/images/education/hero_shape4.png";
@@ -11,6 +10,7 @@ import {
   AiOutlinePhone,
   AiOutlineLock,
 } from "react-icons/ai"; // Importing icons
+import createAccService from "../../Services/createAcc.service";
 
 function CreateAcc() {
   const [formData, setFormData] = useState({
@@ -46,13 +46,14 @@ function CreateAcc() {
 
     if (validate()) {
       try {
-        const companyRoleId = (formData.company_role = 3);
-        const response = await axios.post(
-          "http://localhost:5001/api/user/register",
-          { ...formData, company_role_id: companyRoleId }
+        const company_role_id = 3; // Assign the company role ID directly
+        const response = await createAccService.createAcc(
+          formData,
+          company_role_id
         );
 
         setSuccessMessage("Account created successfully!");
+        setErrors({});
         setFormData({
           first_name: "",
           last_name: "",
@@ -64,8 +65,11 @@ function CreateAcc() {
           country: "",
         });
       } catch (error) {
-        console.error("Error:", error);
-        setErrors({ submit: "Failed to create account. Please try again." });
+        console.error("Submission Error:", error.response || error.message);
+        const errorMessage =
+          error.response?.data?.message ||
+          "Failed to create account. Please try again.";
+        setErrors({ submit: errorMessage });
       }
     }
   };

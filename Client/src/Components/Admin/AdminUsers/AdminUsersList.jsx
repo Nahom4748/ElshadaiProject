@@ -55,11 +55,11 @@ function AdminUsersList() {
     const usersByTab = filterByTab[activeTab];
 
     const searchFilteredUsers = usersByTab.filter((user) =>
-      [
-        user.first_name || "",
-        user.last_name || "",
-        user.email || "" || user.phone_number || "",
-      ].some((field) => field.toLowerCase().includes(searchQuery.toLowerCase()))
+      [user.first_name, user.last_name, user.email, user.phone_number]
+        .filter(Boolean) // Ensure no null/undefined values
+        .some((field) =>
+          field.toLowerCase().includes(searchQuery.toLowerCase())
+        )
     );
 
     setFilteredUsers(searchFilteredUsers);
@@ -177,9 +177,11 @@ function AdminUsersList() {
     ));
 
   return (
-    <div className="tab-contents lg:col-span-9">
-      <div className="flex justify-between mb-4">
-        <div className="tab-links flex">
+    <div className="tab-contents lg:col-span-9 p-4">
+      {/* Tabs and Search */}
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4 space-y-2 sm:space-y-0">
+        {/* Tab Buttons */}
+        <div className="tab-links flex flex-wrap justify-center sm:justify-start">
           {["tab1", "tab2", "tab3", "tab4"].map((tab, index) => (
             <button
               key={index}
@@ -194,22 +196,25 @@ function AdminUsersList() {
             </button>
           ))}
         </div>
+
+        {/* Search Input */}
         <input
           type="text"
           placeholder="Search users..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 border rounded bg-whiteColor-dark text-contentColor"
+          className="p-2 border rounded bg-whiteColor-dark text-contentColor w-full sm:w-auto"
         />
       </div>
 
+      {/* Table Content */}
       <div className="tab-contents py-6">
         {loading ? (
           <p>Loading...</p>
         ) : apiError ? (
           <p className="text-red-500">{apiErrorMessage}</p>
         ) : (
-          <div>
+          <div className="overflow-x-auto">
             <table className="table-auto min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
@@ -243,6 +248,7 @@ function AdminUsersList() {
         )}
       </div>
 
+      {/* Modal */}
       {selectedUser && (
         <UserModal
           user={selectedUser}

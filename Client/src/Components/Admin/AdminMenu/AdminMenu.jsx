@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
-
 function AdminMenu() {
   const { user } = useAuth();
-  console.log(user.user_role);
+
   return (
     <div className="lg:col-start-1 lg:col-span-3 border border-whitegrey">
       <div className="p-20px pt-5 lg:p-5 2xl:p-30px 2xl:pt-5 rounded-lg2 shadow-accordion dark:shadow-accordion-dark text-white dark:bg-whiteColor-dark">
@@ -174,34 +173,6 @@ function AdminMenu() {
                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
               </svg>
               Partner Videos
-            </Link>
-          </li>
-        </ul>
-        <h5 className="text-sm leading-1 font-semibold uppercase text-white dark:text-white-dark dark:bg-whiteColor-dark p-10px pb-7px mt-5 mb-10px">
-          USER
-        </h5>
-        <ul>
-          <li className="pt-10px border-b border-whitegrey dark:border-whitegrey-dark">
-            <Link
-              to="#"
-              className="text-white dark:text-white-dark hover:text-primaryColor dark:hover:text-primaryColor leading-1.8 flex gap-3 text-nowrap"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-log-out"
-              >
-                <path d="M17 11l4-4-4-4"></path>
-                <path d="M3 15l4 4 4-4M3 4h10a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H3a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z"></path>
-              </svg>
-              Logout
             </Link>
           </li>
         </ul>

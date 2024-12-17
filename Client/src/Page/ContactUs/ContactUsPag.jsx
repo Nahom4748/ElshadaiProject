@@ -1,19 +1,15 @@
-import React from 'react'
-import BannerComp from '../../Components/Banner/BannerComp'
+import React from "react";
+import BannerComp from "../../Components/Banner/BannerComp";
 
 function ContactUsPag() {
   return (
     <div className="bg-transparent">
-      <BannerComp/>
+      <BannerComp />
       <section>
         <div className="container">
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-30px pt-100px pb-20"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-30px pt-100px pb-20">
             {/*   mail */}
-            <div
-              className="pt-15px pr-35px pb-25px pl-5 lg:pt-10 lg:pb-10 lg:pl-35px transition-all duration-300 border border-borderColor dark:border-borderColor-dark shadow-address hover:shadow-address-hover hover:-translate-y-5px flex items-center gap-5 lg:gap-30px"
-            >
+            <div className="pt-15px pr-35px pb-25px pl-5 lg:pt-10 lg:pb-10 lg:pl-35px transition-all duration-300 border border-borderColor dark:border-borderColor-dark shadow-address hover:shadow-address-hover hover:-translate-y-5px flex items-center gap-5 lg:gap-30px">
               <div>
                 <svg
                   width="64"
@@ -49,27 +45,19 @@ function ContactUsPag() {
                 </svg>
               </div>
               <div className="">
-                <h3
-                  className="text-2xl font-semibold text-whiteColor dark:text-blackColor-dark leading-38px"
-                >
+                <h3 className="text-2xl font-semibold text-whiteColor dark:text-blackColor-dark leading-38px">
                   Mail address
                 </h3>
-                <p
-                  className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
-                >
+                <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
                   techbootmail@gmail.com
                 </p>
-                <p
-                  className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px"
-                >
+                <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
                   998757478492
                 </p>
               </div>
             </div>
             {/*   office */}
-            <div
-              className="pt-15px pr-35px pb-25px pl-5 lg:pt-10 lg:pb-10 lg:pl-35px transition-all duration-300 border border-borderColor dark:border-borderColor-dark shadow-address hover:shadow-address-hover hover:-translate-y-5px flex items-center gap-5 lg:gap-30px"
-            >
+            <div className="pt-15px pr-35px pb-25px pl-5 lg:pt-10 lg:pb-10 lg:pl-35px transition-all duration-300 border border-borderColor dark:border-borderColor-dark shadow-address hover:shadow-address-hover hover:-translate-y-5px flex items-center gap-5 lg:gap-30px">
               <div>
                 <svg
                   width="46"
@@ -93,27 +81,19 @@ function ContactUsPag() {
                 </svg>
               </div>
               <div className="">
-                <h3
-                  className="text-2xl font-semibold text-whiteColor dark:text-blackColor-dark leading-38px"
-                >
+                <h3 className="text-2xl font-semibold text-whiteColor dark:text-blackColor-dark leading-38px">
                   Office address
                 </h3>
-                <p
-                  className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
-                >
+                <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
                   Digital Agency Network 2024
                 </p>
-                <p
-                  className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px"
-                >
+                <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
                   Eastbourne Terrace
                 </p>
               </div>
             </div>
             {/*   phone */}
-            <div
-              className="pt-15px pr-35px pb-25px pl-5 lg:pt-10 lg:pb-10 lg:pl-35px transition-all duration-300 border border-borderColor dark:border-borderColor-dark shadow-address hover:shadow-address-hover hover:-translate-y-5px flex items-center gap-5 lg:gap-30px"
-            >
+            <div className="pt-15px pr-35px pb-25px pl-5 lg:pt-10 lg:pb-10 lg:pl-35px transition-all duration-300 border border-borderColor dark:border-borderColor-dark shadow-address hover:shadow-address-hover hover:-translate-y-5px flex items-center gap-5 lg:gap-30px">
               <div>
                 <svg
                   width="58"
@@ -137,19 +117,13 @@ function ContactUsPag() {
                 </svg>
               </div>
               <div className="">
-                <h3
-                  className="text-2xl font-semibold text-whiteColor dark:text-blackColor-dark leading-38px"
-                >
+                <h3 className="text-2xl font-semibold text-whiteColor dark:text-blackColor-dark leading-38px">
                   Phone Number
                 </h3>
-                <p
-                  className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5"
-                >
+                <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
                   +880 123 456 789 , 99874
                 </p>
-                <p
-                  className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px"
-                >
+                <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
                   +880 123 456 789
                 </p>
               </div>
@@ -160,7 +134,13 @@ function ContactUsPag() {
       {/*   comment form section */}
       <section>
         <div className="container pb-100px">
-          <form id="contact-form" action="mail.php" method="post" className="contact-form p-5 md:p-70px md:pt-90px border border-borderColor2 dark:border-transparent dark:shadow-container" data-aos="fade-up" >
+          <form
+            id="contact-form"
+            action="mail.php"
+            method="post"
+            className="contact-form p-5 md:p-70px md:pt-90px border border-borderColor2 dark:border-transparent dark:shadow-container"
+            data-aos="fade-up"
+          >
             {/*   heading */}
             <div className="mb-10">
               <h4
@@ -179,71 +159,87 @@ function ContactUsPag() {
             </div>
             <div className="grid grid-cols-1 xl:grid-cols-2 mb-30px gap-30px">
               <div data-aos="fade-up" className="relative">
-                <input name="con_name" id="con_name" type="text" placeholder="Enter your name*"
+                <input
+                  name="con_name"
+                  id="con_name"
+                  type="text"
+                  placeholder="Enter your name*"
                   className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
                 />
 
-                <div
-                  className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2"
-                >
+                <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
                   <i className="icofont-businessman"></i>
                 </div>
               </div>
               <div data-aos="fade-up" className="relative">
-                <input name="con_email" id="con_email" type="email" placeholder="Enter Email Address*" className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
+                <input
+                  name="con_email"
+                  id="con_email"
+                  type="email"
+                  placeholder="Enter Email Address*"
+                  className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
                 />
 
-                <div
-                  className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2"
-                >
+                <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
                   <i className="icofont-envelope"></i>
                 </div>
               </div>
               <div data-aos="fade-up" className="relative">
-                <input name="subject" type="text" placeholder="Write Service Type" className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
+                <input
+                  name="subject"
+                  type="text"
+                  placeholder="Write Service Type"
+                  className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
                 />
 
-                <div
-                  className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2"
-                >
+                <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
                   <i className="icofont-edit"></i>
                 </div>
               </div>
               <div data-aos="fade-up" className="relative">
-                <input name="phone" type="text" placeholder="Enter Your Phone"
+                <input
+                  name="phone"
+                  type="text"
+                  placeholder="Enter Your Phone"
                   className="w-full pl-26px bg-transparent focus:outline-none text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 h-15 leading-15 font-medium rounded"
                 />
 
-                <div
-                  className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2"
-                >
+                <div className="text-xl leading-23px text-primaryColor absolute right-6 top-1/2 -translate-y-1/2">
                   <i className="icofont-ui-call"></i>
                 </div>
               </div>
             </div>
 
             <div className="relative" data-aos="fade-up">
-              <textarea name="con_message" id="con_message" placeholder="Enter your Massage here" className="w-full pl-26px bg-transparent text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 rounded" cols="30"
-                rows="10"></textarea>
+              <textarea
+                name="con_message"
+                id="con_message"
+                placeholder="Enter your Massage here"
+                className="w-full pl-26px bg-transparent text-contentColor dark:text-contentColor-dark border border-borderColor2 dark:border-borderColor2-dark placeholder:text-placeholder placeholder:opacity-80 rounded"
+                cols="30"
+                rows="10"
+              ></textarea>
               <div className="text-xl leading-23px text-primaryColor absolute right-6 top-[17px]">
                 <i className="icofont-pen-alt-2"></i>
               </div>
             </div>
 
             <div className="mt-30px" data-aos="fade-up">
-              <button value="submit" name="submit" className="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark"
+              <button
+                value="submit"
+                name="submit"
+                className="text-size-15 text-whiteColor bg-primaryColor px-25px py-10px border border-primaryColor hover:text-primaryColor hover:bg-whiteColor inline-block rounded group dark:hover:text-whiteColor dark:hover:bg-whiteColor-dark"
               >
                 Post a Comment
               </button>
 
               <p className="form-messege"></p>
-
             </div>
           </form>
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export default ContactUsPag
+export default ContactUsPag;

@@ -1,9 +1,16 @@
 import React from "react";
 import { useAuth } from "../../../Contexts/AuthContext";
 import holybible from "../../../assets/images/logo/holy-bible.jpg";
+import { useNavigate } from "react-router-dom";
 function AdminHeading() {
-  const { user, logout } = useAuth(); // Assume `logout` is provided by the AuthContext
-  console.log(user);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <header className="bg-primaryColor sticky top-0 z-50 shadow-lg">
       <div className="container mx-auto">
@@ -29,7 +36,7 @@ function AdminHeading() {
           {/* Navigation Section */}
           <div className="flex items-center gap-4">
             <button
-              onClick={logout}
+              onClick={handleLogout}
               className="inline-flex items-center gap-2 bg-white text-primaryColor font-medium px-4 py-2 rounded-lg shadow-md border border-primaryColor hover:bg-primaryColor hover:text-white transition duration-300"
             >
               Logout

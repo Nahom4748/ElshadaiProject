@@ -139,24 +139,24 @@ const Payment = () => {
   );
 
   return (
-    <div className="bg-gray-900 text-white flex items-center justify-center p-6">
+    <div className="bg-gray-900 text-white flex items-center justify-center p-4 md:p-6">
       <div className="w-full max-w-screen-lg mx-auto p-4 bg-gray-800 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-4">
           Student Payments
         </h2>
-        <div className="mb-4 flex justify-between items-center">
-          <div className="relative">
+        <div className="flex flex-wrap justify-between items-center mb-4 gap-4">
+          <div className="relative flex-grow">
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="Search by name"
-              className="w-72 p-2 bg-gray-700 text-white rounded-lg pl-10"
+              className="w-full md:w-72 p-2 bg-gray-700 text-white rounded-lg pl-10"
             />
             <FaSearch className="absolute left-3 top-2/4 transform -translate-y-2/4 text-gray-400" />
           </div>
-          <div>
-            <label className="mr-2">Quarter:</label>
+          <div className="flex items-center space-x-2">
+            <label>Quarter:</label>
             <select
               value={selectedQuarter}
               onChange={(e) => setSelectedQuarter(e.target.value)}
@@ -169,8 +169,8 @@ const Payment = () => {
               ))}
             </select>
           </div>
-          <div>
-            <label className="mr-2">Payment:</label>
+          <div className="flex items-center space-x-2">
+            <label>Payment:</label>
             <select
               value={paymentFilter}
               onChange={(e) => setPaymentFilter(e.target.value)}
@@ -183,11 +183,14 @@ const Payment = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto mb-4">
-          <table className="w-full bg-gray-700 rounded-lg text-sm">
+        {/* Responsive Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full bg-gray-700 rounded-lg text-xs md:text-sm">
             <thead className="bg-gray-600">
               <tr>
-                <th className="px-4 py-2 text-left">User Name</th>
+                <th className="px-4 py-2 text-left sticky left-0 bg-gray-600 ">
+                  User Name
+                </th>
                 {["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"].map((quarter) => (
                   <th key={quarter} className="px-4 py-2 text-center">
                     {quarter}
@@ -195,10 +198,11 @@ const Payment = () => {
                 ))}
               </tr>
             </thead>
+
             <tbody>
               {paginatedUsers.map((user) => (
                 <tr key={user.user_id}>
-                  <td className="px-4 py-2">{`${user.first_name} ${user.last_name}`}</td>
+                  <td className="px-4 py-2 sticky left-0 bg-gray-700">{`${user.first_name} ${user.last_name}`}</td>
                   {["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"].map((quarter) => (
                     <td key={quarter} className="px-4 py-2 text-center">
                       <button
@@ -216,15 +220,17 @@ const Payment = () => {
             </tbody>
           </table>
         </div>
-        <div className="flex justify-between items-center">
+
+        {/* Pagination */}
+        <div className="flex justify-between items-center mt-4">
           <button
             onClick={() => handlePageChange("prev")}
             disabled={currentPage === 1}
-            className="bg-gray-700 text-white px-3 py-2 rounded-md"
+            className="bg-gray-700 px-3 py-2 rounded-md"
           >
             <FaChevronLeft />
           </button>
-          <p className="text-sm">
+          <p>
             Page {currentPage} of{" "}
             {Math.ceil(filterUsersByQuarterAndPayment().length / usersPerPage)}
           </p>
@@ -234,45 +240,42 @@ const Payment = () => {
               currentPage ===
               Math.ceil(filterUsersByQuarterAndPayment().length / usersPerPage)
             }
-            className="bg-gray-700 text-white px-3 py-2 rounded-md"
+            className="bg-gray-700 px-3 py-2 rounded-md"
           >
             <FaChevronRight />
           </button>
         </div>
-      </div>
 
-      {/* Modal */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        className="w-96 mx-auto mt-20 bg-gray-800 rounded-lg p-6 text-white"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-      >
-        <h2 className="text-xl font-bold mb-4">Confirm Payment</h2>
-        {selectedUser && (
-          <p className="mb-4">
-            Are you sure you want to update the payment status for{" "}
-            <strong>
-              {selectedUser.first_name} {selectedUser.last_name}
-            </strong>{" "}
-            for <strong>{selectedQuarterForModal}</strong>?
+        {/* Modal */}
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          contentLabel="Confirm Action"
+          className="bg-gray-800 p-6 rounded-lg max-w-sm mx-auto"
+          overlayClassName="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center"
+        >
+          <h3 className="text-xl mb-4 text-white">Confirm Payment Status</h3>
+          <p className="mb-4 text-white">
+            Are you sure you want to change the payment status for{" "}
+            <strong>{selectedUser?.first_name}</strong> in{" "}
+            <strong>{selectedQuarterForModal}</strong>?
           </p>
-        )}
-        <div className="flex justify-end">
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="px-4 py-2 bg-gray-600 rounded-md mr-2"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleConfirmAction}
-            className="px-4 py-2 bg-green-500 rounded-md"
-          >
-            Confirm
-          </button>
-        </div>
-      </Modal>
+          <div className="flex justify-end space-x-2">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="bg-red-500 px-4 py-2 rounded-md text-white"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleConfirmAction}
+              className="bg-green-500 px-4 py-2 rounded-md text-white"
+            >
+              Confirm
+            </button>
+          </div>
+        </Modal>
+      </div>
     </div>
   );
 };
