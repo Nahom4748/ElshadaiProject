@@ -1,10 +1,10 @@
 import React from 'react'
-import img_teacher1 from '../../assets/images/teacher/teacher__1.png'
-import img_teacher2 from '../../assets/images/teacher/teacher__2.png'
-import img_teacher3 from '../../assets/images/teacher/teacher__3.png'
-import img_teacher4 from '../../assets/images/teacher/teacher__4.png'
-import img_teacher5 from '../../assets/images/teacher/teacher__5.png'
-import img_teacher6 from '../../assets/images/teacher/teacher__6.png'
+import img_teacher1 from '../../assets/images/teacher/P_Teme.png'
+import img_teacher2 from '../../assets/images/teacher/Evana.png'
+import img_teacher3 from "../../assets/images/teacher/Dr_Adiam.png";
+import img_teacher4 from '../../assets/images/teacher/Yodit2.png'
+import img_teacher5 from '../../assets/images/teacher/Saymon2.png'
+import img_teacher6 from '../../assets/images/teacher/Afomb.png'
 
 function TeamStuf() {
   return (
@@ -82,13 +82,13 @@ function TeamStuf() {
                     href="instructor-details.html"
                     class="text-size-28 leading-45px font-semibold text-contentColor capitalize dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor"
                   >
-                    Mirnsdo Nmdied
+                    P. Temesgen Seum
                   </a>
                 </h5>
                 <p
                   class="text-xl text-primaryColor font-medium leading-6 mb-10px"
                 >
-                  Manager
+                  Sinior Pastor
                 </p>
                 <ul class="flex gap-10px items-center justify-center">
                   <li>
@@ -177,13 +177,13 @@ function TeamStuf() {
                     href="instructor-details.html"
                     class="text-size-28 leading-45px font-semibold text-contentColor capitalize dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor"
                   >
-                    Mirnsdo Nmdied
+                    Evana Tekeste
                   </a>
                 </h5>
                 <p
                   class="text-xl text-primaryColor font-medium leading-6 mb-10px"
                 >
-                  Manager
+                  Coordinator
                 </p>
                 <ul class="flex gap-10px items-center justify-center">
                   <li>
@@ -272,7 +272,7 @@ function TeamStuf() {
                     href="instructor-details.html"
                     class="text-size-28 leading-45px font-semibold text-contentColor capitalize dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor"
                   >
-                    Nidns Janicds
+                    Dr. Adiam Negash
                   </a>
                 </h5>
                 <p
@@ -367,7 +367,7 @@ function TeamStuf() {
                     href="instructor-details.html"
                     class="text-size-28 leading-45px font-semibold text-contentColor capitalize dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor"
                   >
-                    Mbndie ndne mond
+                    Yodit Abreha
                   </a>
                 </h5>
                 <p
@@ -462,7 +462,7 @@ function TeamStuf() {
                     href="instructor-details.html"
                     class="text-size-28 leading-45px font-semibold text-contentColor capitalize dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor"
                   >
-                    Mahmud Sujons
+                    Sayman Afewerki
                   </a>
                 </h5>
                 <p
@@ -557,13 +557,13 @@ function TeamStuf() {
                     href="instructor-details.html"
                     class="text-size-28 leading-45px font-semibold text-contentColor capitalize dark:text-contentColor-dark hover:text-primaryColor dark:hover:text-primaryColor"
                   >
-                    Jons Emon
+                   Afom Bokre
                   </a>
                 </h5>
                 <p
                   class="text-xl text-primaryColor font-medium leading-6 mb-10px"
                 >
-                  Manager
+                  Media
                 </p>
                 <ul class="flex gap-10px items-center justify-center">
                   <li>
