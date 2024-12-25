@@ -10,7 +10,7 @@ async function logIn(userData) {
     if (!user) {
       return {
         status: "fail",
-        message: "User not found",
+        message: "Invalid email or password",
       };
     }
 

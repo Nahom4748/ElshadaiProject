@@ -8,7 +8,7 @@ router.post("/api/user/register", userController.registerUser);
 
 router.put("/api/user/:userId", userController.updateUser);
 // GET request for all users
-
+//router.route('/api/user/:id').get(userController.getUserById).put(userController.updateUser).delete(userController.deleteUser);
 // GET request for a single user
 router.get('/api/user/:id',  userController.getUserById);
 // delete user
