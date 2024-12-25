@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
+import logo from "../../assets/images/logo/Elsha_logo1.png";
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -80,9 +81,9 @@ function Header() {
               <div className="lg:col-start-1 lg:col-span-2">
                 <Link to="/" className="block">
                   <img
-                    src="../../assets/images/logo/logo_1.png"
+                    src={logo}
                     alt="log"
-                    className="w-logo-sm lg:w-auto py-2"
+                    className="w-logo-10 lg:w-auto py-2"
                   />
                 </Link>
               </div>

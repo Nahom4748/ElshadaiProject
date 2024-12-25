@@ -26,7 +26,7 @@ function AboutCards() {
                 <div class="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center z-10">
                   <div>
                     <button
-                      data-url="https://www.youtube.com/watch?v=vHdclsdkp28"
+                      data-url="https://www.youtube.com/watch?v=vHdclsdkp2"
                       class="lvideo relative w-15 h-15 md:h-20 md:w-20 lg:w-15 lg:h-15 2xl:h-70px 2xl:w-70px 3xl:h-20 3xl:w-20 bg-secondaryColor rounded-full flex items-center justify-center"
                     >
                       <span class="animate-buble absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-[180px] h-[180px] border-secondaryColor rounded-full"></span>
@@ -80,7 +80,7 @@ function AboutCards() {
                 <div class="absolute top-0 right-0 left-0 bottom-0 flex items-center justify-center z-10">
                   <div>
                     <button
-                      data-url="https://www.youtube.com/watch?v=vHdclsdkp28"
+                      data-url="https://youtu.be/SQ9xqf7DMHg?si=hNIAs8v_yVQYOtQ_"
                       class="lvideo relative w-15 h-15 md:h-20 md:w-20 lg:w-15 lg:h-15 2xl:h-70px 2xl:w-70px 3xl:h-20 3xl:w-20 bg-secondaryColor rounded-full flex items-center justify-center"
                     >
                       <span class="animate-buble absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-[180px] h-[180px] border-secondaryColor rounded-full"></span>
