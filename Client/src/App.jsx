@@ -1,6 +1,7 @@
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "../src/Components/LanguageSwitcher/i18n.js";
 import { useEffect } from "react";
 import {
   BrowserRouter as Router,
