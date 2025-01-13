@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "join_mission": "Join our mission",
+    "title": "Elshaddai Apostolic Mission",
+    "description": "Grateful for your continued participation in our mission, we are honored to witness the growth and transformation of believers around the world. Through the power of the Word, we strive to cultivate Godly-minded individuals who live out their faith daily, becoming beacons of light in their families, communities, and beyond.",
+    "bible_school": "Bible School",
+    "partner": "Partner with us"
+  },
+  "header": {
+    "call_us": "Call Us:",
+    "email_us": "Mail Us:",
+    "home": "Home",
+    "about_us": "About Us",
+    "bible_school": "Bible School",
+    "partner": "Partner",
+    "contact_us": "Contact Us",
+    "donation": "Donation",
+    "login": "Login",
+    "dashboard": "Dashboard"
+  },
+  "about_us": {
+    "heading": "Welcome to Elshaddai Apostolic Mission",
+    "content": "El Shaddai Apostolic Mission is dedicated to delivering the Word of God with clarity, revelation, and purpose, guiding individuals toward deep spiritual transformation."
+  },
+  "translation": {
+    " about_us": "About Us",
+    "total_graduates": "Total Graduates",
+    "active_students": "Active Students",
+    "total_partners": "Total Partners",
+    "countries_over_the_world": "Countries Over the World",
+    " welcome": "Welcome to Elshaddai Apostolic Mission",
+    "description": "El Shaddai Apostolic Mission is dedicated to delivering the Word of God with clarity, revelation, and purpose..."
+  },
+  "about": {
+    "years": "YEARS",
+    "ministry": "IN MINISTRY",
+    "About": "About Us",
+    "Welcome": " Welcome to",
+    "Elshaddai": "Elshaddai",
+    "Apostolic": "Apostolic",
+    "ApostolicMission": "El Shaddai Apostolic Mission is dedicated to delivering the Word of God with clarity, revelation, and purpose, guidin individuals toward deep spiritual transformation. Our ministry is rooted in the belief that biblical teachings, when applied with understanding, can create a God-centered society that upholds righteousness and influences positive change in all areas of life ",
+    "build": "To build a Godly-minded society",
+    "develop": "To develop and build the next generation of leaders and God's servants through ongoing training and equipping.",
+    "teach": "To teach and counsel through the wisdom of the Word of God, perfecting all saints.",
+    "Total": "Total Graduates",
+    "active": "active STUDENTS",
+    "Partners": "Total Partners",
+    "Countries": "  Countries OVER THE WORLD"
+  },
+  "staff": {
+    "members": " Staff members",
+    "StaffPartners": "Our Staff Partners",
+    "Temesgen": " P. Temesgen Seum",
+    "Sinior": "Sinior Pastor",
+    "Evana": " Evana Tekeste",
+    "Coordinator": "Coordinator",
+    "Adiam": " Dr. Adiam Negash",
+    "Manager": " Manager",
+    "Yodit": " Yodit Abreha",
+    "Sayman": "Sayman Afewerki",
+    "Afom": " Afom Bokre",
+    "Media": " Media"
+  }
+}
