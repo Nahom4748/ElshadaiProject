@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <div>
-      <footer class="bg-darkblack">
-        <div class="container 3xl:container-secondary-lg 4xl:container mx-auto pt-65px pb-5 lg:pb-10">
+      <footer className="bg-darkblack">
+        <div className="container 3xl:container-secondary-lg 4xl:container mx-auto pt-65px pb-5 lg:pb-10">
           {/*  footer top or subscription */}
           <section>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-y-30px md:gap-y-0 items-center pb-45px border-b border-darkcolor">
@@ -40,7 +41,7 @@ function Footer() {
             <div class="grid grid-cols-12 gap-30px md:gap-y-5 lg:gap-y-0 pt-60px pb-50px md:pt-30px md:pb-30px lg:pt-110px lg:pb-20">
               {/*  left */}
               <div
-                class="col-start-1 col-span-12 md:col-span-6 lg:col-span-4 mr-30px"
+                class="lg:col-span-6 md:col-span-6 col-start-6 "
                 data-aos="fade-up"
               >
                 <h4 class="text-size-22 font-bold text-whiteColor mb-3">
@@ -71,167 +72,98 @@ function Footer() {
                 </div>
               </div>
               {/*  middle 1 */}
-              <div
-                class="col-start-1 col-span-12 md:col-start-7 lg:col-start-5 md:col-span-6 lg:col-span-2"
-                data-aos="fade-up"
-              >
-                <h4 class="text-size-22 font-bold text-whiteColor mb-3">
-                  Usefull Links
+              <div class="lg:col-start-9 lg:col-span-3" data-aos="fade-up">
+                <h4 class=" content-center text-size-22 font-bold text-whiteColor mb-3">
+                  Useful Links
                 </h4>
                 <ul class="flex flex-col gap-y-3">
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="/"
+                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link 
+                      to ="/about-us"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
                       About Us
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="/bible-school"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Teachers
-                    </a>
+                      Bible School
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="/partners"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Partner
-                    </a>
+                      Partners
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="/contact-us"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Room-Details
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      Gallery
-                    </a>
+                      Contact Us
+                    </Link>
                   </li>
                 </ul>
               </div>
               {/*  middle 2 */}
-              <div
-                class="col-start-1 col-span-12 md:col-start-1 lg:col-start-7 md:col-span-6 lg:col-span-3 pl-0 2xl:pl-60px"
-                data-aos="fade-up"
-              >
-                <h4 class="text-size-22 font-bold text-whiteColor mb-3">
-                  Course
+              <div class="lg:col-start-12 lg:col-span-3" data-aos="fade-up">
+                <h4 class="text-size-22 font-bold text-whiteColor mb-3 items-end">
+                  Courses
                 </h4>
                 <ul class="flex flex-col gap-y-3">
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Ui Ux Design
-                    </a>
+                      ብክርስቶስ
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Web Development
-                    </a>
+                      መንፈስ ቅዱስ
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Business Strategy
-                    </a>
+                      ሰራተኛ
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Softwere Development
-                    </a>
+                      ውልድነት
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
-                      Business English
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              {/*  right */}
-              <div
-                class="col-start-1 col-span-12 md:col-start-7 lg:col-start-10 md:col-span-6 lg:col-span-3 pl-0 2xl:pl-50px"
-                data-aos="fade-up"
-              >
-                <h4 class="text-size-22 font-bold text-whiteColor mb-3">
-                  Recent Post
-                </h4>
-                <ul class="flex flex-col gap-y-5">
-                  <li>
-                    <a class="flex items-center gap-3 group cursor-pointer">
-                      <div>
-                        <img
-                          src="./assets/images/footer/footer__1.png"
-                          alt=""
-                          class="w-61px h-54px"
-                        />
-                      </div>
-                      <div>
-                        <p class="text-xs text-darkgray mb-7px">02 Apr 2024</p>
-                        <h6 class="text-size-15 text-whiteColor font-bold group-hover:text-primaryColor transition-all duration-300">
-                          Best Your Business
-                        </h6>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a class="flex items-center gap-3 group cursor-pointer">
-                      <div>
-                        <img
-                          src="./assets/images/footer/footer__2.png"
-                          alt=""
-                          class="w-61px h-54px"
-                        />
-                      </div>
-                      <div>
-                        <p class="text-xs text-darkgray mb-7px">02 Apr 2024</p>
-                        <h6 class="text-size-15 text-whiteColor font-bold group-hover:text-primaryColor transition-all duration-300">
-                          Keep Your Business
-                        </h6>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="flex items-center gap-3 group cursor-pointer">
-                      <div>
-                        <img
-                          src="./assets/images/footer/footer__3.png"
-                          alt=""
-                          class="w-61px h-54px"
-                        />
-                      </div>
-                      <div>
-                        <p class="text-xs text-darkgray mb-7px">02 Apr 2024</p>
-                        <h6 class="text-size-15 text-whiteColor font-bold group-hover:text-primaryColor transition-all duration-300">
-                          Nice Your Business
-                        </h6>
-                      </div>
-                    </a>
+                      ምስጢር
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -242,9 +174,9 @@ function Footer() {
           <div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-30px pt-10 items-center">
               <div class="lg:col-start-1 lg:col-span-3">
-                <a href="#">
+                <Link  to ="#">
                   <img src="./assets/images/logo/logo_2.png" alt="" />
-                </a>
+                </Link>
               </div>
 
               <div class="lg:col-start-4 lg:col-span-6">
@@ -257,44 +189,44 @@ function Footer() {
               <div class="lg:col-start-10 lg:col-span-3">
                 <ul class="flex gap-3 lg:gap-2 2xl:gap-3 lg:justify-end">
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-facebook"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-twitter"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-vimeo"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-linkedin"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link 
+                      to ="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-skype"></i>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

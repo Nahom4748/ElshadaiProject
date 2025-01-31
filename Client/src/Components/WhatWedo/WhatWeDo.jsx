@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 function WhatWeDo() {
+   const { t } = useTranslation();
   return (
     <>
       <section>
@@ -24,70 +26,52 @@ function WhatWeDo() {
                     class="text-sm 2xl:text-lg text-darkdeep4 !leading-30px"
                     data-aos="fade-up"
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur vulputate vestibulum Phasellus rhoncus, dolor eget
-                    viverra pretium, dolor tellus aliquet nunc, vitae ultricies
-                    erat elit eu lacus. Vestibulum non justo consectetur, cursus
-                    ante, tincidunt sapien. Nulla quis diam sit amet turpis
-                    interdum accumsan quis nec enim. Vivamus faucibus ex sed
-                    nibh egestas elementum. Mauris et bibendum dui. Aenean
-                    consequat pulvinar luctus
+                    {" "}
+                    {t("whatWeDo.A")}
+                    
                   </p>
                   <p
                     class="text-sm 2xl:text-lg text-darkdeep4 !leading-30px"
                     data-aos="fade-up"
                   >
-                    We have covered many special events such as fireworks,
-                    fairs, parades, races, walks, awards ceremonies, fashion
-                    shows, sporting events, and even a memorial service.
+                   {t("whatWeDo.B")}
                   </p>
                   <p
                     class="text-sm 2xl:text-lg text-darkdeep4 !leading-30px"
                     data-aos="fade-up"
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur vulputate vestibulum Phasellus rhoncus, dolor eget
-                    viverra pretium, dolor tellus aliquet nunc, vitae ultricies
-                    erat elit eu lacus. Vestibulum non justo consectetur, cursus
-                    ante, tincidunt sapien. Nulla quis diam sit amet turpis
-                    interdum accumsan quis nec enim. Vivamus faucibus ex sed
-                    nibh egestas elementum. Mauris et bibendum dui. Aenean
-                    consequat pulvinar luctus.
+                   {t("whatWeDo.C")}
                   </p>
 
                   <h4
                     class="text-2xl font-bold text-whiteColor dark:text-blackColor-dark mb-15px !leading-30px"
                     data-aos="fade-up"
                   >
-                    Why search Is Important ?
+                    Why Elshaddai Bible School Is Important ?
                   </h4>
                   <ul class="space-y-[15px]">
                     <li class="flex items-center group ">
                       <i class="icofont-check px-2 py-2 text-primaryColor bg-whitegrey3 bg-opacity-40 group-hover:bg-primaryColor group-hover:text-white group-hover:opacity-100 mr-15px dark:bg-whitegrey1-dark"></i>
                       <p class="text-sm lg:text-xs 2xl:text-sm font-medium leading-25px lg:leading-21px 2xl:leading-25px max-w-[508px] text-contentColor dark:text-contentColor-dark">
-                        Lorem Ipsum is simply dummying text of the printing
-                        andtypesetting industry most of the standard.
+                       {t("whatWeDo.D")}
                       </p>
                     </li>
                     <li class="flex items-center group">
                       <i class="icofont-check px-2 py-2 text-primaryColor bg-whitegrey3 bg-opacity-40 group-hover:bg-primaryColor group-hover:text-white group-hover:opacity-100 mr-15px dark:bg-whitegrey1-dark"></i>
                       <p class="text-sm lg:text-xs 2xl:text-sm font-medium leading-25px lg:leading-21px 2xl:leading-25px max-w-[508px] text-contentColor dark:text-contentColor-dark">
-                        Lorem Ipsum is simply dummying text of the printing
-                        andtypesetting industry most of the standard.
+                       {t("whatWeDo.E")}
                       </p>
                     </li>
                     <li class="flex items-center group">
                       <i class="icofont-check px-2 py-2 text-primaryColor bg-whitegrey3 bg-opacity-40 group-hover:bg-primaryColor group-hover:text-white group-hover:opacity-100 mr-15px dark:bg-whitegrey1-dark"></i>
                       <p class="text-sm lg:text-xs 2xl:text-sm font-medium leading-25px lg:leading-21px 2xl:leading-25px max-w-[508px] text-contentColor dark:text-contentColor-dark">
-                        Lorem Ipsum is simply dummying text of the printing
-                        andtypesetting industry most of the standard.
+                        {t("whatWeDo.F")}
                       </p>
                     </li>
                     <li class="flex items-center group">
                       <i class="icofont-check px-2 py-2 text-primaryColor bg-whitegrey3 bg-opacity-40 group-hover:bg-primaryColor group-hover:text-white group-hover:opacity-100 mr-15px dark:bg-whitegrey1-dark"></i>
                       <p class="text-sm lg:text-xs 2xl:text-sm font-medium leading-25px lg:leading-21px 2xl:leading-25px max-w-[508px] text-contentColor dark:text-contentColor-dark">
-                        Lorem Ipsum is simply dummying text of the printing
-                        andtypesetting industry most of the standard.
+                        {t("whatWeDo.G")}
                       </p>
                     </li>
                   </ul>
@@ -95,16 +79,7 @@ function WhatWeDo() {
                   <p
                     class="text-sm 2xl:text-lg text-darkdeep4 !leading-30px"
                     data-aos="fade-up"
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur vulputate vestibulum Phasellus rhoncus, dolor eget
-                    viverra pretium, dolor tellus aliquet nunc, vitae ultricies
-                    erat elit eu lacus. Vestibulum non justo consectetur, cursus
-                    ante, tincidunt sapien. Nulla quis diam sit amet turpis
-                    interdum accumsan quis nec enim. Vivamus faucibus ex sed
-                    nibh egestas elementum. Mauris et bibendum dui. Aenean
-                    consequat pulvinar luctus
-                  </p>
+                  ></p>
                 </div>
               </div>
             </div>

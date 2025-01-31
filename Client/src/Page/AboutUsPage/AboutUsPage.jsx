@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import img_teacher1 from "../../assets/images/teacher/teacher__1.png";
+import img_teacher1 from "../../assets/images/teacher/P--Teme.png";
 import img_hero1 from '../../assets/images/herobanner/herobanner__1.png'
 import img_hero2 from '../../assets/images/grid/grid_1.png'
 import AboutUs from '../../Components/Aboutus/AboutUs';
@@ -113,8 +113,9 @@ function AboutUsPage() {
                 {activeTab === "tab2" && (
                   <div id="tab2">
                     <h4 className="text-xl font-medium text-whiteColor dark:text-blackCol font-thinor-dark dark:text-blackColor-dark">
-                      መልእኽቲ ፓስተር ተመስገን ሰዩም 
-                    </h4> <br />
+                      መልእኽቲ ፓስተር ተመስገን ሰዩም
+                    </h4>{" "}
+                    <br />
                     <p className="text-contentColor dark:text-contentColor-dark mb-25px">
                       ናብ’ዚ መራኸቢ ብዙሃን (Website) ኤልሻዳይ ሃዋርያዊ ተልእኾ እንቋዕ ብደሓን መጻኹም።
                       ብትምህርቲ ቓል ኣምላኽ፡ ኣምላኻዊ ሓሳብ ዘሎዎ ሕበረተሰብ ንምፍጣር; ዕላማን ተልእኾን
@@ -148,7 +149,7 @@ function AboutUsPage() {
                 )}
                 {activeTab === "tab3" && (
                   <div id="tab3">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-30px items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20px items-center">
                       {/*   card 1   */}
                       <div className="flex flex-col sm:flex-row gap-x-0 sm:gap-x-10 gap-y-5 sm:gapy-y-0 group p-15px transition-all duration-300 shadow-experience   dark:bg-whiteColor-dark dark:hover:bg-whiteColor rounded">
                         <div data-aos="fade-up" class="group">
@@ -170,39 +171,30 @@ function AboutUsPage() {
                                 Pastor Temesghen Seum
                               </a>
                             </h5>
-                            <p class="text-xl text-primaryColor font-medium leading-6 mb-10px">
+                            <p className="text-xl text-primaryColor font-medium leading-6 mb-10px">
                               Sinior Pastor
                             </p>
                           </div>
                         </div>
                       </div>
                       {/*   card 2   */}
-                      <div className="flex flex-col sm:flex-row gap-x-0 sm:gap-x-10 gap-y-5 sm:gapy-y-0 group p-15px transition-all duration-300 shadow-experience bg-whiteColor hover:bg-primaryColor dark:bg-whiteColor-dark dark:hover:bg-whiteColor rounded">
-                        <div>
-                          <img
-                            src="./assets/images/about/award-2.jpg"
-                            alt=""
-                            className="w-full sm:w-48 md:w-40 lg:w-30 xl:w-148px 2xl:w-130px"
-                          />
-                        </div>
-                        <div>
-                          <h4 className="transition-all duration-300 text-contentColor group-hover:text-whiteColor dark:text-contentColor-dark dark:group-hover:text-whiteColor-dark">
-                            <a
-                              href="event-details.html"
-                              className="text-size-15 md:text-lg lg:text-xl 2xl:text-2xl font-semibold hover:text-secondaryColor mr-0 2xl:mr-10 mb-15px"
-                            >
-                              Lorem ipsum dolor sit amet conse ctetur.
-                            </a>
-                          </h4>
-                          <div className="transition-all duration-300 text-blackColor group-hover:text-whiteColor dark:text-blackColor-dark dark:group-hover:text-whiteColor-dark">
-                            <a
-                              href="event-details.html"
-                              className="hover:text-secondaryColor"
-                            >
-                              Read More <i className="icofont-simple-right"></i>
-                            </a>
-                          </div>
-                        </div>
+                      <div className="flex flex-col sm:flex-row gap-x-0 sm:gap-x-10 gap-y-5 sm:gapy-y-0 group p-2px transition-all duration-300 shadow-experience dark:bg-whiteColor-dark dark:hover:bg-whiteColor rounded">
+                            <p className="text-contentColor dark:text-contentColor-dark mb-25px">
+                              ናብ’ዚ መራኸቢ ብዙሃን (Website) ኤልሻዳይ ሃዋርያዊ ተልእኾ እንቋዕ
+                              ብደሓን መጻኹም። ብትምህርቲ ቓል ኣምላኽ፡ ኣምላኻዊ ሓሳብ ዘሎዎ ሕበረተሰብ
+                              ንምፍጣር; ዕላማን ተልእኾን ወንጌል ንምፍጻም ተሳተፍቲ ምዃንኩም ደስ ይብለኒ።
+                              እዚ መራኸቢ ብዙሃን: (Website) ኣብ ኩሉ ክፍሊ ዓለም ትምህርቲ መጽሓፍ
+                              ቅዱስ ንምዝርጋሕ ኣዚዩ ጠቓሚ መሳርሒ’ዩ። ዕላማ ኤልሻዳይ ሃዋርያዊ ተልእኾ፡
+                              ቃል ኣምላኽ ብግልጸትን ብዝርዳእ ኣገባብን ብምምሃር፡ ኣብ ኩሉ ክፍሊ ዓለም
+                              ንዘሎ ህዝብና፡ ኣብ ህይወቱ መሰረታዊ ለውጢ ንምምጻእ’ዩ። ካብ እግዚኣብሄር
+                              ዝተወሃብናዮ ተልእኾ፡ ኣብ ኩሉ ዓለም ዘሎ ህዝብና ቓል ኣምላኽ ንኽመሃር፡ ነቲ
+                              ተካኢ ወሎዶ ዝኾኑ መራሕትን ኣገልገልትን፡ ምስልጣንን፡ ምዕጣቕን፡ምፍራይን’ዩ።
+                              በዚ ዓለም ለኻዊ ዝኾነ ራእይ፡ ኤልሻዳይ ሃዋርያዊ ተልእኾ ኣብ ዓለም ዘሎ
+                              ህዝብና ጽልዋ ከም ዘሕድርን መሰረታዊ ለውጢ ከም ዘመጽእን ንእግዚኣብሄር ንኣምኖ
+                              ኢና። ተልእኾ ወንጌል ንኽንፍጽም ብጸሎት ኮነ ብንዋት፡ ደገፍ ንትገብሩልና ኣብ
+                              ኩሉ ዓለም ዘሎኹም መተዓየይትና፡ ስለ ትግሃትኩምን ጸዓትኩምን እግዚኣብሄር
+                              ይባርኽኩም።
+                            </p>
                       </div>
                     </div>
                   </div>

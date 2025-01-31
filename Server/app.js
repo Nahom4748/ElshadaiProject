@@ -7,7 +7,7 @@ const sanitize = require("sanitize");
 // Import the CORS module
 const cors = require("cors");
 //path module
-const path = require("path");
+const path = require("path"); 
 // Set up the CORS options to allow requests from our front-end
 const corsOptions = {
   origin: process.env.FRONTEND_URL,

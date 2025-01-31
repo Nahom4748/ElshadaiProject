@@ -37,21 +37,7 @@ function BannerComp() {
             <h1 className="text-3xl md:text-size-40 2xl:text-size-55 font-bold text-whiteColor dark:text-blackColor-dark mb-7 md:mb-6 pt-3">
               Welcome
             </h1>
-            <ul className="flex gap-1 justify-center">
-              <li>
-                <a
-                  href="index.html"
-                  className="text-lg text-lightGrey2 dark:text-blackColor2-dark"
-                >
-                  Home <i className="icofont-simple-right"></i>
-                </a>
-              </li>
-              <li>
-                <span className="text-lg text-lightGrey2 dark:text-blackColor2-dark">
-                  Course-Details
-                </span>
-              </li>
-            </ul>
+            
           </div>
         </div>
       </div>

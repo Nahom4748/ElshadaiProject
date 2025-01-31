@@ -25,7 +25,7 @@ function Header() {
   return (
     <header>
       {/* Top Info Bar */}
-      <div className="bg-blackColor2 dark:bg-lightGrey10-dark hidden lg:block">
+      <div className=" dark:bg-lightGrey10-dark hidden lg:block container  pb-5 lg:pb-10">
         <div className="container mx-auto text-whiteColor py-2">
           <div className="flex justify-between items-center">
             <div>
@@ -75,7 +75,7 @@ function Header() {
         }`}
       >
         <nav>
-          <div className="py-3 px-4 container mx-auto">
+          <div className="container 3xl:container-secondary-lg 4xl:container mx-auto lg:pt-4">
             <div className="flex justify-between items-center">
               {/* Logo */}
               <div>
@@ -91,7 +91,7 @@ function Header() {
                     { key: "home", path: "/" },
                     { key: "about_us", path: "/about-us" },
                     { key: "bible_school", path: "/bible-school" },
-                    { key: "partner", path: "/partner" },
+                    { key: "partner", path: "/partners" },
                     { key: "contact_us", path: "/contact-us" },
                   ].map((link) => (
                     <li key={link.key} className="nav-item">
@@ -121,7 +121,7 @@ function Header() {
                 ) : (
                   <>
                     <Link
-                      to="/donate"
+                      to="https://www.paypal.com/donate?token=j5vMmSEk8tvLicD7OgC0LFbvFNhDfXjsEwFGvqVfIdpjF46uI4VoOnedMT3TPJvoAVR3awDg2P3wNrz3"
                       className="text-sm font-semibold text-secondaryColor border border-secondaryColor px-4 py-2 rounded hover:bg-primaryColor hover:text-whiteColor"
                     >
                       {t("header.donation")}

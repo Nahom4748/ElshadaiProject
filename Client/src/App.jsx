@@ -59,6 +59,7 @@ import AdminStudentVideosY1Q3 from "./Page/Admin/Video/AdminStudentVideosY1Q3.js
 import AdminStudentVideosY2Q1 from "./Page/Admin/Video/AdminStudentVideosY2Q1.jsx";
 import AdminStudentVideosY2Q2 from "./Page/Admin/Video/AdminStudentVideosY2Q2.jsx";
 import AdminStudentVideosY2Q3 from "./Page/Admin/Video/AdminStudentVideosY2Q3.jsx";
+import Partners from "./Components/Partners/Partners.jsx";
 
 function App() {
   const { userType, isLogged } = useAuth();
@@ -79,6 +80,7 @@ function App() {
           <>
             <Route path="/" element={<Home />} />
             <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/partners" element={<Partners />} />
             <Route path="/contact-us" element={<ContactUsPag />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/forgot-password" element={<RequestPasswordReset />} />
