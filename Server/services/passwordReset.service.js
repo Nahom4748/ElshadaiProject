@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false,
   },
 });
-
+console.log(first);
 // **Step 1: Request Password Reset (Generate Link & Send Email)**
 async function requestPasswordReset(email, res) {
   try {
