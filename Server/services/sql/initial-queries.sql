@@ -196,7 +196,7 @@ VALUES
 CREATE TABLE IF NOT EXISTS `Password_Resets` (
     `reset_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `password_id` INT NOT NULL,
-    `otp_code` VARCHAR(6) NOT NULL,
+    `otp_code` VARCHAR(225) NOT NULL,
     `expires_at` DATETIME NOT NULL,
     `used` TINYINT(1) NOT NULL DEFAULT 0,
     FOREIGN KEY (`password_id`) REFERENCES `User_Passwords`(`password_id`) ON DELETE CASCADE

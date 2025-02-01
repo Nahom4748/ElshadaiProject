@@ -83,7 +83,6 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/forgot-password" element={<RequestPasswordReset />} />
             <Route path="/reset-password" element={<ResetPassword />} />
-
             <Route path="/bible-school" element={<BibleSchoolPa />} />
             <Route path="/create-account" element={<CreateAccPage />} />
           </>
