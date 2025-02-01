@@ -1,6 +1,6 @@
 const passwordResetService = require("../services/passwordReset.service");
 
-
+// Request password reset (Send email with reset link)
 async function requestPasswordReset(req, res) {
   const { email } = req.body;
 
@@ -9,22 +9,19 @@ async function requestPasswordReset(req, res) {
   }
 
   try {
-    const result = await passwordResetService.requestPasswordReset(email);
-
-    // Return the status and message from the service
-    return res.status(result.status).json({ message: result.message });
+    await passwordResetService.requestPasswordReset(email, res);
   } catch (error) {
     console.error("Error in requestPasswordReset:", error);
-    return res.status(500).json({ message: "Error processing password reset request" });
+    return res
+      .status(500)
+      .json({ message: "Error processing password reset request" });
   }
 }
 
-
-
-// Controller for confirming the password reset
+// Reset password (Verify token & update password)
 async function resetPassword(req, res) {
   const { token, newPassword } = req.body;
-
+  console.log(token, newPassword);
   if (!token || !newPassword) {
     return res
       .status(400)
@@ -32,8 +29,7 @@ async function resetPassword(req, res) {
   }
 
   try {
-    const result = await passwordResetService.resetPassword(token, newPassword);
-    return res.status(result.status).json({ message: result.message });
+    await passwordResetService.resetPassword(token, newPassword, res);
   } catch (error) {
     console.error("Error in resetPassword:", error);
     return res.status(500).json({ message: "Error resetting password" });

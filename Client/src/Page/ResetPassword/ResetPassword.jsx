@@ -1,21 +1,33 @@
-// components/ResetPassword.js
-
-import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import passwordService from "../../Services/passwordService";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import passwordService from "../../Services/passwordService"; // Adjust path if needed
 
 function ResetPassword() {
-  const { token } = useParams();
+  const location = useLocation(); // To get access to the location object
+  const navigate = useNavigate();
+
+  // Extract the token from the query string
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get("token");
+
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      setError("Invalid or expired token.");
+    } else {
+      console.log("Token received:", token); // Debugging the token
+    }
+  }, [token]);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
 
+    // Check if passwords match
     if (newPassword !== confirmPassword) {
       setError("Passwords do not match.");
       return;
@@ -46,6 +58,7 @@ function ResetPassword() {
           Reset Password
         </h3>
         <form onSubmit={handleResetPassword} className="space-y-4">
+          {/* New Password Field */}
           <div>
             <label className="block text-gray-600 mb-2">New Password:</label>
             <input
@@ -57,6 +70,8 @@ function ResetPassword() {
               required
             />
           </div>
+
+          {/* Confirm New Password Field */}
           <div>
             <label className="block text-gray-600 mb-2">
               Confirm New Password:
@@ -70,8 +85,12 @@ function ResetPassword() {
               required
             />
           </div>
+
+          {/* Display messages */}
           {message && <p className="text-green-500">{message}</p>}
           {error && <p className="text-red-500">{error}</p>}
+
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full py-2 bg-blue text-white rounded flex items-center justify-center"
