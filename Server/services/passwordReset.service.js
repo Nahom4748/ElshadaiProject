@@ -183,7 +183,6 @@ async function resetPassword(token, newPassword, res) {
     const query =
       "SELECT * FROM Password_Resets WHERE otp_code = ? AND expires_at > NOW() AND used = 0";
     const [tokens] = await db.query(query, [token]);
-console.log(tokens);
     // If no tokens found or expired
     if (!tokens || tokens.length === 0) {
       return res.status(400).json({ message: "Invalid or expired token." });
@@ -201,9 +200,7 @@ console.log(tokens);
     );
 
     // Mark token as used
-    await db.query("UPDATE Password_Resets SET used = 1 WHERE otp_code = ?", [
-      token,
-    ]);
+    await db.query("UPDATE Password_Resets SET used = 1 WHERE otp_code = ?", [token]);
 
     return res.status(200).json({ message: "Password reset successful." });
   } catch (error) {

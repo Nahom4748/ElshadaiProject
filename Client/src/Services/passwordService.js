@@ -1,4 +1,3 @@
-
 const BASE_URL = "http://localhost:5001"; // Replace with your backend URL if deployed
 
 // Request password reset
@@ -18,7 +17,9 @@ const requestPasswordReset = async (email) => {
     return data;
   } catch (error) {
     console.error("Error in requestPasswordReset:", error);
-    throw new Error(error.message || "Service error: Password reset request failed.");
+    throw new Error(
+      error.message || "Service error: Password reset request failed."
+    );
   }
 };
 
@@ -39,7 +40,9 @@ const confirmPasswordReset = async (token, newPassword) => {
     return data;
   } catch (error) {
     console.error("Error in confirmPasswordReset:", error);
-    throw new Error(error.message || "Service error: Password reset confirmation failed.");
+    throw new Error(
+      error.message || "Service error: Password reset confirmation failed."
+    );
   }
 };
 
