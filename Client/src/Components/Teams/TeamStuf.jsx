@@ -446,7 +446,7 @@ function TeamStuf() {
                 </a>
               </h5>
               <p class="text-xl text-primaryColor font-medium leading-6 mb-10px">
-                {t("staff.Manager")}
+                {t("staff.Editor")}
               </p>
               <ul class="flex gap-10px items-center justify-center">
                 <li>

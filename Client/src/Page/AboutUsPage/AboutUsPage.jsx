@@ -45,13 +45,6 @@ function AboutUsPage() {
                 >
                   Pastor Temesghen Seum
                 </button>
-
-                <button
-                  className="{activeTab === 'tab4' ? 'tab-button active' : 'tab-button'}is-checked relative py-10px px-25px md:py-10px md:px-10 lg:py-15px lg:px-60px font-bold uppercase text-contentColor transition-all duration-300 shadow-experience hover:text-secondaryColor bg-whiteColor hover:bg-primaryColor dark:bg-whiteColor-dark dark:hover:bg-whiteColor rounded before:w-0 before:h-0.5 before:absolute before:-bottom-0.5 lg:before:bottom-0 before:left-0 before:bg-primaryColor hover:before:w-full before:transition-all before:duration-300 active"
-                  onClick={() => handleTabClick("tab4")}
-                >
-                  EDUCATION
-                </button>
               </div>
               <div className="tab-contents">
                 {activeTab === "tab1" && (
@@ -149,7 +142,7 @@ function AboutUsPage() {
                 )}
                 {activeTab === "tab3" && (
                   <div id="tab3">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20px items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10px items-center">
                       {/*   card 1   */}
                       <div className="flex flex-col sm:flex-row gap-x-0 sm:gap-x-10 gap-y-5 sm:gapy-y-0 group p-15px transition-all duration-300 shadow-experience   dark:bg-whiteColor-dark dark:hover:bg-whiteColor rounded">
                         <div data-aos="fade-up" class="group">
@@ -178,23 +171,26 @@ function AboutUsPage() {
                         </div>
                       </div>
                       {/*   card 2   */}
-                      <div className="flex flex-col sm:flex-row gap-x-0 sm:gap-x-10 gap-y-5 sm:gapy-y-0 group p-2px transition-all duration-300 shadow-experience dark:bg-whiteColor-dark dark:hover:bg-whiteColor rounded">
-                            <p className="text-contentColor dark:text-contentColor-dark mb-25px">
-                              ናብ’ዚ መራኸቢ ብዙሃን (Website) ኤልሻዳይ ሃዋርያዊ ተልእኾ እንቋዕ
-                              ብደሓን መጻኹም። ብትምህርቲ ቓል ኣምላኽ፡ ኣምላኻዊ ሓሳብ ዘሎዎ ሕበረተሰብ
-                              ንምፍጣር; ዕላማን ተልእኾን ወንጌል ንምፍጻም ተሳተፍቲ ምዃንኩም ደስ ይብለኒ።
-                              እዚ መራኸቢ ብዙሃን: (Website) ኣብ ኩሉ ክፍሊ ዓለም ትምህርቲ መጽሓፍ
-                              ቅዱስ ንምዝርጋሕ ኣዚዩ ጠቓሚ መሳርሒ’ዩ። ዕላማ ኤልሻዳይ ሃዋርያዊ ተልእኾ፡
-                              ቃል ኣምላኽ ብግልጸትን ብዝርዳእ ኣገባብን ብምምሃር፡ ኣብ ኩሉ ክፍሊ ዓለም
-                              ንዘሎ ህዝብና፡ ኣብ ህይወቱ መሰረታዊ ለውጢ ንምምጻእ’ዩ። ካብ እግዚኣብሄር
-                              ዝተወሃብናዮ ተልእኾ፡ ኣብ ኩሉ ዓለም ዘሎ ህዝብና ቓል ኣምላኽ ንኽመሃር፡ ነቲ
-                              ተካኢ ወሎዶ ዝኾኑ መራሕትን ኣገልገልትን፡ ምስልጣንን፡ ምዕጣቕን፡ምፍራይን’ዩ።
-                              በዚ ዓለም ለኻዊ ዝኾነ ራእይ፡ ኤልሻዳይ ሃዋርያዊ ተልእኾ ኣብ ዓለም ዘሎ
-                              ህዝብና ጽልዋ ከም ዘሕድርን መሰረታዊ ለውጢ ከም ዘመጽእን ንእግዚኣብሄር ንኣምኖ
-                              ኢና። ተልእኾ ወንጌል ንኽንፍጽም ብጸሎት ኮነ ብንዋት፡ ደገፍ ንትገብሩልና ኣብ
-                              ኩሉ ዓለም ዘሎኹም መተዓየይትና፡ ስለ ትግሃትኩምን ጸዓትኩምን እግዚኣብሄር
-                              ይባርኽኩም።
-                            </p>
+                      <div className="flex flex-col sm:flex-row gap-x-0 sm:gap-x-10 gap-y-5 sm:gapy-y-0 group p-px transition-all duration-300 shadow-experience dark:bg-whiteColor-dark dark:hover:bg-whiteColor rounded">
+                        <p className="text-contentColor dark:text-contentColor-dark mb-25px">
+                          ፓስተር ተመስገን ሰዩም ኣብ 1990 ኣብ ካቶሊካዊት ተሃድሶ ቤተ ክርስትያን ኣስመራ፡
+                          ኣብ ንኡስ ዕድሚኡ ንጎይታና የሱስ ክርስቶስ ከም ናይ ግሊ መድሓኒኡን ጎይትኡን
+                          ዝተቐበለ ኮይኑ፡ ኣብቲ እዋን እቲ ፍሉይ ናይ ተሓድሶን ናይ መንፈስ ቅዱስ ምንቕቓሕን
+                          ብምንባሩ ድማ፡ ኣብ ህይወቱ ፍሉይ መንፈሳዊ ጽምኣትን ቅንኣትን ስለ ዝሓደሮ፡ ብረድኤት
+                          ኣማኽ ኣብ ሓጺር ግዜ እዩ ብቃል ኣምላኽን ብምርዳእ መንፈስቅዱስን ክዓብን ስዒቡውን
+                          ከገልግልን ዝጀመረ፡፡ ካብ 1991 - 1997 ኣብ ዝነበረ እዋን ድማ ኣብ ኣስመራ ኣብ
+                          ናይ ተመሃሮ ሕብረት ኣብያተ ክርስትያናት ብዝተፈላለየ መንገዲ ምሉ ግዜኡ ብምሃብ
+                          ከገልግል እንከሎ፡ ኣብ 1998 ድማ ናብ ሕቡራት መንግስትታት ኣሜሪካ ድሕሪ ምኻዱ፡
+                          ኣብ ሎስ ኣንጀሎስ (ካሊፎርንያ) ብደገፍ መንፈስቅዱስ ፡ ማሕበር ኤልሻዳይ ቤተ
+                          ክርስትያን ብምትካል ከም ጋሳ ማሕበር ኮይኑ ንልዕሊ 20 ዓመታት ኣገልጊሉ እዩ፡፡ ካብ
+                          2021 ጀሚሩ ድማ ብመሪሕነት መንፈስቅዱስ 'ኤልሻዳይ ሃዋርያዊ ተልእኾ' ብዝብል
+                          ኣገልግሎት ንጎይታናን ማሕበሩን ኣብ ምግልጋል ይርከብ ኣሎ፡፡ ሓደ ካብቲ ኣብዚ
+                          ኣገልግሎት () ካብ ዝውሃቡ ኣገልግሎታት ድማ ኤልሻዳይ ቤት ትምህርቲ መጽሓፍ ቅዱስ
+                          እዩ፡፡ እዚ ቤት ትምህርቲ እዚ ኣብ ዝተፈላለዩ ኩርንዓት ዓለም ንዝርከቡ ቅዱሳት
+                          ኣሕዋት ፡ ብቑዓት ደቂ መዛመርቲ ጎይታና የሱስ ክርስቶስ ጌርካ ንምዕጣቕ ብደረጃ
+                          ሰርቲፊኬት ንሓደ ዓመት ከም'ኡውን ብደረጃ ዲፕሎማ ንኽልተ ዓመት ዝኸይድ ትምህርታት
+                          ኣብ ምሃብ ይርከብ ኣሎ፡፡
+                        </p>
                       </div>
                     </div>
                   </div>

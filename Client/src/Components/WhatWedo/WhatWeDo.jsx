@@ -11,10 +11,10 @@ function WhatWeDo() {
           {/*   meeting thumbnail  */}
           <div data-aos="fade-up">
             <h3 class="uppercase text-secondaryColor text-size-15 mb-5px md:mb-15px font-inter tracking-[4px] font-semibold">
-              What we do
+              {t("whatWeDo.title")}
             </h3>
             <h1 class="text-3xl text-whiteColor md:text-size-35 lg:text-size-42 2xl:text-size-47 leading-10 md:leading-45px lg:leading-12 2xl:leading-50px dark:text-blackColor-dark font-bold mb-15px">
-              Bible School
+              {t("whatWeDo.subtitle")}
             </h1>
           </div>
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-30px">

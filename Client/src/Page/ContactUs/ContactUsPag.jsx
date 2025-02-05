@@ -46,13 +46,13 @@ function ContactUsPag() {
               </div>
               <div className="">
                 <h3 className="text-2xl font-semibold text-whiteColor dark:text-blackColor-dark leading-38px">
-                  Mail address
+                  E-Mail address
                 </h3>
                 <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
-                  techbootmail@gmail.com
+                  elshaddaiapostlic@gmail.com
                 </p>
                 <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
-                  998757478492
+                  +1 310-844-4780
                 </p>
               </div>
             </div>
@@ -85,10 +85,10 @@ function ContactUsPag() {
                   Office address
                 </h3>
                 <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
-                  Digital Agency Network 2024
+                  4001 Amen Ct Matthews NC 28104
                 </p>
                 <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
-                  Eastbourne Terrace
+                  United States
                 </p>
               </div>
             </div>
@@ -121,11 +121,9 @@ function ContactUsPag() {
                   Phone Number
                 </h3>
                 <p className="text-size-13 lg:text-size-15 text-contentColor dark:text-contentColor-dark leaing-5">
-                  +880 123 456 789 , 99874
+                  +1 310-844-4780
                 </p>
-                <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px">
-                  +880 123 456 789
-                </p>
+                <p className="text-size-15 text-contentColor dark:text-contentColor-dark leaing-26px"></p>
               </div>
             </div>
           </div>
