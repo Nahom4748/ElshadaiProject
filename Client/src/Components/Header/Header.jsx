@@ -38,7 +38,7 @@ function Header() {
               <div>
                 <p>
                   <i className="icofont-location-pin text-primaryColor mr-1"></i>
-                  684 West College St. Sun City, USA
+                  4001 Amen Ct Matthews NC 28104 USA
                 </p>
               </div>
               <ul className="flex gap-3">
@@ -121,7 +121,8 @@ function Header() {
                 ) : (
                   <>
                     <Link
-                      to="https://www.paypal.com/donate?token=j5vMmSEk8tvLicD7OgC0LFbvFNhDfXjsEwFGvqVfIdpjF46uI4VoOnedMT3TPJvoAVR3awDg2P3wNrz3"
+                      to="https://www.paypal.com/donate/?hosted_button_id=J4AM3AMAD7DJ8"
+                      target="_blank"
                       className="text-sm font-semibold text-secondaryColor border border-secondaryColor px-4 py-2 rounded hover:bg-primaryColor hover:text-whiteColor"
                     >
                       {t("header.donation")}

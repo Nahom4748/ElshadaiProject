@@ -38,7 +38,7 @@ function Footer() {
 
           {/*  footer main */}
           <section>
-            <div class="grid grid-cols-12 gap-30px md:gap-y-5 lg:gap-y-0 pt-60px pb-50px md:pt-30px md:pb-30px lg:pt-110px lg:pb-20">
+            <div class="grid grid-cols-9 gap-30px md:gap-y-5 lg:gap-y-0 pt-60px pb-50px md:pt-30px md:pb-30px lg:pt-110px lg:pb-20">
               {/*  left */}
               <div
                 class="lg:col-span-6 md:col-span-6 col-start-6 "
@@ -63,10 +63,10 @@ function Footer() {
                       OPENING HOURES
                     </h6>
                     <p class="text-sm text-whiteColor text-opacity-60 mb-1">
-                      Mon - Sat(8.00 - 6.00)
+                      Tuesday 9:00 PM ET Australia, Canada, USA
                     </p>
                     <p class="text-sm text-whiteColor text-opacity-60">
-                      Sunday - Closed
+                      Tuesday 8:00 PM Berlin Time Africa, Europe, Middle East
                     </p>
                   </div>
                 </div>
@@ -119,54 +119,7 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              {/*  middle 2 */}
-              <div class="lg:col-start-12 lg:col-span-3" data-aos="fade-up">
-                <h4 class="text-size-22 font-bold text-whiteColor mb-3 items-end">
-                  Courses
-                </h4>
-                <ul class="flex flex-col gap-y-3">
-                  <li>
-                    <Link 
-                      to ="#"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      ብክርስቶስ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      to ="#"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      መንፈስ ቅዱስ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      to ="#"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      ሰራተኛ
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      to ="#"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      ውልድነት
-                    </Link>
-                  </li>
-                  <li>
-                    <Link 
-                      to ="#"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      ምስጢር
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+             
             </div>
           </section>
 
