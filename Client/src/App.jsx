@@ -2,7 +2,7 @@ import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "../src/Components/LanguageSwitcher/i18n.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -60,14 +60,19 @@ import AdminStudentVideosY2Q1 from "./Page/Admin/Video/AdminStudentVideosY2Q1.js
 import AdminStudentVideosY2Q2 from "./Page/Admin/Video/AdminStudentVideosY2Q2.jsx";
 import AdminStudentVideosY2Q3 from "./Page/Admin/Video/AdminStudentVideosY2Q3.jsx";
 import Partners from "./Components/Partners/Partners.jsx";
-
+import LoadingScreen from "./Components/LoadingScreen/LoadingScreen.jsx";
 
 function App() {
   const { userType, isLogged } = useAuth();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     AOS.init();
+    setTimeout(() => setLoading(false), 2000); // Simulate a loading delay
   }, []);
+  if (loading) {
+    return <LoadingScreen />;
+  }
   return (
     <Router>
       {!isLogged && (

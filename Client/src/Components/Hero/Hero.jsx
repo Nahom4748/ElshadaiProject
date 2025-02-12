@@ -28,7 +28,7 @@ function Hero() {
 
             <div>
               <a
-                href="course.html"
+                href="/bible-school"
                 className="text-sm md:text-size-15 font-semibold text-darkdeep2 bg-whiteColor border border-whiteColor px-5 md:px-30px py-3 md:py-4 hover:text-whiteColor hover:bg-darkblack rounded inline-block mr-6px md:mr-30px shadow-hero-action dark:bg-whiteColor-dark dark:hover:bg-whiteColor dark:text-whiteColor dark:hover:text-whiteColor-dark dark:border-none"
               >
                 {t("hero.bible_school")}

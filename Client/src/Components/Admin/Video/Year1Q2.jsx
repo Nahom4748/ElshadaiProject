@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Year1Q2 = () => {
   const [videos, setVideos] = useState([]);
@@ -19,7 +20,7 @@ const Year1Q2 = () => {
   const fetchVideos = () => {
     setLoading(true);
     axios
-      .get("http://localhost:5001/api/quarter2/videos")
+      .get(`${BASE_URL}/api/quarter2/videos`)
       .then((response) => {
         setVideos(response.data);
         setLoading(false);
@@ -75,10 +76,7 @@ const Year1Q2 = () => {
     setSaving(true);
 
     axios
-      .put(
-        `http://localhost:5001/api/quarter2/videos/${selectedVideo.id}`,
-        selectedVideo
-      )
+      .put(`${BASE_URL}/api/quarter2/videos/${selectedVideo.id}`, selectedVideo)
       .then(() => {
         fetchVideos();
         closeVideoModal();
@@ -101,7 +99,7 @@ const Year1Q2 = () => {
 
     axios
       .put(
-        `http://localhost:5001/api/quarter2/videos/${selectedVideo.id}/document`,
+        `${BASE_URL}/api/quarter2/videos/${selectedVideo.id}/document`,
         formData
       )
       .then(() => {
@@ -188,7 +186,7 @@ const Year1Q2 = () => {
               {video.document && (
                 <div className="mt-4">
                   <a
-                    href={`http://localhost:5001/${video.document}`}
+                    href={`${BASE_URL}/${video.document}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 underline"
