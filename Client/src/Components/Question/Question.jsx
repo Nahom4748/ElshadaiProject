@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 function Question() {
@@ -57,10 +56,8 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          Non similique culpa in provident quos sit commodi
-                          beatae ea laborum suscipit id autem velit aut iusto
-                          odio et deleniti quis et doloremque enim vel
-                          consequuntur quos.
+                          ምዝገባ እቲ መዓስ ይጀምር ይኸውን ምዝገባ እቲ መዓስ ከም ዝጀምር ዝኾነ ቀን ሓበሬታ
+                          ንኽትረኽቦ ትረኽብ ይበጃእ።
                         </p>
                       </div>
                     </div>
@@ -100,10 +97,7 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          Non similique culpa in provident quos sit commodi
-                          beatae ea laborum suscipit id autem velit aut iusto
-                          odio et deleniti quis et doloremque enim vel
-                          consequuntur quos.
+                          "ምዝገባ ክትፈጽም ድሕሪ፡ ናይ ክላስ መዓልትን ስዓትን ብምትሕብባር ንእኩል ኢና።"
                         </p>
                       </div>
                     </div>
@@ -143,10 +137,7 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          Non similique culpa in provident quos sit commodi
-                          beatae ea laborum suscipit id autem velit aut iusto
-                          odio et deleniti quis et doloremque enim vel
-                          consequuntur quos.
+                          ኣዎ፡ ንድሕሪ ምዝዛም ትምህርቲ፡ ወረቐት ምስክርነት ክንህብ ኢና።
                         </p>
                       </div>
                     </div>
@@ -186,10 +177,8 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          Non similique culpa in provident quos sit commodi
-                          beatae ea laborum suscipit id autem velit aut iusto
-                          odio et deleniti quis et doloremque enim vel
-                          consequuntur quos.
+                          ድሕሪ ምዝገባ፡ ሓበሬታ ብዛዕባ ትምህርቲ ንኹሉ ኣባል ማሕበርትና ክንልከም ኢና። ናይ
+                          ትምህርቲ ዕለትን ስዓትን ንኸምር ንኹሉ ክንሓትት ኢና።
                         </p>
                       </div>
                     </div>
