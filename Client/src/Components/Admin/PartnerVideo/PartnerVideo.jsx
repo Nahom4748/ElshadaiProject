@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "react-modal";
 import { FaPlus, FaTrashAlt } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const customModalStyles = {
   content: {
@@ -51,9 +52,7 @@ const PartnerVideo = () => {
   const fetchVideos = async () => {
     setFetchLoading(true);
     try {
-      const response = await axios.get(
-        "http://localhost:5001/api/partners/videos"
-      );
+      const response = await axios.get(`${BASE_URL}/api/partners/videos`);
       setVideos(response.data.data || []);
     } catch (err) {
       setError("Failed to load videos.");
@@ -74,13 +73,10 @@ const PartnerVideo = () => {
 
     setAddLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:5001/api/partners/videos",
-        {
-          video_link: videoLink,
-          description,
-        }
-      );
+      const response = await axios.post(`${BASE_URL}/api/partners/videos`, {
+        video_link: videoLink,
+        description,
+      });
 
       if (response.status === 201) {
         fetchVideos();
@@ -105,9 +101,7 @@ const PartnerVideo = () => {
 
     setDeleteLoading(true);
     try {
-      await axios.delete(
-        `http://localhost:5001/api/partners/videos/${videoToDelete}`
-      );
+      await axios.delete(`${BASE_URL}/api/partners/videos/${videoToDelete}`);
       fetchVideos();
       setConfirmModalIsOpen(false);
       setVideoToDelete(null);

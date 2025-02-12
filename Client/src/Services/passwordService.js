@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5001"; // Replace with your backend URL if deployed
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // Request password reset
 const requestPasswordReset = async (email) => {

@@ -1,19 +1,23 @@
 import axios from "axios";
 
-const api_url = "http://localhost:5001/api/user/register";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_URL = "/api/user/register"; // Ensure correct variable naming
 
-// Function to fetch lessons for Quarter 1
 const createAcc = async (formData, company_role_id) => {
   try {
-    // Constructing the URL properly for a POST request
-    const response = await axios.post(api_url, {
+    // Constructing the URL correctly
+    const response = await axios.post(`${BASE_URL}${API_URL}`, {
       ...formData,
       company_role_id,
     });
+
     return response.data;
   } catch (error) {
-    console.error("Error creating account:", error);
-    throw error; // Rethrow error for handling in the component
+    console.error(
+      "Error creating account:",
+      error.response?.data || error.message
+    );
+    throw new Error(error.response?.data?.message || "An error occurred");
   }
 };
 

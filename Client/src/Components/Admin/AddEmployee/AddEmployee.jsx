@@ -8,6 +8,7 @@ import {
   FaGlobe,
   FaLock,
 } from "react-icons/fa";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function AddEmployee() {
   const [formData, setFormData] = useState({
@@ -59,10 +60,10 @@ function AddEmployee() {
       try {
         const companyRoleId = formData.company_role === "Admin" ? 1 : 2;
 
-        const response = await axios.post(
-          "http://localhost:5001/api/user/register",
-          { ...formData, company_role_id: companyRoleId }
-        );
+        const response = await axios.post(`${BASE_URL}/api/user/register`, {
+          ...formData,
+          company_role_id: companyRoleId,
+        });
 
         console.log("Employee added:", response.data);
         setSuccessMessage("Employee added successfully!");

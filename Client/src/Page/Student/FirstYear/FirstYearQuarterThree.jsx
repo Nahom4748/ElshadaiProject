@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../../Contexts/AuthContext";
 import videoService from "../../../Services/videofetch.service.js";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function FirstYearQuarterThree() {
   const [lessons, setLessons] = useState([]);
@@ -9,7 +10,6 @@ function FirstYearQuarterThree() {
   const [hasPaidQ1, setHasPaidQ1] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
-  const url = "http://localhost:5001/";
 
   useEffect(() => {
     setLoading(true);
@@ -138,7 +138,7 @@ function FirstYearQuarterThree() {
                   <li className="flex items-center p-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition-all">
                     <i className="icofont-file-pdf text-red-400 mr-3"></i>
                     <a
-                      href={`${url}${currentLesson.document}`}
+                      href={`${BASE_URL}/${currentLesson.document}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-400 hover:underline"
@@ -160,7 +160,7 @@ function FirstYearQuarterThree() {
               Access Denied 🚫
             </h1>
             <p className="text-gray-200 text-lg">
-              Complete your payment for Quarter 1 to unlock this content.
+              Complete your payment for Quarter 3 to unlock this content.
             </p>
           </div>
         </div>

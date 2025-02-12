@@ -78,40 +78,40 @@ function Footer() {
                 </h4>
                 <ul class="flex flex-col gap-y-3">
                   <li>
-                    <Link 
-                      to ="/"
+                    <Link
+                      to="/"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
                       Home
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="/about-us"
+                    <Link
+                      to="/about-us"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
                       About Us
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="/bible-school"
+                    <Link
+                      to="/bible-school"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
                       Bible School
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="/partners"
+                    <Link
+                      to="/partners"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
                       Partners
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="/contact-us"
+                    <Link
+                      to="/contact-us"
                       class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
                     >
                       Contact Us
@@ -119,7 +119,6 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-             
             </div>
           </section>
 
@@ -127,55 +126,62 @@ function Footer() {
           <div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-30px pt-10 items-center">
               <div class="lg:col-start-1 lg:col-span-3">
-                <Link  to ="#">
+                <Link to="#">
                   <img src="./assets/images/logo/logo_2.png" alt="" />
                 </Link>
               </div>
 
-              <div class="lg:col-start-4 lg:col-span-6">
+              <div class="lg:col-start-4 lg:col-span-6 flex justify-center items-center">
                 <p class="text-whiteColor">
-                  Copyright © <span class="text-primaryColor">2024 </span> by
-                  edurock. All Rights Reserved.
+                  Copyright © <span class="text-primaryColor">2025</span> by
+                  Elshaddai Apostolic Mission.
                 </p>
+                <a
+                  href="https://any-tech-ten.vercel.app/"
+                  target="_blank"
+                  class="text-primaryColor hover:text-whiteColor transition-all ml-3"
+                >
+                  Designed By AnyTech
+                </a>
               </div>
 
               <div class="lg:col-start-10 lg:col-span-3">
                 <ul class="flex gap-3 lg:gap-2 2xl:gap-3 lg:justify-end">
                   <li>
-                    <Link 
-                      to ="#"
+                    <Link
+                      to="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-facebook"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="#"
+                    <Link
+                      to="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-twitter"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="#"
+                    <Link
+                      to="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-vimeo"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="#"
+                    <Link
+                      to="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-linkedin"></i>
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      to ="#"
+                    <Link
+                      to="#"
                       class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
                     >
                       <i class="icofont-skype"></i>

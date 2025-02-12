@@ -1,13 +1,12 @@
 // src/services/lessonService.js
 import axios from "axios";
-
-const api_url = "http://localhost:5001";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // Function to fetch lessons for Quarter 1
 const fetchLessons = async (url) => {
   try {
     // Corrected the string interpolation
-    const response = await axios.get(`${api_url}${url}`);
+    const response = await axios.get(`${BASE_URL}${url}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching lessons:", error);
@@ -17,7 +16,7 @@ const fetchLessons = async (url) => {
 
 const fetchPaymentStatus = async (userId) => {
   try {
-    const response = await axios.get(`${api_url}/api/payments/${userId}`);
+    const response = await axios.get(`${BASE_URL}/api/payments/${userId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching payment status:", error);

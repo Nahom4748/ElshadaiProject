@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Modal from "react-modal";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Payment = () => {
   const [users, setUsers] = useState([]);
@@ -21,7 +22,7 @@ const Payment = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5001/api/users")
+      .get(`${BASE_URL}/api/users`)
       .then((response) => {
         const students = response.data.data.filter(
           (user) => user.company_role_id === 3
@@ -36,7 +37,7 @@ const Payment = () => {
       });
 
     axios
-      .get("http://localhost:5001/api/payments")
+      .get(`${BASE_URL}/api/payments`)
       .then((response) => {
         setPayments(response.data);
       })
@@ -93,10 +94,10 @@ const Payment = () => {
     };
 
     axios
-      .post("http://localhost:5001/api/payments", payload)
+      .post(`${BASE_URL}/api/payments`, payload)
       .then(() => {
         axios
-          .get("http://localhost:5001/api/payments")
+          .get(`${BASE_URL}/api/payments`)
           .then((response) => {
             setPayments(response.data);
             setIsModalOpen(false);

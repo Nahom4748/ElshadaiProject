@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Contexts/AuthContext";
-import logo from "../../assets/images/logo/Elsha_logo1.png";
+import logo from "../../assets/images/logo/ELSHADIA.png";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import { useTranslation } from "react-i18next";
 
 function Header() {
   const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Track menu visibility
   const { user } = useAuth();
 
   useEffect(() => {
@@ -22,10 +23,18 @@ function Header() {
     };
   }, []);
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle the mobile menu
+  };
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(false); // Close the menu when a link is clicked
+  };
+
   return (
     <header>
       {/* Top Info Bar */}
-      <div className=" dark:bg-lightGrey10-dark hidden lg:block container  pb-5 lg:pb-10">
+      <div className="dark:bg-lightGrey10-dark hidden lg:block container pb-5 lg:pb-10">
         <div className="container mx-auto text-whiteColor py-2">
           <div className="flex justify-between items-center">
             <div>
@@ -85,8 +94,12 @@ function Header() {
               </div>
 
               {/* Navigation Links */}
-              <div className="hidden lg:block">
-                <ul className="flex gap-6">
+              <div
+                className={`${
+                  isMenuOpen ? "block" : "hidden"
+                } lg:flex lg:relative w-full bg-black lg:bg-transparent lg:w-auto lg:flex-row lg:justify-between lg:items-center lg:px-10`}
+              >
+                <ul className="flex lg:flex-row flex-col items-center gap-6 lg:gap-6">
                   {[
                     { key: "home", path: "/" },
                     { key: "about_us", path: "/about-us" },
@@ -98,6 +111,7 @@ function Header() {
                       <Link
                         to={link.path}
                         className="text-base font-semibold hover:text-primaryColor dark:text-whiteColor"
+                        onClick={handleMenuClick} // Close the menu on click
                       >
                         {t(`header.${link.key}`)}
                       </Link>
@@ -108,9 +122,6 @@ function Header() {
 
               {/* Language Switcher and Auth Buttons */}
               <div className="flex items-center gap-4">
-                {/* Language Switcher */}
-
-                {/* Auth & Action Buttons */}
                 {user ? (
                   <Link
                     to="/dashboard"
@@ -137,10 +148,19 @@ function Header() {
                 )}
 
                 {/* Mobile Menu Button */}
-                <button className="lg:hidden text-2xl">
-                  <i className="icofont-navigation-menu"></i>
+                <button
+                  className="lg:hidden text-2xl"
+                  onClick={toggleMenu} // Toggle the mobile menu visibility
+                >
+                  {isMenuOpen ? (
+                    <i className="icofont-close text-white"></i> // Show "X" icon when menu is open
+                  ) : (
+                    <i className="icofont-navigation-menu"></i> // Show hamburger icon when menu is closed
+                  )}
                 </button>
               </div>
+
+              {/* Language Switcher */}
               <div className="flex items-center">
                 <LanguageSwitcher />
               </div>
