@@ -96,10 +96,22 @@ function Header() {
               {/* Navigation Links */}
               <div
                 className={`${
-                  isMenuOpen ? "block" : "hidden"
+                  isMenuOpen
+                    ? "block fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 z-50"
+                    : "hidden"
                 } lg:flex lg:relative w-full bg-black lg:bg-transparent lg:w-auto lg:flex-row lg:justify-between lg:items-center lg:px-10`}
               >
-                <ul className="flex lg:flex-row flex-col items-center gap-6 lg:gap-6">
+                <div className="absolute top-5 right-5">
+                  {/* Close Button (Hidden on Full Screen) */}
+                  <button
+                    className="text-3xl text-white lg:hidden"
+                    onClick={toggleMenu}
+                  >
+                    <i className="icofont-close"></i>
+                  </button>
+                </div>
+
+                <ul className="flex flex-col lg:flex-row items-center gap-6 lg:gap-6 pt-16 lg:pt-0">
                   {[
                     { key: "home", path: "/" },
                     { key: "about_us", path: "/about-us" },
@@ -117,6 +129,16 @@ function Header() {
                       </Link>
                     </li>
                   ))}
+                  {/* Donate Button (Only Visible on Mobile) */}
+                  <li className="lg:hidden mt-4">
+                    <Link
+                      to="https://www.paypal.com/donate/?hosted_button_id=J4AM3AMAD7DJ8"
+                      target="_blank"
+                      className="text-base font-semibold bg-primaryColor text-white px-4 py-2 rounded hover:bg-whiteColor hover:text-primaryColor"
+                    >
+                      Donate
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -132,17 +154,17 @@ function Header() {
                 ) : (
                   <>
                     <Link
-                      to="https://www.paypal.com/donate/?hosted_button_id=J4AM3AMAD7DJ8"
-                      target="_blank"
-                      className="text-sm font-semibold text-secondaryColor border border-secondaryColor px-4 py-2 rounded hover:bg-primaryColor hover:text-whiteColor"
-                    >
-                      {t("header.donation")}
-                    </Link>
-                    <Link
                       to="/login"
                       className="text-sm font-semibold text-whiteColor bg-primaryColor px-4 py-2 rounded hover:bg-whiteColor hover:text-primaryColor"
                     >
                       {t("header.login")}
+                    </Link>
+                    <Link
+                      to="https://www.paypal.com/donate/?hosted_button_id=J4AM3AMAD7DJ8"
+                      target="_blank"
+                      className="text-sm font-semibold bg-primaryColor text-white px-4 py-2 rounded-xl shadow-md hover:bg-whiteColor hover:text-primaryColor transition duration-300 ease-in-out transform hover:scale-105 lg:block hidden"
+                    >
+                      Donate
                     </Link>
                   </>
                 )}

@@ -1,199 +1,124 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import logo from "../../assets/images/logo/ELSHADIA.png";
 function Footer() {
   return (
-    <div>
-      <footer className="bg-darkblack">
-        <div className="container 3xl:container-secondary-lg 4xl:container mx-auto pt-65px pb-5 lg:pb-10">
-          {/*  footer top or subscription */}
-          <section>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-30px md:gap-y-0 items-center pb-45px border-b border-darkcolor">
-              <div data-aos="fade-up">
-                <h4 class="text-4xl md:text-size-25 lg:text-size-40 font-bold text-whiteColor leading-50px md:leading-10 lg:leading-16">
-                  Still You Need Our
-                  <span class="text-primaryColor">Support</span> ?
-                </h4>
-                <p class="text-whiteColor text-opacity-65">
-                  Don’t wait make a smart & logical quote here. Its pretty easy.
-                </p>
-              </div>
-              <div data-aos="fade-up">
-                <form class="max-w-form-xl md:max-w-form-md lg:max-w-form-lg xl:max-w-form-xl 2xl:max-w-form-2xl bg-deepgray ml-auto rounded relative">
-                  <input
-                    type="email"
-                    placeholder="Enter your email here"
-                    class="text-whiteColor h-62px pl-15px focus:outline-none border border-deepgray focus:border-whitegrey bg-transparent rounded w-full"
-                  />
-                  <button
-                    type="submit"
-                    class="px-3 md:px-10px lg:px-5 bg-primaryColor hover:bg-deepgray text-xs lg:text-size-15 text-whiteColor border border-primaryColor block rounded absolute right-0 top-0 h-full"
-                  >
-                    Subscribe Now
-                  </button>
-                </form>
-              </div>
-            </div>
-          </section>
-
-          {/*  footer main */}
-          <section>
-            <div class="grid grid-cols-9 gap-30px md:gap-y-5 lg:gap-y-0 pt-60px pb-50px md:pt-30px md:pb-30px lg:pt-110px lg:pb-20">
-              {/*  left */}
-              <div
-                class="lg:col-span-6 md:col-span-6 col-start-6 "
-                data-aos="fade-up"
+    <footer className="bg-darkblack text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Subscription Section */}
+        <section className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 pb-8 border-b border-gray-700">
+          <div data-aos="fade-up">
+            <h4 className="text-2xl md:text-3xl font-bold leading-tight">
+              Still Need Our <span className="text-primaryColor">Support</span>?
+            </h4>
+            <p className="text-white text-opacity-75 mt-2">
+              Don’t wait! Make a smart & logical quote here. It's pretty easy.
+            </p>
+          </div>
+          <div data-aos="fade-up">
+            <form className="bg-gray-800 rounded-md flex overflow-hidden">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-4 py-3 text-white bg-transparent border-none focus:outline-none"
+              />
+              <button
+                type="submit"
+                className="bg-primaryColor hover:bg-gray-700 px-5 py-3 text-white transition"
               >
-                <h4 class="text-size-22 font-bold text-whiteColor mb-3">
-                  About us
-                </h4>
-                <p class="text-base lg:text-sm 2xl:text-base text-darkgray mb-30px leading-1.8 2xl:leading-1.8">
-                  Our website has become an essential tool in this mission,
-                  serving as a global platform to disseminate the message of the
-                  Gospel. It allows us to reach people in different nations and
-                  cultures, breaking barriers and uniting believers in their
-                  pursuit of spiritual growth.
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </section>
+
+        {/* Footer Main Section */}
+        {/* Footer Main Section */}
+        <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[2fr_1fr] gap-8 py-10">
+          {/* About Us */}
+          <div data-aos="fade-up" className="lg:pr-16">
+            {" "}
+            {/* Add padding to the right to create space */}
+            <h4 className="text-xl font-bold mb-3">About Us</h4>
+            <p className="text-gray-400 leading-relaxed">
+              Our website has become an essential tool in spreading the message
+              of the Gospel. It allows us to reach people worldwide, breaking
+              barriers and uniting believers in their spiritual growth.
+            </p>
+            <div className="flex items-center mt-4">
+              <div className="bg-primaryColor p-3 rounded-full text-center">
+                <i className="icofont-clock-time text-2xl text-white"></i>
+              </div>
+              <div className="ml-4">
+                <h6 className="text-lg font-medium">OPENING HOURS</h6>
+                <p className="text-sm text-gray-400">
+                  Tue 9:00 PM ET - USA, Canada
                 </p>
-                <div class="flex items-center">
-                  <div>
-                    <i class="icofont-clock-time text-3xl text-whiteColor h-78px w-78px bg-primaryColor leading-78px mr-22px block text-center"></i>
-                  </div>
-                  <div>
-                    <h6 class="text-lg text-whiteColor font-medium leading-29px">
-                      OPENING HOURES
-                    </h6>
-                    <p class="text-sm text-whiteColor text-opacity-60 mb-1">
-                      Tuesday 9:00 PM ET Australia, Canada, USA
-                    </p>
-                    <p class="text-sm text-whiteColor text-opacity-60">
-                      Tuesday 8:00 PM Berlin Time Africa, Europe, Middle East
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/*  middle 1 */}
-              <div class="lg:col-start-9 lg:col-span-3" data-aos="fade-up">
-                <h4 class=" content-center text-size-22 font-bold text-whiteColor mb-3">
-                  Useful Links
-                </h4>
-                <ul class="flex flex-col gap-y-3">
-                  <li>
-                    <Link
-                      to="/"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/about-us"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/bible-school"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      Bible School
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/partners"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      Partners
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/contact-us"
-                      class="text-darkgray relative hover:text-primaryColor after:transition-all after:duration-300 after:w-0 after:h-2px after:absolute after:bg-primaryColor hover:after:w-full after:bottom-0 after:left-0"
-                    >
-                      Contact Us
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          {/*  footer copyright  */}
-          <div>
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-30px pt-10 items-center">
-              <div class="lg:col-start-1 lg:col-span-3">
-                <Link to="#">
-                  <img src="./assets/images/logo/logo_2.png" alt="" />
-                </Link>
-              </div>
-
-              <div class="lg:col-start-4 lg:col-span-6 flex justify-center items-center">
-                <p class="text-whiteColor">
-                  Copyright © <span class="text-primaryColor">2025</span> by
-                  Elshaddai Apostolic Mission.
+                <p className="text-sm text-gray-400">
+                  Tue 8:00 PM Berlin - Europe
                 </p>
-                <a
-                  href="https://any-tech-ten.vercel.app/"
-                  target="_blank"
-                  class="text-primaryColor hover:text-whiteColor transition-all ml-3"
-                >
-                  Designed By AnyTech
-                </a>
-              </div>
-
-              <div class="lg:col-start-10 lg:col-span-3">
-                <ul class="flex gap-3 lg:gap-2 2xl:gap-3 lg:justify-end">
-                  <li>
-                    <Link
-                      to="#"
-                      class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
-                    >
-                      <i class="icofont-facebook"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="#"
-                      class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
-                    >
-                      <i class="icofont-twitter"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="#"
-                      class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
-                    >
-                      <i class="icofont-vimeo"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="#"
-                      class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
-                    >
-                      <i class="icofont-linkedin"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="#"
-                      class="w-40.19px lg:w-35px 2xl:w-40.19px h-37px lg:h-35px 2xl:h-37px leading-37px lg:leading-35px 2xl:leading-37px text-whiteColor bg-whiteColor bg-opacity-10 hover:bg-primaryColor text-center"
-                    >
-                      <i class="icofont-skype"></i>
-                    </Link>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
+
+          {/* Useful Links */}
+          <div data-aos="fade-up">
+            <h4 className="text-xl font-bold mb-3">Useful Links</h4>
+            <ul className="space-y-2">
+              {[
+                "Home",
+                "About Us",
+                "Bible School",
+                "Partners",
+                "Contact Us",
+              ].map((item, index) => (
+                <li key={index}>
+                  <Link
+                    to={`/${item.toLowerCase().replace(" ", "-")}`}
+                    className="text-gray-400 hover:text-primaryColor transition"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Footer Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-700 pt-6">
+          <Link to="/">
+            <img src={logo} alt="Logo" className="w-32" />
+          </Link>
+          <p className="text-sm text-gray-400 text-center md:text-left mt-4 md:mt-0">
+            Copyright © <span className="text-primaryColor">2025</span> by
+            Elshaddai Apostolic Mission.
+            <a
+              href="https://any-tech-ten.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primaryColor hover:text-white transition ml-2"
+            >
+              Designed By AnyTech
+            </a>
+          </p>
+          <ul className="flex gap-3 mt-4 md:mt-0">
+            {["facebook", "twitter", "vimeo", "linkedin", "skype"].map(
+              (icon, index) => (
+                <li key={index}>
+                  <Link
+                    to="#"
+                    className="w-10 h-10 flex items-center justify-center bg-white bg-opacity-10 hover:bg-primaryColor text-white rounded-full transition"
+                  >
+                    <i className={`icofont-${icon}`}></i>
+                  </Link>
+                </li>
+              )
+            )}
+          </ul>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }
 
