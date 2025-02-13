@@ -36,7 +36,10 @@ function Footer() {
         {/* Footer Main Section */}
         <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[2fr_1fr] gap-8 py-10">
           {/* About Us */}
-          <div data-aos="fade-up" className="lg:pr-16">
+          <div
+            data-aos="fade-up"
+            className=" md:col-span-6 lg:col-span-1 pl-0 lg:pr-16"
+          >
             {" "}
             {/* Add padding to the right to create space */}
             <h4 className="text-xl font-bold mb-3">About Us</h4>
@@ -62,9 +65,12 @@ function Footer() {
           </div>
 
           {/* Useful Links */}
-          <div data-aos="fade-up">
-            <h4 className="text-xl font-bold mb-3">Useful Links</h4>
-            <ul className="space-y-2">
+          <div
+            data-aos="fade-up"
+            className="col-span-6  md:col-span-1 lg:col-span-1 lg:pl-250px"
+          >
+            <h4 className="text-xl font-bold mb-3 ">Useful Links</h4>
+            <ul className="space-y-2 ">
               {[
                 "Home",
                 "About Us",
