@@ -56,8 +56,7 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          ምዝገባ እቲ መዓስ ይጀምር ይኸውን ምዝገባ እቲ መዓስ ከም ዝጀምር ዝኾነ ቀን ሓበሬታ
-                          ንኽትረኽቦ ትረኽብ ይበጃእ።
+                          ምዝገባ ዝጅመረሉ ካብ ሚያዝያ 1 - ነሓሰ 30 (April 1 - August 30) እዩ። 
                         </p>
                       </div>
                     </div>
@@ -97,7 +96,8 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          "ምዝገባ ክትፈጽም ድሕሪ፡ ናይ ክላስ መዓልትን ስዓትን ብምትሕብባር ንእኩል ኢና።"
+                          ክላስ ዝውሃበሉ ንተቐማጦ ኣመሪካን፣ ካናዳን፣ ኣውስትራልያን ሶሉስ 9፡00PM ብኣቆጻጽራ ዋሽንግቶን ዲሲ ክኸውን እንከሎ፣ ንተቐማጦ ኣፍሪቃን፣ ኤሮፓን፣ ማእኸላይ ምብራቕን ድማ 8፡00PM ብኣቆጻጽራ በርሊን ኢዩ።  
+                          እቶም ናይ ክላስ ሰዓታት ዝይጥዕሞም ድማ፣ ኣብ ኦንላይን ንኹሉ ትምህርቲታት ክከታተሉ ይኽእሉ ኢዮም። 
                         </p>
                       </div>
                     </div>
@@ -137,7 +137,7 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          ኣዎ፡ ንድሕሪ ምዝዛም ትምህርቲ፡ ወረቐት ምስክርነት ክንህብ ኢና።
+                          እወ፣ ድሕሪ ምዝዛም 1ይ ዓመት ናይ ሓደ ዓመት ምስክርነት ዲፕሎማ ንህበ ኢና። ነቶም ናይ 2ይ ዓመት ተማሃሮ ድማ ከምኡ ናይ ክልተ ዓመት ምስክርነት ዲፕሎማ ንህበ ኢና።
                         </p>
                       </div>
                     </div>
@@ -177,8 +177,7 @@ function Question() {
                     >
                       <div className="content-wrapper py-4 px-5">
                         <p className="leading-7 text-contentColor dark:text-contentColor-dark mb-15px">
-                          ድሕሪ ምዝገባ፡ ሓበሬታ ብዛዕባ ትምህርቲ ንኹሉ ኣባል ማሕበርትና ክንልከም ኢና። ናይ
-                          ትምህርቲ ዕለትን ስዓትን ንኸምር ንኹሉ ክንሓትት ኢና።
+                          ድሕሪ ምዝገባ፡ ኣባላት ስታፍና ብቐጥታ ብምድዋል ዘድሊ ናይ ትምህርቲ ሓበሬታትን ንዝለኩም ሕቶታትን ንምልስ። 
                         </p>
                       </div>
                     </div>
