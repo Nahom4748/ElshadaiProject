@@ -8,8 +8,7 @@ import {
   FaGlobe,
   FaLock,
 } from "react-icons/fa";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+import BASE_URL from "../../../util/baseURL";
 function AddEmployee() {
   const [formData, setFormData] = useState({
     first_name: "",

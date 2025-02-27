@@ -4,7 +4,6 @@ import img_count2 from "../../assets/images/counter/counter__2.png";
 import img_count3 from "../../assets/images/counter/counter__3.png";
 import img_count4 from "../../assets/images/counter/counter__4.png";
 import img_about2 from "../../assets/images/about/about_pasT.png";
-import img_about3 from "../../assets/images/about/pas-Tlitt.png";
 import img_about4 from "../../assets/images/about/about_4.png";
 import img_about11 from "../../assets/images/about/about_11.png";
 import AboutCards from "./AboutCards";
@@ -115,23 +114,50 @@ function AboutUs() {
               className="relative z-0 mb-30px lg:mb-0 pb-0 md:pb-30px xl:pb-0 overflow-visible"
               data-aos="fade-up"
             >
-              <div className="tilt">
-                <img className="md:ml-[70px]" src={img_about2} alt="" />
-                <img
-                  className="absolute right-0 sm:right-[-17px] md:right-36 lg:right-4 bottom-[91px] md:bottom-0"
-                  src="{img_about3}"
-                  alt=""
-                />
-                <img
-                  className="absolute top-[-18px] left-[30px] animate-move-hor z-[-1]"
-                  src={img_about4}
-                  alt=""
-                />
-                <img
-                  className="absolute top-[30%] left-0 z-[-1]"
-                  src={img_about11}
-                  alt=""
-                />
+              <div className="relative group overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500">
+                {/* Main Image Container */}
+                <div className="relative md:ml-[70px] w-auto max-w-none">
+                  <img
+                    className="w-auto h-auto max-h-[500px] md:max-h-none object-contain mx-auto md:mx-0 transform transition-transform duration-500 group-hover:scale-105"
+                    src={img_about2}
+                    alt="Main Content"
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-darkblack via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primaryColor/20 via-transparent to-secondaryColor/20 animate-shimmer opacity-30" />
+                  </div>
+
+                  {/* Floating Decorative Element */}
+                  <img
+                    className="absolute top-[20px] left-[-40px] w-[80px] h-[80px] animate-float z-0 opacity-80"
+                    src={img_about4}
+                    alt="Decorative"
+                    style={{
+                      filter:
+                        "blur(3px) drop-shadow(0 4px 6px rgba(59, 130, 246, 0.2))",
+                      animation: "subtle-float 8s ease-in-out infinite",
+                      mixBlendMode: "soft-light",
+                    }}
+                  />
+                </div>
+
+                {/* Hover Caption */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-darkblack via-darkblack/90 to-transparent   group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="backdrop-blur-sm bg-darkblack/30 p-4 rounded-xl border border-white/10">
+                    <h4 className="text-xl font-bold text-primaryColor mb-2">
+                      ፓስተር ተመስገን ሰዩም
+                    </h4>
+                    <p className="text-white text-sm font-light">
+                      ሓሳብ ኣምላኽ ዘሎዎ ሕብረተሰብ ብምህናጽ ኣብ ማአከል ወሎዶ ናይ ጽድቂ ጽልዋ ምምጻእ’ዩ።
+                    </p>
+                  </div>
+                </div>
+
+                {/* Animated Border */}
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-primaryColor/20 transition-all duration-500 rounded-2xl">
+                  <div className="absolute inset-0 border-2 border-primaryColor/10 rounded-2xl animate-border-pulse" />
+                </div>
               </div>
               {/*   experience   */}
               <div

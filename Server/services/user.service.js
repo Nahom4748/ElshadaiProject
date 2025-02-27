@@ -2,32 +2,32 @@ const db = require("../config/db.config");
 const bcrypt = require("bcrypt");
 
 async function getAllUsers() {
-  const query = `SELECT * FROM Users INNER JOIN Emails ON Users.user_id = Emails.user_id`;
+  const query = `SELECT * FROM users INNER JOIN Emails ON users.user_id = Emails.user_id`;
   return await db.query(query);
 }
 async function getUserByEmail(email) {
   const query = `SELECT 
-      Users.user_id, 
-      Users.first_name, 
-      Users.last_name, 
-      Users.phone_number, 
-      Users.city, 
-      Users.country, 
+      users.user_id, 
+      users.first_name, 
+      users.last_name, 
+      users.phone_number, 
+      users.city, 
+      users.country, 
       Emails.email, 
       User_Passwords.password_hashed, 
       Company_Roles.company_role_name
-    FROM Users
-    INNER JOIN Emails ON Users.user_id = Emails.user_id
-    INNER JOIN User_Passwords ON Users.user_id = User_Passwords.user_id
-    INNER JOIN Company_Roles ON Users.company_role_id = Company_Roles.company_role_id
+    FROM users
+    INNER JOIN Emails ON users.user_id = Emails.user_id
+    INNER JOIN User_Passwords ON users.user_id = User_Passwords.user_id
+    INNER JOIN Company_Roles ON users.company_role_id = Company_Roles.company_role_id
     WHERE Emails.email = ?`;
   const rows = await db.query(query, [email]);
   return rows.length > 0 ? rows[0] : null; // Return the user if found, otherwise null
 }
 async function getUserById(userId) {
-  const query = `SELECT * FROM Users 
-                 INNER JOIN Emails ON Users.user_id = Emails.user_id 
-                 WHERE Users.user_id = ?`;
+  const query = `SELECT * FROM users 
+                 INNER JOIN Emails ON users.user_id = Emails.user_id 
+                 WHERE users.user_id = ?`;
   const rows = await db.query(query, [userId]);
   return rows.length ? rows[0] : null;
 }
@@ -40,9 +40,9 @@ async function checkIfUserExists(email) {
 
 async function registerUser(userData) {
   try {
-    // Insert into Users table
+    // Insert into users table
     const insertUserQuery = `
-      INSERT INTO Users (first_name, last_name, phone_number, city, country, company_role_id)
+      INSERT INTO users (first_name, last_name, phone_number, city, country, company_role_id)
       VALUES (?, ?, ?, ?, ?, ?)
     `;
     const userResult = await db.query(insertUserQuery, [
@@ -118,7 +118,7 @@ async function updateUser(userId, userData) {
     }
 
     // Build the update query and execute it
-    const updateQuery = `UPDATE Users SET ${updateFields.join(
+    const updateQuery = `UPDATE users SET ${updateFields.join(
       ", "
     )} WHERE user_id = ?`;
     updateValues.push(userId);
@@ -146,7 +146,7 @@ async function updateUser(userId, userData) {
 }
 
 async function deleteUser(userId) {
-  const query = `DELETE FROM Users WHERE user_id = ?`;
+  const query = `DELETE FROM users WHERE user_id = ?`;
   await db.query(query, [userId]);
   return { status: "success" };
 }

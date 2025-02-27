@@ -4,7 +4,7 @@ const jwtSecret = process.env.JWT_SECRET || "your_jwt_secret"; // Ensure this is
 
 async function logIn(req, res) {
   const userData = req.body;
-
+  console.log(userData);
   try {
     const user = await loginService.logIn(userData);
 

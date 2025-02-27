@@ -7,7 +7,7 @@ const sanitize = require("sanitize");
 // Import the CORS module
 const cors = require("cors");
 //path module
-const path = require("path"); 
+const path = require("path");
 // Set up the CORS options to allow requests from our front-end
 const corsOptions = {
   origin: process.env.FRONTEND_URL,
@@ -27,6 +27,7 @@ app.use(express.static("public"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.urlencoded({ extended: true }));
 // Add the express.json middleware to the application
+
 app.use(express.json());
 // Add the sanitizer to the express middleware
 app.use(sanitize.middleware);

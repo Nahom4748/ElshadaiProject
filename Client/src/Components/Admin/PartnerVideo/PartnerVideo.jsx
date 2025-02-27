@@ -3,7 +3,7 @@ import axios from "axios";
 import Modal from "react-modal";
 import { FaPlus, FaTrashAlt } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import BASE_URL from "../../../util/baseURL";
 
 const customModalStyles = {
   content: {

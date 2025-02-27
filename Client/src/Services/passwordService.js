@@ -1,5 +1,4 @@
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+import BASE_URL from "../util/baseURL";
 // Request password reset
 const requestPasswordReset = async (email) => {
   const requestOptions = {

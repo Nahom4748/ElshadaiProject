@@ -61,6 +61,7 @@ import AdminStudentVideosY2Q2 from "./Page/Admin/Video/AdminStudentVideosY2Q2.js
 import AdminStudentVideosY2Q3 from "./Page/Admin/Video/AdminStudentVideosY2Q3.jsx";
 import Partners from "./Components/Partners/Partners.jsx";
 import LoadingScreen from "./Components/LoadingScreen/LoadingScreen.jsx";
+import NotFoundPage from "./Page/NotFoundPage/NotFoundPage.jsx";
 
 function App() {
   const { userType, isLogged } = useAuth();
@@ -93,6 +94,7 @@ function App() {
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/bible-school" element={<BibleSchoolPa />} />
             <Route path="/create-account" element={<CreateAccPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </>
         ) : (
           <>
