@@ -13,8 +13,8 @@ INSERT INTO `Company_Roles` (`company_role_id`, `company_role_name`) VALUES
 ON DUPLICATE KEY UPDATE
     `company_role_name` = VALUES(`company_role_name`);
 
--- Create Users Table (updated to include company_role_id)
-CREATE TABLE IF NOT EXISTS `Users` (
+-- Create users Table (updated to include company_role_id)
+CREATE TABLE IF NOT EXISTS `users` (
     `user_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `first_name` VARCHAR(100) NOT NULL,
     `last_name` VARCHAR(100) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `Emails` (
     `email_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `user_id` INT NOT NULL,
     `email` VARCHAR(100) NOT NULL UNIQUE,
-    FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`) ON DELETE CASCADE
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 -- Create User_Passwords Table (passwords for users)
@@ -40,20 +40,20 @@ CREATE TABLE IF NOT EXISTS `User_Passwords` (
     `password_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `user_id` INT NOT NULL,
     `password_hashed` VARCHAR(255) NOT NULL,
-    FOREIGN KEY (`user_id`) REFERENCES `Users`(`user_id`) ON DELETE CASCADE
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
 -- Insert default admin user
-INSERT INTO `Users` (`first_name`, `last_name`, `phone_number`, `city`, `country`, `company_role_id`)
+INSERT INTO `users` (`first_name`, `last_name`, `phone_number`, `city`, `country`, `company_role_id`)
 VALUES ('Admin', 'User', '11111111', 'Admin City', 'Admin Country', 1);
 
 -- Insert admin email
 INSERT INTO `Emails` (`user_id`, `email`)
-VALUES ((SELECT `user_id` FROM `Users` WHERE `first_name` = 'Admin' AND `last_name` = 'User'), 'admin@admin.com');
+VALUES ((SELECT `user_id` FROM `users` WHERE `first_name` = 'Admin' AND `last_name` = 'User'), 'admin@admin.com');
 
 -- Insert admin password (hashed version of '123456')
 INSERT INTO `User_Passwords` (`user_id`, `password_hashed`)
-VALUES ((SELECT `user_id` FROM `Users` WHERE `first_name` = 'Admin' AND `last_name` = 'User'), MD5('123456'));
+VALUES ((SELECT `user_id` FROM `users` WHERE `first_name` = 'Admin' AND `last_name` = 'User'), MD5('123456'));
 
 CREATE TABLE payments (
     payment_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -103,96 +103,96 @@ CREATE TABLE Quarter3 (
 INSERT INTO Quarter1 (year, week, video, video_description, document, document_description)
 VALUES
 -- Year 1, Week 1 to 12
-('Year 1', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 1 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 1 document'),
-('Year 1', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 2 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 2 document'),
-('Year 1', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 3 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 3 document'),
-('Year 1', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 4 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 4 document'),
-('Year 1', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 5 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 5 document'),
-('Year 1', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 6 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 6 document'),
-('Year 1', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 7 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 7 document'),
-('Year 1', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 8 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 8 document'),
-('Year 1', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 9 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 9 document'),
-('Year 1', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 10 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 10 document'),
-('Year 1', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 11 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 11 document'),
-('Year 1', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 12 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 12 document'),
+('Year 1', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 1 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 1 document'),
+('Year 1', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 2 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 2 document'),
+('Year 1', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 3 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 3 document'),
+('Year 1', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 4 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 4 document'),
+('Year 1', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 5 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 5 document'),
+('Year 1', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 6 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 6 document'),
+('Year 1', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 7 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 7 document'),
+('Year 1', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 8 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 8 document'),
+('Year 1', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 9 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 9 document'),
+('Year 1', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 10 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 10 document'),
+('Year 1', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 11 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 11 document'),
+('Year 1', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 1 Week 12 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 1 Week 12 document'),
 
 -- Year 2, Week 1 to 12
-('Year 2', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 1 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 1 document'),
-('Year 2', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 2 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 2 document'),
-('Year 2', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 3 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 3 document'),
-('Year 2', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 4 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 4 document'),
-('Year 2', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 5 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 5 document'),
-('Year 2', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 6 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 6 document'),
-('Year 2', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 7 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 7 document'),
-('Year 2', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 8 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 8 document'),
-('Year 2', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 9 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 9 document'),
-('Year 2', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 10 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 10 document'),
-('Year 2', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 11 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 11 document'),
-('Year 2', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 12 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 12 document');
+('Year 2', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 1 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 1 document'),
+('Year 2', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 2 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 2 document'),
+('Year 2', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 3 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 3 document'),
+('Year 2', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 4 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 4 document'),
+('Year 2', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 5 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 5 document'),
+('Year 2', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 6 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 6 document'),
+('Year 2', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 7 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 7 document'),
+('Year 2', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 8 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 8 document'),
+('Year 2', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 9 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 9 document'),
+('Year 2', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 10 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 10 document'),
+('Year 2', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 11 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 11 document'),
+('Year 2', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 1 Week 12 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 1 Week 12 document');
 
 -- Insert Data into Quarter2 with updated descriptions
 INSERT INTO Quarter2 (year, week, video, video_description, document, document_description)
 VALUES
 -- Year 1, Week 1 to 12
-('Year 1', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 1 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 1 document'),
-('Year 1', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 2 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 2 document'),
-('Year 1', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 3 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 3 document'),
-('Year 1', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 4 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 4 document'),
-('Year 1', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 5 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 5 document'),
-('Year 1', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 6 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 6 document'),
-('Year 1', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 7 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 7 document'),
-('Year 1', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 8 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 8 document'),
-('Year 1', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 9 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 9 document'),
-('Year 1', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 10 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 10 document'),
-('Year 1', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 11 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 11 document'),
-('Year 1', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 12 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 12 document'),
+('Year 1', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 1 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 1 document'),
+('Year 1', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 2 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 2 document'),
+('Year 1', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 3 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 3 document'),
+('Year 1', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 4 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 4 document'),
+('Year 1', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 5 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 5 document'),
+('Year 1', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 6 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 6 document'),
+('Year 1', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 7 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 7 document'),
+('Year 1', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 8 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 8 document'),
+('Year 1', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 9 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 9 document'),
+('Year 1', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 10 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 10 document'),
+('Year 1', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 11 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 11 document'),
+('Year 1', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 2 Week 12 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 2 Week 12 document'),
 
 -- Year 2, Week 1 to 12
-('Year 2', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 1 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 1 document'),
-('Year 2', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 2 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 2 document'),
-('Year 2', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 3 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 3 document'),
-('Year 2', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 4 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 4 document'),
-('Year 2', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 5 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 5 document'),
-('Year 2', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 6 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 6 document'),
-('Year 2', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 7 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 7 document'),
-('Year 2', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 8 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 8 document'),
-('Year 2', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 9 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 9 document'),
-('Year 2', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 10 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 10 document'),
-('Year 2', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 11 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 11 document'),
-('Year 2', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 12 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 12 document');
+('Year 2', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 1 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 1 document'),
+('Year 2', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 2 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 2 document'),
+('Year 2', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 3 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 3 document'),
+('Year 2', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 4 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 4 document'),
+('Year 2', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 5 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 5 document'),
+('Year 2', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 6 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 6 document'),
+('Year 2', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 7 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 7 document'),
+('Year 2', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 8 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 8 document'),
+('Year 2', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 9 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 9 document'),
+('Year 2', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 10 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 10 document'),
+('Year 2', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 11 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 11 document'),
+('Year 2', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 2 Week 12 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 2 Week 12 document');
 
 -- Insert Data into Quarter3 with updated descriptions
 INSERT INTO Quarter3 (year, week, video, video_description, document, document_description)
 VALUES
 -- Year 1, Week 1 to 12
-('Year 1', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 1 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 1 document'),
-('Year 1', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 2 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 2 document'),
-('Year 1', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 3 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 3 document'),
-('Year 1', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 4 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 4 document'),
-('Year 1', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 5 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 5 document'),
-('Year 1', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 6 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 6 document'),
-('Year 1', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 7 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 7 document'),
-('Year 1', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 8 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 8 document'),
-('Year 1', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 9 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 9 document'),
-('Year 1', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 10 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 10 document'),
-('Year 1', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 11 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 11 document'),
-('Year 1', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 12 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 12 document'),
+('Year 1', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 1 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 1 document'),
+('Year 1', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 2 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 2 document'),
+('Year 1', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 3 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 3 document'),
+('Year 1', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 4 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 4 document'),
+('Year 1', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 5 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 5 document'),
+('Year 1', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 6 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 6 document'),
+('Year 1', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 7 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 7 document'),
+('Year 1', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 8 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 8 document'),
+('Year 1', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 9 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 9 document'),
+('Year 1', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 10 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 10 document'),
+('Year 1', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 11 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 11 document'),
+('Year 1', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 1 Quarter 3 Week 12 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 1 Quarter 3 Week 12 document'),
 
 -- Year 2, Week 1 to 12
-('Year 2', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 1 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 1 document'),
-('Year 2', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 2 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 2 document'),
-('Year 2', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 3 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 3 document'),
-('Year 2', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 4 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 4 document'),
-('Year 2', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 5 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 5 document'),
-('Year 2', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 6 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 6 document'),
-('Year 2', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 7 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 7 document'),
-('Year 2', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 8 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 8 document'),
-('Year 2', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 9 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 9 document'),
-('Year 2', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 10 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 10 document'),
-('Year 2', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 11 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 11 document'),
-('Year 2', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 12 video', 'C:\\Users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 12 document');
+('Year 2', 'Week 1', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 1 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 1 document'),
+('Year 2', 'Week 2', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 2 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 2 document'),
+('Year 2', 'Week 3', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 3 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 3 document'),
+('Year 2', 'Week 4', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 4 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 4 document'),
+('Year 2', 'Week 5', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 5 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 5 document'),
+('Year 2', 'Week 6', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 6 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 6 document'),
+('Year 2', 'Week 7', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 7 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 7 document'),
+('Year 2', 'Week 8', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 8 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 8 document'),
+('Year 2', 'Week 9', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 9 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 9 document'),
+('Year 2', 'Week 10', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 10 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 10 document'),
+('Year 2', 'Week 11', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 11 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 11 document'),
+('Year 2', 'Week 12', 'https://www.youtube.com/watch?v=t_Td4bU', 'Year 2 Quarter 3 Week 12 video', 'C:\\users\\HP\\Desktop\\1.pdf', 'Year 2 Quarter 3 Week 12 document');
 
--- Create Password Resets Table for Users
+-- Create Password Resets Table for users
 CREATE TABLE IF NOT EXISTS `Password_Resets` (
     `reset_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `password_id` INT NOT NULL,

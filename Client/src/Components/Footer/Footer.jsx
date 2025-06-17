@@ -105,7 +105,7 @@ function Footer() {
               rel="noopener noreferrer"
               className="text-primaryColor hover:text-white transition ml-2"
             >
-              Designed By AnyTech
+              Designed By ANY-Tech
             </a>
           </p>
           <ul className="flex gap-3 mt-4 md:mt-0">

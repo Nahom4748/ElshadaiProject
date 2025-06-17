@@ -1,7 +1,6 @@
 // src/services/lessonService.js
 import axios from "axios";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+import BASE_URL from "../util/baseURL";
 // Function to fetch lessons for Quarter 1
 const fetchLessons = async (url) => {
   try {

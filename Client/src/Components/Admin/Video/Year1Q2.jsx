@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-
+import BASE_URL from "../../../util/baseURL";
 const Year1Q2 = () => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);

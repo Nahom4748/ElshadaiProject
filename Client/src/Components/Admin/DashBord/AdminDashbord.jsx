@@ -1,5 +1,8 @@
 import React from "react";
 import Q1 from "../../../assets/images/counter/counter__1.png";
+import Q2 from "../../../assets/images/counter/counter__2.png";
+import Q3 from "../../../assets/images/counter/counter__3.png";
+import Q4 from "../../../assets/images/counter/counter__4.png";
 function AdminDashbord() {
   return (
     <div class="lg:col-start-4 lg:col-span-9">
@@ -29,7 +32,7 @@ function AdminDashbord() {
           <div class="p-5 md:px-10 md:py-50px bg-lightGrey5 dark:bg-whiteColor-dark rounded-lg2 shadow-accordion-dark">
             <div class="flex gap-4">
               <div>
-                <img src="../../assets/images/counter/counter__2.png" alt="" />
+                <img src={Q2} alt="" />
               </div>
               <div>
                 <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
@@ -45,7 +48,7 @@ function AdminDashbord() {
           <div class="p-5 md:px-10 md:py-50px bg-lightGrey5 dark:bg-whiteColor-dark rounded-lg2 shadow-accordion-dark">
             <div class="flex gap-4">
               <div>
-                <img src="../../assets/images/counter/counter__3.png" alt="" />
+                <img src={Q3} alt="" />
               </div>
               <div>
                 <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
@@ -61,7 +64,7 @@ function AdminDashbord() {
           <div class="p-5 md:px-10 md:py-50px bg-lightGrey5 dark:bg-whiteColor-dark rounded-lg2 shadow-accordion-dark">
             <div class="flex gap-4">
               <div>
-                <img src="../../assets/images/counter/counter__4.png" alt="" />
+                <img src={Q4} alt="" />
               </div>
               <div>
                 <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
@@ -77,7 +80,7 @@ function AdminDashbord() {
           <div class="p-5 md:px-10 md:py-50px bg-lightGrey5 dark:bg-whiteColor-dark rounded-lg2 shadow-accordion-dark">
             <div class="flex gap-4">
               <div>
-                <img src="../../assets/images/counter/counter__3.png" alt="" />
+                <img src={Q3} alt="" />
               </div>
               <div>
                 <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">
@@ -93,7 +96,7 @@ function AdminDashbord() {
           <div class="p-5 md:px-10 md:py-50px bg-lightGrey5 dark:bg-whiteColor-dark rounded-lg2 shadow-accordion-dark">
             <div class="flex gap-4">
               <div>
-                <img src="../../assets/images/counter/counter__4.png" alt="" />
+                <img src={Q4} alt="" />
               </div>
               <div>
                 <p class="text-size-34 leading-[1.1] text-blackColor font-bold font-hind dark:text-blackColor-dark">

@@ -1,6 +1,6 @@
 import axios from "axios";
+import BASE_URL from "../util/baseURL";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_URL = "/api/user/register"; // Ensure correct variable naming
 
 const createAcc = async (formData, company_role_id) => {

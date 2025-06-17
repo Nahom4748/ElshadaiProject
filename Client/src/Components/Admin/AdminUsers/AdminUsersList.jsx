@@ -123,43 +123,46 @@ function AdminUsersList() {
   };
 
   const renderUserRows = (userList) =>
-    userList.map((user) => (
-      <tr
-        key={user.user_id}
-        className="hover:bg-contentColor hover:text-black cursor-pointer text-whitegrey3"
-        onClick={() => handleRowClick(user)}
-      >
-        <td className="px-4 py-2">{user.user_id}</td>
-        <td className="px-4 py-2">{user.first_name}</td>
-        <td>{user.last_name}</td>
-        <td>{user.phone_number}</td>
-        <td className="px-3">{user.country}</td>
-        <td className="px-3">{user.email}</td>
-        {/* Conditionally render Action column */}
-        {userType !== 2 && ( // Only render Action column if userType is not 2
-          <td className="px-4 py-2 flex space-x-2">
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleEditUser(user);
-              }}
-              className="text-green-600 hover:text-green-800 px-3"
-            >
-              Edit
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDeleteUser(user);
-              }}
-              className="text-red-600 hover:text-red-800"
-            >
-              Delete
-            </button>
-          </td>
-        )}
-      </tr>
-    ));
+    userList
+      .filter((user) => user.email !== "admin@admin.com") // Exclude admin@admin.com
+      .map((user) => (
+        <tr
+          key={user.user_id}
+          className="hover:bg-contentColor hover:text-black cursor-pointer text-whitegrey3"
+          onClick={() => handleRowClick(user)}
+        >
+          <td className="px-4 py-2">{user.user_id}</td>
+          <td className="px-4 py-2">{user.first_name}</td>
+          <td>{user.last_name}</td>
+          <td>{user.phone_number}</td>
+          <td className="px-3">{user.country}</td>
+          <td className="px-3">{user.email}</td>
+
+          {/* Conditionally render Action column */}
+          {userType !== 2 && ( // Only render Action column if userType is not 2
+            <td className="px-4 py-2 flex space-x-2">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleEditUser(user);
+                }}
+                className="text-green-600 hover:text-green-800 px-3"
+              >
+                Edit
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeleteUser(user);
+                }}
+                className="text-red-600 hover:text-red-800"
+              >
+                Delete
+              </button>
+            </td>
+          )}
+        </tr>
+      ));
 
   const renderPagination = () =>
     Array.from({ length: totalPages }, (_, index) => (
